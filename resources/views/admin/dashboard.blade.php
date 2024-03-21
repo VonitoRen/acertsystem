@@ -75,6 +75,10 @@
     .table-responsive {
     overflow-x: auto;
 }
+.nav-item:hover .nav-link {
+    background-color: #343a40;
+}
+
 
 </style>
 

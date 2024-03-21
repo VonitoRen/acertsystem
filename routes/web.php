@@ -41,6 +41,7 @@ Route::put('/update-signatory/{id}', [AdminController::class, 'updatesignatories
 Route::delete('/user/{id}', [AdminController::class, 'deleteusers'])->name('delete.users');
 Route::post('/user', [AdminController::class, 'storeusers'])->name('store.users');
 Route::put('/update-user/{id}', [AdminController::class, 'updateusers'])->name('update.users');
+Route::delete('/user-delete/{id}', [AdminController::class, 'deleteusers'])->name('delete.users');
 
 require __DIR__.'/auth.php';
 

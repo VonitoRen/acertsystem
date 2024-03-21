@@ -75,6 +75,10 @@
     .table-responsive {
     overflow-x: auto;
 }
+.nav-item:hover .nav-link {
+    background-color: #343a40;
+}
+
 
 </style>
 
@@ -214,7 +218,7 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
 
-                                            <form action="{{ route('delete.signatories', $user->id) }}" method="POST">
+                                            <form action="{{ route('delete.users', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger">

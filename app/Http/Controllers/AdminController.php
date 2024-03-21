@@ -159,16 +159,18 @@ class AdminController extends Controller
     {
         $users = User::findOrFail($id);
 
-        // dd($request->all());
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
+            'name' => 'string|max:255',
+            'email' => 'string', 'email', 'max:255', 'unique:users',
+            'role' => 'numeric'
         ]);
-        // Update the professions with the validated data
+
+        // Update the user with the validated data
         $users->update($validatedData);
 
-        return redirect()->route('admin.users')->with('success', 'Certificate updated successfully');
+        return redirect()->route('admin.users')->with('success', 'User updated successfully.');
     }
+
     public function deleteusers($id)
     {
         // Find the certification by ID
