@@ -85,7 +85,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Include Sidebar -->
-        @include('sidebar')
+        @include('sidebar', ['userRole' => auth()->user()->role])
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

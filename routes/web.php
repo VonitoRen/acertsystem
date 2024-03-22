@@ -15,12 +15,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Protected routes
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/registration/dashboard', [CertificationOfRegistration::class, 'dashboard'])->name('certreg.dashboard');
+//     Route::get('/fad/dashboard', [AppearanceCertification::class, 'dashboard'])->name('fad.dashboard');
+//     Route::get('/legal/dashboard', [LegalCertification::class, 'dashboard'])->name('legal.dashboard');
+//     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+// });
+
+
 Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/admin/signatories',[AdminController::class,'signatories'])->name('admin.signatories');
-Route::get('/admin/users',[AdminController::class,'users'])->name('admin.users');
 Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
 Route::get('/fad/dashboard',[AppearanceCertification::class,'dashboard'])->name('fad.dashboard');
 Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
+
+Route::get('/admin/signatories',[AdminController::class,'signatories'])->name('admin.signatories');
+Route::get('/admin/users',[AdminController::class,'users'])->name('admin.users');
+
 // Route::get('/fad/dashboard',[FadController::class,'dashboard'])->name('fad.dashboard');
 
 

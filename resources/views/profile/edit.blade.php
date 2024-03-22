@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+        <div class="flex items-center justify-between py-0 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center">
+                <a href="{{ url()->previous() }}" class="text-gray-600 hover:text-gray-900 mr-2">
+                    &larr; Back
+                </a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
