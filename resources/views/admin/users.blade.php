@@ -135,8 +135,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-2">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                                    <label for="validationCustom01">Email</label>
+                                    <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                    <label for="validationCustom01">Username</label>
                                 </div>
                             </div>
                         </div>
@@ -265,8 +265,8 @@
                                                             
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="email" class="form-control" id="validationCustom01" name="email" placeholder="email" value="{{ $user -> email }}" required>
-                                                                    <label for="validationCustom01">Email</label>
+                                                                    <input type="text" class="form-control" id="validationCustom01" name="email" placeholder="email" value="{{ $user -> email }}" required>
+                                                                    <label for="validationCustom01">Username</label>
                                                                 </div>
                                                                 <div class="valid-feedback">
                                                                 Looks good!

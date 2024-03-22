@@ -141,7 +141,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required'],
             'role' => ['required', 'numeric'], // Add validation for role
         ]);
@@ -161,7 +161,7 @@ class AdminController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'string|max:255',
-            'email' => 'string', 'email', 'max:255', 'unique:users',
+            'email' => 'string', 'max:255', 'unique:users',
             'role' => 'numeric'
         ]);
 
