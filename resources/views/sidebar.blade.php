@@ -11,20 +11,20 @@
     <!-- Nav Item - Dashboard -->
     @if($userRole == 3)
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('certreg.dashboard') }}">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>COR</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('accreditation.index') }}">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>ACCREDITATION</span>
             </a>
         </li>
     @elseif($userRole == 4)
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="{{ route('fad.dashboard') }}">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>APPEARANCE</span>
             </a>

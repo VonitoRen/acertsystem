@@ -1,38 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Models\CertificationsOfRegistration;
+use App\Models\AppearanceCertification;
 use App\Models\Professions;
 use App\Models\Signatories;
+use Illuminate\Http\Request;
 
-class CertificationOfRegistration extends Controller
+class AppearanceCertificationController extends Controller
 {
     public function dashboard(){
-        $certificationOfRegistrations = CertificationsOfRegistration::all();
+        
+        $appearanceCert = AppearanceCertification::all();
 
         $signatories = Signatories::all();
-
         $professions = Professions::all();
 
-        return view('registration.dashboard', [
-            'certificationOfRegistrations' => $certificationOfRegistrations,
-            'signatories' => $signatories,
-            'professions' => $professions,
+        return view('fad.dashboard', [
+                    'appearanceCert' => $appearanceCert,
+                    'signatories' => $signatories,
+                    'professions' => $professions,
         ]);
     }
 
-    // public function index()
-    // {
-    //     $certificationOfRegistrations = CertificationsOfRegistration::all();
+    // public function index(){
+    //     $appearanceCert = AppearanceCertification::all();
 
     //     $signatories = Signatories::all();
 
     //     $professions = Professions::all();
 
-    //     return view('registration.certregistration', [
-    //         'certificationOfRegistrations' => $certificationOfRegistrations,
+    //     return view('appearance', [
+    //         'appearanceCert' => $appearanceCert,
     //         'signatories' => $signatories,
     //         'professions' => $professions,
     //     ]);
@@ -46,16 +44,15 @@ class CertificationOfRegistration extends Controller
             'fname' => 'required|string|max:255',
             'mname' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
-            'professionID' => 'required|string|max:255',
-            'regnum' => 'required|string|max:255',
-            'registeredDate' => 'required|date',
-            'signatoriesid' => 'required|string|max:255',
-            'sex' => 'required|string|in:MALE,FEMALE', // Add this line for sex validation
+            'sex' => 'required|in:MALE,FEMALE',
+            'agency' => 'required|string|max:255',
+            'dateOfAppearance' => 'required|date',
+            'purpose' => 'required|string|max:255',
+            'signatoriesid' => 'required|exists:signatories,id',
         ]);
 
-
         // Create a new Certificate instance
-        $certificate = new CertificationsOfRegistration();
+        $certificate = new AppearanceCertification();
 
         // Assign values from the validated data
         $certificate->lname = $validatedData['lname'];
@@ -63,10 +60,14 @@ class CertificationOfRegistration extends Controller
         $certificate->mname = $validatedData['mname'];
         $certificate->suffix = $validatedData['suffix'];
         $certificate->sex = $validatedData['sex'];
-        $certificate->professionID = $validatedData['professionID'];
-        $certificate->regnum = $validatedData['regnum'];
-        $certificate->registeredDate = $validatedData['registeredDate'];
+        $certificate->agency = $validatedData['agency'];
+        $certificate->dateOfAppearance = $validatedData['dateOfAppearance'];
+        $certificate->purpose = $validatedData['purpose'];
         $certificate->signatoriesid = $validatedData['signatoriesid'];
+
+        // Assign default values for fields already set in the database
+        $certificate->date_issues = now(); // Set the current timestamp
+        $certificate->placeOfIssue = "Baguio City, Philippines";
 
         // Save the Certificate
         $certificate->save();
@@ -75,46 +76,41 @@ class CertificationOfRegistration extends Controller
         return redirect()->back()->with('success', 'Certificate added successfully.');
     }
 
-
-    //EDIT FUNCTION
-    //EDIT FUNCTION
-    //EDIT FUNCTION
-
-    public function editCORCertificate($id)
+     public function editAPCertificate($id)
     {
-        $cert = CertificationsOfRegistration::findOrFail($id);
+        $cert = AppearanceCertification::findOrFail($id);
         $professions = Professions::all();
         $signatories = Signatories::all();
 
         return view('edit_certificate', compact('cert', 'professions', 'signatories'));
     }
 
-
-    public function updateCORCertificate(Request $request, $id)
+    public function updateAPCertificate(Request $request, $id)
     {
-        $certificate = CertificationsOfRegistration::findOrFail($id);
+        $certificate = AppearanceCertification::findOrFail($id);
+
         $validatedData = $request->validate([
             'lname' => 'required|string|max:255',
             'fname' => 'required|string|max:255',
             'mname' => 'nullable|string|max:255',
             'suffix' => 'nullable|string|max:255',
-            'professionID' => 'required|exists:professions,id',
-            'regnum' => 'required|string|max:255',
-            'registeredOn' => 'required|date',
+            'sex' => 'required|in:MALE,FEMALE',
+            'agency' => 'required|string|max:255',
+            'dateOfAppearance' => 'required|date',
+            'purpose' => 'required|string|max:255',
             'signatoriesid' => 'required|exists:signatories,id',
-            'sex' => 'required|string|in:MALE,FEMALE',
-    ]);
+        ]);
 
-    $certificate->update($validatedData);
+        $certificate->update($validatedData);
 
-    return redirect()->back()->with('success', 'Certificate updated successfully');
+        return redirect()->back()->with('success', 'Certificate updated successfully');
     }
 
 
-    public function deleteCertificate($id)
+     public function deleteCertificate($id)
     {
         // Find the certification by ID
-        $certificate = CertificationsOfRegistration::findOrFail($id);
+        $certificate = AppearanceCertification::findOrFail($id);
 
         // Delete the certification
         $certificate->delete();
