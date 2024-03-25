@@ -41,8 +41,8 @@ Route::get('/accreditation_index', [AccreditationCertification::class, 'index'])
 Route::post('/accreditation', [AccreditationCertification::class, 'store'])->name('accreditation.store');
 
 // EDIT ROUTES COR
-Route::get('/edit-CORcertificate/{id}',  [CertificationOfRegistrationController::class, 'editCORCertificate'])->name('edit.CORcertificate');
-Route::put('/update-CORcertificate/{id}', [CertificationOfRegistrationController::class, 'updateCORCertificate'])->name('update.CORcertificate');
+Route::get('/edit-CORcertificate/{id}',  [CertificationOfRegistration::class, 'editCORCertificate'])->name('edit.CORcertificate');
+Route::put('/update-CORcertificate/{id}', [CertificationOfRegistration::class, 'updateCORCertificate'])->name('update.CORcertificate');
 
 // EDIT ROUTES AC
 Route::get('/edit-certificate/{id}',  [AccreditationCertification::class, 'editACCertificate'])->name('edit.certificateAC');
