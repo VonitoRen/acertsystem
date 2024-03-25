@@ -78,7 +78,19 @@
 
     .table-responsive {
     overflow-x: auto;
-}
+    }
+    .btn-primary {
+        color: blue;
+    }
+
+    .btn-primary:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
 
 </style>
 
@@ -287,7 +299,7 @@
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
-                                            <a href="{{ route('edit.APcertificate', $cert->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
+                                            <a href="{{ route('edit.APcertificate', $cert->id) }}" style="color:white;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             

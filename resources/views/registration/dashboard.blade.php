@@ -74,7 +74,19 @@
     }
     .table-responsive {
     overflow-x: auto;
-}
+    }
+    .btn-primary {
+        color: blue;
+    }
+
+    .btn-primary:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
 
 </style>
 
@@ -263,11 +275,8 @@
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
                                             <a href="{{ route('edit.CORcertificate', $cert->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
-                                                <i class="fas fa-edit"></i>
+                                                <i class="fas fa-edit edit-icon"></i>
                                             </a>
-                                            
-                                            
-                                            
                                             <!-- <a href="/pdf" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#">
                                                 <i class="fas fa-print"></i>
                                             </a> -->
