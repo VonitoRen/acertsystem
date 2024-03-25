@@ -19,9 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-
 
     <!-- DT -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
@@ -89,6 +89,14 @@
         color: white;
     }
 
+    .btn-secondary {
+        color: black;
+    }
+
+    .btn-secondary:hover {
+        color: white;
+    }
+
 
 </style>
 
@@ -120,7 +128,7 @@
                                 <h2 class="mb-0"><b>Accreditation</b></h2>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i>Add Accreditation Certificate
+                                <i class="fas fa-plus"></i> Add Accreditation Certificate
                                 </button>
                             </div>
                         
@@ -132,8 +140,8 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Registration</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Accreditation</h1>
+                                    <button type="button" class="btn-close btn-primary" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div><br>
                                 <div class="modal-body">
                                 <div class="container">
@@ -142,21 +150,30 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                            </div>
-                                            <div class="valid-feedback">
-                                            Looks good!
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" required>
+                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
                                                 <label for="mname">Middle Name</label>
                                             </div>
                                         </div>
@@ -177,18 +194,24 @@
                                         <div class="col-md-4">
                                             <label for="">SEX:</label> <br>  
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
                                                 <label class="form-check-label" for="male">MALE</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
                                                 <label class="form-check-label" for="female">FEMALE</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No.">
+                                                <input type="text" class="form-control" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." required>
                                                 <label for="accreditation_no">Accreditation No.</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -197,25 +220,43 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating">
-                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
-                                                    <option disabled selected>Select Profession</option>
+                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
+                                                    <option disabled selected value="">Select Profession</option>
                                                     @foreach($professions as $profession)
                                                         <option value="{{ $profession->id }}">{{ $profession->profession }}</option>
                                                     @endforeach
                                                 </select>
                                                 <label for="floatingSelect">Profession</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" id="validityDate" name="validityDate" placeholder="Validity Date" required>
                                                 <label for="validityDate">Validity Date</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="broker_name" name="broker_name" placeholder="Broker Name">
+                                                <input type="text" class="form-control" id="broker_name" name="broker_name" placeholder="Broker Name" required>
                                                 <label for="broker_name">Broker Name</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -226,8 +267,14 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No.">
+                                                <input type="text" class="form-control" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." required>
                                                 <label for="Broker Registration No.">Broker Registration No.</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
 
@@ -239,8 +286,13 @@
                                                         <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
                                                     @endforeach
                                                 </select>
-   
                                                 <label for="floatingSelect">Signatory</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -332,14 +384,14 @@
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-floating mb-2">
-                                                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}">
+                                                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}" required>
                                                                         <label for="lname">Last Name</label>
                                                                     </div>
                                                                     <div class="valid-feedback">Looks good!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}">
+                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}" required>
                                                                     <label for="fname">First Name</label>
                                                                 </div>
                                                             </div>
@@ -364,11 +416,11 @@
                                                             <div class="col-md-4">
                                                                 <label for="">SEX:</label> <br>  
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" required name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="male">MALE</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" required name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="female">FEMALE</label>
                                                                     </div>
                                                             </div>
@@ -384,7 +436,7 @@
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating">
-                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
+                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
                                                                         <option disabled value="">Select Profession</option>
                                                                         @foreach($professions as $profession)
                                                                             <option value="{{ $profession->id }}" {{ $cert->profession->id == $profession->id ? 'selected' : '' }}>
@@ -407,14 +459,14 @@
 
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="broker_name" name="broker_name" placeholder="Broker Name" value="{{ $cert->broker_name }}">
+                                                                    <input type="text" class="form-control" id="broker_name" name="broker_name" placeholder="Broker Name" value="{{ $cert->broker_name }}" required>
                                                                     <label for="regnum">Broker Name</label>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}">
+                                                                    <input type="text" class="form-control" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}" required>
                                                                     <label for="registeredOn">Broker Registration No.</label>
                                                                 </div>
                                                             </div>
@@ -423,7 +475,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
-                                                                    <select class="form-select" id="signatoriesid" name="signatoriesid">
+                                                                    <select class="form-select" id="signatoriesid" name="signatoriesid" required>
                                                                         <option disabled value="">Select Signatory</option>
                                                                         @foreach($signatories as $signatory)
                                                                             <option value="{{ $signatory->id }}" {{ $cert->signatory->id == $signatory->id ? 'selected' : '' }}>

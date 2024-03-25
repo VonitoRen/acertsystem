@@ -75,6 +75,7 @@
     .table-responsive {
     overflow-x: auto;
     }
+    
     .btn-primary {
         color: blue;
     }
@@ -87,7 +88,13 @@
         color: white;
     }
 
+    .btn-secondary {
+        color: black;
+    }
 
+    .btn-secondary:hover {
+        color: white;
+    }
 </style>
 
 <body id="page-top">
@@ -131,7 +138,7 @@
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Registration</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close btn-primary" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div><br>
                                 <div class="modal-body">
                                 <div class="container">
@@ -140,6 +147,12 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" id="validationCustom01" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                             <div class="valid-feedback">
                                             Looks good!
@@ -149,12 +162,18 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
+                                                <div class="valid-feedback">
+                                                Looks amazing!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" required>
+                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
                                                 <label for="mname">Middle Name</label>
                                             </div>
                                         </div>
@@ -173,11 +192,11 @@
                                         <div class="col-md-4">
                                             <label for="">SEX:</label> <br>  
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required> 
                                                 <label class="form-check-label" for="male">MALE</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
                                                 <label class="form-check-label" for="female">FEMALE</label>
                                             </div>
                                         </div>
@@ -185,13 +204,19 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating">
-                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
-                                                    <option disabled selected>Select Profession</option>
+                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
+                                                    <option disabled selected value="">Select Profession</option>
                                                     @foreach($professions as $profession)
                                                         <option value="{{ $profession->id }}">{{ $profession->profession }}</option>
                                                     @endforeach
                                                 </select>
                                                 <label for="floatingSelect">Profession</label>
+                                                <div class="valid-feedback">
+                                                    Looks professional!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
 
@@ -203,31 +228,42 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration No." required>
                                                 <label for="regnum">Registration No.</label>
+                                                <div class="valid-feedback">
+                                                Sheeesh!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" id="registeredDate" name="registeredDate" placeholder="Registered Date" required>
                                                 <label for="registeredDate">Registered Date</label>
+                                                <div class="valid-feedback">
+                                                    Amazing!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2"> 
                                                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoriesid" required>
-                                                    <option disabled selected>Select Signatory</option>
+                                                    <option disabled selected value="">Select Signatory</option>
                                                     @foreach($signatories as $signatory)
                                                         <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
                                                     @endforeach
                                                 </select>
-   
-                                                <!-- <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoryid">
-                                                    <option disabled selected>Select Signatory</option>
-                                                        @foreach($signatories as $signatory)
-                                                            <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
-                                                        @endforeach
-                                                </select> -->
                                                 <label for="floatingSelect">Signatory</label>
+                                                <div class="valid-feedback">
+                                                    A good person!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -236,7 +272,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </div>
                                 </div>
@@ -326,15 +362,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-floating mb-2">
-                                                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}">
+                                                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}" required>
                                                                         <label for="lname">Last Name</label>
                                                                     </div>
                                                                     <div class="valid-feedback">Looks good!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}">
-                                                                    <label for="fname">First Name</label>
+                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}" required>
+                                                                    <label for="fname" required>First Name</label>
                                                                 </div>
                                                             </div>
 
@@ -358,18 +394,18 @@
                                                             <div class="col-md-4">
                                                                 <label for="">SEX:</label> <br>  
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" required name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="male">MALE</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" required name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="female">FEMALE</label>
                                                                     </div>
                                                             </div>
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating">
-                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
+                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
                                                                         <option disabled value="">Select Profession</option>
                                                                         @foreach($professions as $profession)
                                                                             <option value="{{ $profession->id }}" {{ $cert->profession->id == $profession->id ? 'selected' : '' }}>
@@ -385,20 +421,20 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}">
+                                                                    <input type="text" class="form-control" required id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}">
                                                                     <label for="regnum">Registration No.</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="date" class="form-control" id="registeredOn" name="registeredOn" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredOn)->format('Y-m-d') }}">
+                                                                    <input type="date" class="form-control" required id="registeredOn" name="registeredOn" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredOn)->format('Y-m-d') }}">
                                                                     <label for="registeredOn">Registered Date</label>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <select class="form-select" id="signatoriesid" name="signatoriesid">
+                                                                    <select class="form-select" id="signatoriesid" name="signatoriesid" required>
                                                                         <option disabled value="">Select Signatory</option>
                                                                         @foreach($signatories as $signatory)
                                                                             <option value="{{ $signatory->id }}" {{ $cert->signatory->id == $signatory->id ? 'selected' : '' }}>
@@ -455,7 +491,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true" >×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
