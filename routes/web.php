@@ -16,7 +16,7 @@ use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
