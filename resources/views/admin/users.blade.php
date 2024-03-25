@@ -179,7 +179,7 @@
                                 <tr>
                                     <!-- <th>id</th> -->
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Username</th>
                                     <th>Role</th>
                                     <th>Actions</th>
                                 </tr>

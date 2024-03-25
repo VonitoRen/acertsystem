@@ -145,7 +145,6 @@ Route::get('/registration', [CertificationOfRegistration::class, 'index'])->name
 Route::post('/certregistration', [CertificationOfRegistration::class, 'store'])->name('certregistration.store');
 
 Route::get('/accreditation_index', [AccreditationCertification::class, 'index'])->name('accreditation.index');
-
 Route::post('/appearance', [AppearanceCertificationController::class, 'store'])->name('appearance.store');
 
 
