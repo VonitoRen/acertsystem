@@ -29,6 +29,13 @@
                 <span>APPEARANCE</span>
             </a>
         </li>
+    @elseif($userRole == 2)
+    <li class="nav-item">
+        <a class="nav-link" href="">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>LEGAL</span>
+        </a>
+    </li>
     @endif
 
     <!-- Divider -->
