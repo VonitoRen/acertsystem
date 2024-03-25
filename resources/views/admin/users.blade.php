@@ -74,10 +74,30 @@
     }
     .table-responsive {
     overflow-x: auto;
-}
-.nav-item:hover .nav-link {
-    background-color: #343a40;
-}
+    }
+    .nav-item:hover .nav-link {
+        background-color: #343a40;
+    }
+
+    .btn-primary-pro {
+        color: blue;
+    }
+
+    .btn-primary-pro:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
+    .btn-secondary-pro {
+        color: black;
+    }
+
+    .btn-secondary-pro:hover {
+        color: white;
+    }
 
 
 </style>
@@ -131,12 +151,24 @@
                                 <div class="form-floating mb-2">
                                     <input type="text" class="form-control" name="name" placeholder="Name" required>
                                     <label for="validationCustom01">Name</label>
+                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        *Required
+                                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-2">
                                     <input type="text" class="form-control" name="email" placeholder="Email" required>
                                     <label for="validationCustom01">Username</label>
+                                    <div class="valid-feedback">
+                                                        Looks nice!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        *Required
+                                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -145,6 +177,12 @@
                                 <div class="form-floating mb-2">
                                     <input type="password" class="form-control" name="password" placeholder="Password" required>
                                     <label for="validationCustom01">Password</label>
+                                    <div class="valid-feedback">
+                                                        Looks amazing!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        *Required
+                                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -157,6 +195,12 @@
                                         <option value="4">Finance and Administrative Division</option>
                                     </select>
                                     <label for="validationCustom01">Role</label>
+                                    <div class="valid-feedback">
+                                                        Well done!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        *Required
+                                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +208,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Submit">
+                    <input type="submit" class="btn btn-primary btn-primary-pro" value="Submit">
                 </div>
             </div>
         </div>
@@ -258,18 +302,12 @@
                                                                     <input type="text" class="form-control" id="validationCustom01" name="name" placeholder="name" value="{{ $user -> name }}" required>
                                                                     <label for="validationCustom01">Name</label>
                                                                 </div>
-                                                                <div class="valid-feedback">
-                                                                Looks good!
-                                                                </div>
                                                             </div>
                                                             
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
                                                                     <input type="text" class="form-control" id="validationCustom01" name="email" placeholder="email" value="{{ $user -> email }}" required>
                                                                     <label for="validationCustom01">Username</label>
-                                                                </div>
-                                                                <div class="valid-feedback">
-                                                                Looks good!
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -287,9 +325,6 @@
                                                                     </select>
                                                                     <label for="validationCustom01">Role</label>
                                                                 </div>
-                                                                <div class="valid-feedback">
-                                                                    Looks good!
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         </div>
@@ -297,8 +332,8 @@
                                                 </div>
                                             
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="button" class="btn btn-secondary btn-secondary-pro" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary btn-primary-pro">Save changes</button>
                                                 </div>
                                             </form>
                                             </div>

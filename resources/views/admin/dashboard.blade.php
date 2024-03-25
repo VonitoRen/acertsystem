@@ -72,13 +72,34 @@
     body.loading {
     overflow: hidden;
     }
+
     .table-responsive {
     overflow-x: auto;
-}
-.nav-item:hover .nav-link {
-    background-color: #343a40;
-}
 
+    }
+    .nav-item:hover .nav-link {
+        background-color: #343a40;
+    }
+
+    .btn-primary-pro {
+        color: blue;
+    }
+
+    .btn-primary-pro:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
+    .btn-secondary-pro {
+        color: black;
+    }
+
+    .btn-secondary-pro:hover {
+        color: white;
+    }
 
 </style>
 
@@ -131,9 +152,12 @@
                                                 <div class="form-floating mb-2">
                                                     <input type="text" class="form-control" id="validationCustom01" name="profession" placeholder="Profession" required>
                                                     <label for="validationCustom01">Profession</label>
-                                                </div>
-                                                <div class="valid-feedback">
-                                                Looks good!
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        *Required
+                                                    </div>
                                                 </div>
                                             </div>
                                             
@@ -145,7 +169,7 @@
 
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    <input type="submit" class="btn btn-primary btn-primary-pro" value="Submit">
                                 </div>
                                 </div>
                             </div>
@@ -224,8 +248,8 @@
                                                 </div>
                                             
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="button" class="btn btn-secondary btn-secondary-pro" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary btn-primary-pro">Save changes</button>
                                                 </div>
                                             </form>
                                             </div>
