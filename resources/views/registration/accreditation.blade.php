@@ -295,6 +295,11 @@
                                         <i class="fas fa-edit"></i>
                                     </a>
 
+                                    <!-- Print Button -->
+                                    <a href="{{ route('previewAC.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
+                                        <i class="fas fa-print"></i>
+                                    </a>
+
                                     <!-- Delete Form -->
                                     <form action="{{ route('delete.certificate-ac', $cert->id) }}" method="POST">
                                         @csrf

@@ -7,6 +7,9 @@ use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
 use App\Http\Controllers\LegalCertification;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CorPdfController;
+use App\Http\Controllers\AcPdfController;
+use App\Http\Controllers\AppearancePDFController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,12 +28,42 @@ Route::get('/dashboard', function () {
 // });
 
 
-Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+//admin routes
+Route::middleware(['auth','role===1'])->group(function () {
+    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+});
+//registration routes
+Route::middleware(['auth','role===3'])->group(function () {
+    Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
+});
+//fad routes
+Route::middleware(['auth','role===4'])->group(function () {
+    Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
+});
+//legal routes
+Route::middleware(['auth','role===2'])->group(function () {
+    Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
+});
 
+// pdf dagitoy
+Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
+Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
+Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
+
+// dashboards
+Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
 Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
+Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
+Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
+
+
+
 Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'store'])->name('certreg.store');
 
 Route::get('/registration/cor',[CertificationOfRegistration::class,'index'])->name('certreg.cor');
+
+
+
 // EDIT ROUTES COR
 Route::get('/edit-CORcertificate/{id}',  [CertificationOfRegistration::class, 'editCORCertificate'])->name('edit.CORcertificate');
 Route::put('/update-CORcertificate/{id}', [CertificationOfRegistration::class, 'updateCORCertificate'])->name('update.CORcertificate');
@@ -60,8 +93,7 @@ Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'del
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
 
-Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
-Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
+
 
 Route::get('/admin/signatories',[AdminController::class,'signatories'])->name('admin.signatories');
 Route::get('/admin/users',[AdminController::class,'users'])->name('admin.users');
@@ -82,6 +114,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+// admin area- profession signatory and users
 
 Route::delete('/profession/{id}', [AdminController::class, 'deleteProfession'])->name('delete.profession');
 Route::post('/profession', [AdminController::class, 'store'])->name('store.profession');

@@ -304,7 +304,7 @@
                                             </a>
                                             
                                             <!-- Print Button -->
-                                            <a href="" target="_blank" class="btn btn-success">
+                                            <a href="{{ route('previewAppearance.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             
