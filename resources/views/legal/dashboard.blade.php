@@ -10,8 +10,7 @@
     <meta name="author" content="">
 
     <title>PRC-CERTIFICATION</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
-    
+    <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -20,8 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- DT -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
@@ -33,8 +33,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
+    
 
+</head>
 <style>
     body{
         font-family: "Poppins", sans-serif;
@@ -73,11 +74,23 @@
     }
     .table-responsive {
     overflow-x: auto;
-}
+    }
+    .btn-primary {
+        color: blue;
+    }
+
+    .btn-primary:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
 
 </style>
-<body id="page-top">
 
+<body id="page-top">
     <div class="loader-wrapper" id="loader">
         <div class="loader"></div>
     </div>
@@ -94,26 +107,329 @@
             <div id="content">
 
                 <!-- Topbar -->
-                    <x-app-layout>
+                
+               <x-app-layout>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                        <div class='col-sm-12 mx-auto shadow' style='padding: 2%; margin:3%;'>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0"></h4>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
+                                <i class="fas fa-plus"></i> Add Certificate of Legal
+                                </button>
+                            </div>
+                        
+                
+                    <!-- Modal -->
+                    <form class="needs-validation" action="" method="post" novalidate>
+                        @csrf
+                        <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Legal</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div><br>
+                                <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" id="validationCustom01" name="lname" placeholder="Last Name" required>
+                                                <label for="validationCustom01">Last Name</label>
+                                            </div>
+                                            <div class="valid-feedback">
+                                            Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                                                <label for="fname">First Name</label>
+                                            </div>
+                                        </div>
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Legal Dashboard</h1>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" required>
+                                                <label for="mname">Middle Name</label>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
 
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix">
+                                                <label for="suffix">Suffix</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="">SEX:</label> <br>  
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE">
+                                                <label class="form-check-label" for="male">MALE</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE">
+                                                <label class="form-check-label" for="female">FEMALE</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-floating">
+                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
+                                                    <option disabled selected>Select Profession</option>
+                                                    @foreach($professions as $profession)
+                                                        <option value="{{ $profession->id }}">{{ $profession->profession }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingSelect">Profession</label>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration No." required>
+                                                <label for="regnum">Registration No.</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" id="registeredDate" name="registeredDate" placeholder="Registered Date" required>
+                                                <label for="registeredDate">Registered Date</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2"> 
+                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoriesid" required>
+                                                    <option disabled selected>Select Signatory</option>
+                                                    @foreach($signatories as $signatory)
+                                                        <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <label for="floatingSelect">Signatory</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                
+                <div class="p-1">
+                    <div class="table-responsive">
+                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Profession</th>
+                                    <th>Registration No.</th>
+                                    <th>Registration Date</th>
+                                    <th>Place of Issue</th>
+                                    <th>Date Issued</th>
+                                    <th>Signatory</th>
+                                    <!-- <th>Position/Designation</th> -->
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($certificationOfRegistrations as $cert)
+                                <tr>
+                                    <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
+                                    <td>{{ $cert->profession->profession }}</td>
+                                    <td>{{ $cert->regnum }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cert->registeredOn)->format('F j, Y') }}</td>
+                                    <td>{{ $cert->placeOfIssue }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
+                                    <td><b> {{ $cert->signatory->name }}</b><br> {{ $cert->signatory->position }}</td>
+                                    <!-- <td>{{ $cert->signatory->position }}</td>  -->
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Actions">
+                                            <!-- Edit Button -->
+                                            <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
+                                                <i class="fas fa-edit edit-icon"></i>
+                                            </a>
+                                            <!-- <a href="/pdf" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#">
+                                                <i class="fas fa-print"></i>
+                                            </a> -->
+                                            <!-- <button class="btn btn-success">
+                                                <i class="fas fa-print"></i>
+                                            </button> -->
+
+                                            <!-- Print Button -->
+                                            <a href="" target="_blank" class="btn btn-success">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+
+
+                                            <form action="" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                        <!-- EDIT -->
+                        <!-- EDIT -->
+                        <!-- EDIT -->
+                        <!-- EDIT -->
+                        <!-- EDIT -->
+                        
+                        <!-- Edit Certificate Modal -->
+                        <div class="modal fade" id="editCertificateModal{{ $cert->id }}" tabindex="-1" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editCertificateModalLabel">Edit Certificate</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    
+                                    <form action="" method="post">
+                                        @csrf
+                                            @method('PUT')
+                                                <div class="modal-body">
+                                                    <div class="modal-body">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <div class="form-floating mb-2">
+                                                                        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}">
+                                                                        <label for="lname">Last Name</label>
+                                                                    </div>
+                                                                    <div class="valid-feedback">Looks good!</div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}">
+                                                                    <label for="fname">First Name</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" value="{{ $cert->mname }}">
+                                                                    <label for="mname">Middle Name</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix" value="{{ $cert->suffix }}">
+                                                                    <label for="suffix">Suffix</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label for="">SEX:</label> <br>  
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
+                                                                        <label class="form-check-label" for="male">MALE</label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
+                                                                        <label class="form-check-label" for="female">FEMALE</label>
+                                                                    </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating">
+                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
+                                                                        <option disabled value="">Select Profession</option>
+                                                                        @foreach($professions as $profession)
+                                                                            <option value="{{ $profession->id }}" {{ $cert->profession->id == $profession->id ? 'selected' : '' }}>
+                                                                                {{ $profession->profession }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <label for="floatingSelect">Profession</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}">
+                                                                    <label for="regnum">Registration No.</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" id="registeredOn" name="registeredOn" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredOn)->format('Y-m-d') }}">
+                                                                    <label for="registeredOn">Registered Date</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <select class="form-select" id="signatoriesid" name="signatoriesid">
+                                                                        <option disabled value="">Select Signatory</option>
+                                                                        @foreach($signatories as $signatory)
+                                                                            <option value="{{ $signatory->id }}" {{ $cert->signatory->id == $signatory->id ? 'selected' : '' }}>
+                                                                                {{ $signatory->name }} - {{ $signatory->position }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <label for="signatoriesid">Signatory</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        </div>    
+                    </div>
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->     
-            <!-- Footer -->
-            @include('footer')
-        <!-- End of Footer -->
-
+        <!-- /.container-fluid -->
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        @include('footer')
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -122,11 +438,27 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-                    </x-app-layout>
-                
 
-
-
+    </x-app-layout>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
@@ -140,37 +472,41 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
- <!-- Page level plugins -->
- <script src="/vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="/vendor/chart.js/Chart.min.js"></script>
 
-<!-- JavaScript -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="script.js"></script>   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="sweetalert2.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#datatable1').DataTable();
-    });
+    <!-- Page level custom scripts -->
+    <script src="/js/demo/chart-area-demo.js"></script>
+    <script src="/js/demo/chart-pie-demo.js"></script>
 
-    window.onload = function() {
-    var loader = document.getElementById("loader");
-    loader.style.display = "none";
-    };
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="/script.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable1').DataTable();
+        });
 
-    window.onbeforeunload = function() {
-    document.body.classList.add("loading");
-    };
+        window.onload = function() {
+        var loader = document.getElementById("loader");
+        loader.style.display = "none";
+        };
 
-</script>
+        window.onbeforeunload = function() {
+        document.body.classList.add("loading");
+        };
+
+    </script>
+    
 
 </body>
+
 </html>
+
 
 <script>
     (function () {

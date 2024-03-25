@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
+use App\Models\Professions;
+use App\Models\Signatories;
+use App\Models\CertificationsOfRegistration;
+use App\Models\AppearanceCertification;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,31 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Protected routes
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/registration/dashboard', [CertificationOfRegistration::class, 'dashboard'])->name('certreg.dashboard');
-//     Route::get('/fad/dashboard', [AppearanceCertificationController::class, 'dashboard'])->name('fad.dashboard');
-//     Route::get('/legal/dashboard', [LegalCertification::class, 'dashboard'])->name('legal.dashboard');
-//     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-// });
 
-
-//admin routes
-Route::middleware(['auth','role===1'])->group(function () {
-    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
-});
-//registration routes
-Route::middleware(['auth','role===3'])->group(function () {
-    Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
-});
-//fad routes
-Route::middleware(['auth','role===4'])->group(function () {
-    Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
-});
-//legal routes
-Route::middleware(['auth','role===2'])->group(function () {
-    Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
-});
+Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware('auth');
 
 // pdf dagitoy
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
@@ -51,11 +32,70 @@ Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name(
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
 
 // dashboards
-Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
-Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
-Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
-Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
+// Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+// Route::get('/registration/dashboard',[CertificationOfRegistration::class,'dashboard'])->name('certreg.dashboard');
+// Route::get('/fad/dashboard',[AppearanceCertificationController::class,'dashboard'])->name('fad.dashboard');
+// Route::get('/legal/dashboard',[LegalCertification::class,'dashboard'])->name('legal.dashboard');
 
+// Admin Dashboard
+Route::get('/admin/dashboard', function () {
+    if (auth()->check() && auth()->user()->role == 1) {
+        $professions = Professions::all();
+
+        return view('admin.dashboard', [
+            'professions' => $professions,
+        ]);
+    } else {
+        return back();
+    }
+})->name('admin.dashboard');
+
+// Registration Dashboard
+Route::get('/registration/dashboard', function () {
+    if (auth()->check() && auth()->user()->role == 3) {
+        
+        $certificationOfRegistrations = CertificationsOfRegistration::all();
+
+        $signatories = Signatories::all();
+
+        $professions = Professions::all();
+
+        return view('registration.dashboard', [
+            'certificationOfRegistrations' => $certificationOfRegistrations,
+            'signatories' => $signatories,
+            'professions' => $professions,
+        ]);
+    } else {
+        return back();
+    }
+})->name('certreg.dashboard');
+
+// FAD Dashboard
+Route::get('/fad/dashboard', function () {
+    if (auth()->check() && auth()->user()->role == 4) {
+        $appearanceCert = AppearanceCertification::all();
+
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+
+        return view('fad.dashboard', [
+                    'appearanceCert' => $appearanceCert,
+                    'signatories' => $signatories,
+                    'professions' => $professions,
+        ]);
+    } else {
+        return back();
+    }
+})->name('fad.dashboard');
+
+// Legal Dashboard
+Route::get('/legal/dashboard', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        return view('legal.dashboard');
+    } else {
+        return back();
+    }
+})->name('legal.dashboard');
 
 
 Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'store'])->name('certreg.store');
