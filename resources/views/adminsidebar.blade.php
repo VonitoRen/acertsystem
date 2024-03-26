@@ -1,3 +1,15 @@
+<style>
+    /* Add hover effect */
+    .nav-item:hover {
+        transform: translateX(10px); /* Adjust the distance as needed */
+    }
+
+    /* Add transition for smooth effect */
+    .nav-item {
+        transition: transform 0.3s ease; /* Adjust the duration and timing function as needed */
+    }
+</style>
+
 <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">

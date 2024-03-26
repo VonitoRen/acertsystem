@@ -36,6 +36,10 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
 
+    <!-- SWEETALERT LIBRARY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 </head>
 <style>
     body{
@@ -301,10 +305,10 @@
                                     </a>
 
                                     <!-- Delete Form -->
-                                    <form action="{{ route('delete.certificate-ac', $cert->id) }}" method="POST">
+                                    <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-ac', $cert->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger">
+                                        <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
@@ -540,6 +544,62 @@
 
     </script>
     
+    <script>
+    (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
+
+<script>
+    // Function to handle SweetAlert confirmation
+    $('.delete-btn').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        swal({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Yes, delete it!",
+                    value: true,
+                    visible: true,
+                    className: "",
+                    closeModal: true
+                }
+            },
+        }).then((result) => {
+            if (result) {
+                // If confirmed, submit the form
+                $('#deleteForm' + id).submit();
+            }
+        });
+    });
+</script>
 
 </body>
 

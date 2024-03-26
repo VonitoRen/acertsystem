@@ -1,3 +1,15 @@
+<style>
+    /* Add hover effect */
+    .nav-item:hover {
+        transform: translateX(10px); /* Adjust the distance as needed */
+    }
+
+    /* Add transition for smooth effect */
+    .nav-item {
+        transition: transform 0.3s ease; /* Adjust the duration and timing function as needed */
+    }
+</style>
+
 <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -10,32 +22,32 @@
 
     <!-- Nav Item - Dashboard -->
     @if($userRole == 3)
-        <li class="nav-item">
+        <li class="nav-item" style="{{ Request::routeIs('certreg.dashboard') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
             <a class="nav-link" href="{{ route('certreg.dashboard') }}">
-                <i class="fas fa-fw fa-file-alt"></i>
-                <span>COR</span>
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('certreg.dashboard') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('certreg.dashboard') ? 'color: white;' : '' }}">Certificate of Registration</span>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="{{ Request::routeIs('accreditation.index') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
             <a class="nav-link" href="{{ route('accreditation.index') }}">
-                <i class="fas fa-fw fa-file-alt"></i>
-                <span>ACCREDITATION</span>
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('accreditation.index') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('accreditation.index') ? 'color: white;' : '' }}">Accreditation</span>
             </a>
         </li>
     @elseif($userRole == 4)
-        <li class="nav-item">
+        <li class="nav-item" style="{{ Request::routeIs('fad.dashboard') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
             <a class="nav-link" href="{{ route('fad.dashboard') }}">
-                <i class="fas fa-fw fa-file-alt"></i>
-                <span>APPEARANCE</span>
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('fad.dashboard') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('fad.dashboard') ? 'color: white;' : '' }}">Appearance</span>
             </a>
         </li>
     @elseif($userRole == 2)
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>LEGAL</span>
-        </a>
-    </li>
+        <li class="nav-item" style="{{ Request::routeIs('legal.index') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
+            <a class="nav-link" href="{{ route('legal.index') }}">
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('legal.index') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('legal.index') ? 'color: white;' : '' }}">Legal</span>
+            </a>
+        </li>
     @endif
 
     <!-- Divider -->

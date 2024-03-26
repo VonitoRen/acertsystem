@@ -34,6 +34,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
+    <!-- SWEETALERT LIBRARY -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 </head>
 <style>
@@ -326,10 +329,11 @@
                                             </a>
 
 
-                                            <form action="{{ route('delete.certificate-cor', $cert->id) }}" method="POST">
+                                            <!-- Delete Button -->
+                                            <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-cor', $cert->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger">
+                                                <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -571,4 +575,38 @@
       }, false)
     })
 })()
+</script>
+
+<script>
+    // Function to handle SweetAlert confirmation
+    $('.delete-btn').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        swal({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            buttons: {
+                cancel: {
+                    text: "Cancel",
+                    value: null,
+                    visible: true,
+                    className: "",
+                    closeModal: true,
+                },
+                confirm: {
+                    text: "Yes, delete it!",
+                    value: true,
+                    visible: true,
+                    className: "",
+                    closeModal: true
+                }
+            },
+        }).then((result) => {
+            if (result) {
+                // If confirmed, submit the form
+                $('#deleteForm' + id).submit();
+            }
+        });
+    });
 </script>
