@@ -152,7 +152,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="name" placeholder="Name" required>
                                     <label for="validationCustom01">Name</label>
                                     <div class="valid-feedback">
                                                         Looks good!
@@ -164,7 +164,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="email" placeholder="Email" required>
                                     <label for="validationCustom01">Username</label>
                                     <div class="valid-feedback">
                                                         Looks nice!
@@ -178,7 +178,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-2">
-                                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                    <input type="password" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="password" placeholder="Password" required>
                                     <label for="validationCustom01">Password</label>
                                     <div class="valid-feedback">
                                                         Looks amazing!
@@ -302,14 +302,14 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="validationCustom01" name="name" placeholder="name" value="{{ $user -> name }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="name" placeholder="name" value="{{ $user -> name }}" required>
                                                                     <label for="validationCustom01">Name</label>
                                                                 </div>
                                                             </div>
                                                             
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="validationCustom01" name="email" placeholder="email" value="{{ $user -> email }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="email" placeholder="email" value="{{ $user -> email }}" required>
                                                                     <label for="validationCustom01">Username</label>
                                                                 </div>
                                                             </div>

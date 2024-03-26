@@ -153,7 +153,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control" id="validationCustom01" name="name" placeholder="name" required>
+                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="name" placeholder="name" required>
                                                     <label for="validationCustom01">Name</label>
                                                     <div class="valid-feedback">
                                                         Looks good!
@@ -166,7 +166,7 @@
                                             
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control" id="validationCustom01" name="position" placeholder="position" required>
+                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="position" placeholder="position" required>
                                                     <label for="validationCustom01">Position</label>
                                                     <div class="valid-feedback">
                                                         Looks good!
@@ -250,13 +250,13 @@
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $signatory->name }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="name" name="name" placeholder="Name" value="{{ $signatory->name }}" required>
                                                                     <label for="validationCustom01">Name</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="position" name="position" placeholder="position" value="{{ $signatory->position }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position" name="position" placeholder="position" value="{{ $signatory->position }}" required>
                                                                     <label for="validationCustom01">Position</label>
                                                                 </div>
                                                             </div>

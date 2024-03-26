@@ -140,7 +140,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="validationCustom01" name="lname" placeholder="Last Name" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
                                                 <div class="valid-feedback">
                                                 Looks good!
@@ -153,7 +153,7 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
                                                 <div class="valid-feedback">
                                                 Looks nice!
@@ -166,7 +166,7 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" >
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name" >
                                                 <label for="mname">Middle Name</label>
                                             </div>
                                         </div>
@@ -175,7 +175,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" placeholder="Suffix">
                                                 <label for="suffix">Suffix</label>
                                                 
                                             </div>
@@ -196,7 +196,7 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="agency" name="agency" placeholder="Agency" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="agency" name="agency" placeholder="Agency" required>
                                                 <label for="agency">Agency</label>
                                                 <div class="valid-feedback">
                                                     Amazing!
@@ -209,7 +209,7 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="date" class="form-control" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" required>
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" required>
                                                 <label for="dateOfAppearance">Date of Appearance</label>
                                                 <div class="valid-feedback">
                                                     Delightful!
@@ -224,7 +224,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" id="purpose" name="purpose" placeholder="Purpose" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="purpose" name="purpose" placeholder="Purpose" required>
                                                 <label for="purpose">Purpose</label>
                                                 <div class="valid-feedback">
                                                     You can do it!
@@ -336,19 +336,19 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}" required>
                                                                     <label for="lname">Last Name</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}" required>
                                                                     <label for="fname">First Name</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name" value="{{ $cert->mname }}">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name" value="{{ $cert->mname }}">
                                                                     <label for="mname">Middle Name</label>
                                                                 </div>
                                                             </div>
@@ -356,7 +356,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix" value="{{ $cert->suffix }}">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" placeholder="Suffix" value="{{ $cert->suffix }}">
                                                                     <label for="suffix">Suffix</label>
                                                                 </div>
                                                             </div>
@@ -376,13 +376,13 @@
                                                         <div class="row">
                                                             <div class="col-md-8">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="agency" name="agency" placeholder="Agency" value="{{ $cert->agency }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="agency" name="agency" placeholder="Agency" value="{{ $cert->agency }}" required>
                                                                     <label for="agency">Agency</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="date" required class="form-control" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" value="{{ \Carbon\Carbon::parse($cert->dateOfAppearance)->format('Y-m-d') }}">
+                                                                    <input type="date" required class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" value="{{ \Carbon\Carbon::parse($cert->dateOfAppearance)->format('Y-m-d') }}">
                                                                     <label for="dateOfAppearance">Date of Appearance</label>
                                                                 </div>
                                                             </div>
@@ -391,7 +391,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="purpose" name="purpose" placeholder="Purpose" value="{{ $cert->purpose }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="purpose" name="purpose" placeholder="Purpose" value="{{ $cert->purpose }}" required>
                                                                     <label for="purpose">Purpose</label>
                                                                 </div>
                                                             </div>

@@ -155,7 +155,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control" id="validationCustom01" name="profession" placeholder="Profession" required>
+                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="profession" placeholder="Profession" required>
                                                     <label for="validationCustom01">Profession</label>
                                                     <div class="valid-feedback">
                                                         Looks good!
@@ -238,7 +238,7 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" id="profession" name="profession" placeholder="Profession" value="{{ $prof->profession }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="profession" name="profession" placeholder="Profession" value="{{ $prof->profession }}" required>
                                                                     <label for="validationCustom01">Profession</label>
                                                                 </div>
                                                                 <div class="valid-feedback">
