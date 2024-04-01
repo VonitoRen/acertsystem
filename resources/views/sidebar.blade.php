@@ -42,10 +42,10 @@
             </a>
         </li>
     @elseif($userRole == 2)
-        <li class="nav-item" style="{{ Request::routeIs('legal.index') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
-            <a class="nav-link" href="{{ route('legal.index') }}">
-                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('legal.index') ? 'color: white;' : '' }}"></i>
-                <span style="{{ Request::routeIs('legal.index') ? 'color: white;' : '' }}">Legal</span>
+        <li class="nav-item" style="{{ Request::routeIs('legal.dashboard') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
+            <a class="nav-link" href="{{ route('legal.dashboard') }}">
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('legal.dashboard') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('legal.dashboard') ? 'color: white;' : '' }}">Legal</span>
             </a>
         </li>
     @endif

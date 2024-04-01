@@ -99,10 +99,212 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <div class='col-sm-12 mx-auto shadow' style='padding: 2%; margin:3%;'>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0"></h4>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
+                                <i class="fas fa-plus"></i> Add Certificate of Complaint
+                                </button>
+                            </div>
+                            <!-- Modal -->
+                    <form class="needs-validation" action="{{ route('appearance.store') }}" method="post" novalidate>
+                        @csrf
+                        <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Appearance</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div><br>
+                                <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
+                                                <label for="validationCustom01">Last Name</label>
+                                                <div class="valid-feedback">
+                                                Looks good!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Legal Dashboard</h1>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
+                                                <label for="fname">First Name</label>
+                                                <div class="valid-feedback">
+                                                Looks nice!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name" >
+                                                <label for="mname">Middle Name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" placeholder="Suffix">
+                                                <label for="suffix">Suffix</label>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="">SEX:</label> <br>  
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
+                                                <label class="form-check-label" for="male">MALE</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
+                                                <label class="form-check-label" for="female">FEMALE</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="agency" name="agency" placeholder="Agency" required>
+                                                <label for="agency">Agency</label>
+                                                <div class="valid-feedback">
+                                                    Amazing!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" required>
+                                                <label for="dateOfAppearance">Date of Appearance</label>
+                                                <div class="valid-feedback">
+                                                    Delightful!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="purpose" name="purpose" placeholder="Purpose" required>
+                                                <label for="purpose">Purpose</label>
+                                                <div class="valid-feedback">
+                                                    You can do it!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating mb-2"> 
+                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoriesid" required>
+                                                    <option value="" disabled selected>Select Signatory</option>
+                                                        <option value=""></option>
+                                                </select>
+                                                <label for="floatingSelect">Signatory</label>
+                                                <div class="valid-feedback">
+                                                    A wonderful person!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                
+                <div class="p-1">
+                    <div class="table-responsive">
+                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Sex</th>
+                                    <th>Agency</th>
+                                    <th>Date of Appearance</th>
+                                    <th>Purpose</th>
+                                    <th>Place of Issue</th>
+                                    <th>Date Issued</th>
+                                    <th>Signatory</th>
+                                    <!-- <th>Position/Designation</th> -->
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <!-- @if(isset($appearanceCert)) -->
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Actions">
+                                            <!-- Edit Button -->
+                                            <a href="" style="color:white;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            
+                                            <!-- Print Button -->
+                                            <a href="" target="_blank" class="btn btn-success">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                            
+                                            <!-- Delete Form -->
+                                           <form id="deleteForm" action="" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger delete-btn" data-id="" style="border-radius: 0 0.25rem 0.25rem 0;">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        <!-- @endif -->
+                    </table>
+                </div>    
+            </div>
+        </div>
+                        
                 </div>
                 <!-- /.container-fluid -->
 
