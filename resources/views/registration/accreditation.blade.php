@@ -191,7 +191,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No.">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." maxlength="7">
                                                 <label for="accreditation_no">Accreditation No.</label>
                                             </div>
                                         </div>
@@ -230,7 +230,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No.">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." maxlength="7">
                                                 <label for="Broker Registration No.">Broker Registration No.</label>
                                             </div>
                                         </div>
@@ -381,7 +381,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." value="{{ $cert->accreditation_no }}" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." value="{{ $cert->accreditation_no }}" maxlength="7" required>
                                                                     <label for="accreditation_no">Accreditation No.</label>
                                                                 </div>
                                                             </div>
@@ -418,7 +418,7 @@
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}" maxlength="7">
                                                                     <label for="registeredOn">Broker Registration No.</label>
                                                                 </div>
                                                             </div>

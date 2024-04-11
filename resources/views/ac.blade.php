@@ -836,13 +836,13 @@ line-height:107%'><o:p></o:p></span></b></p>
     </span>
     <span style='font-size:13.0pt;line-height:200%'>
         &nbsp; &nbsp; &nbsp; &nbsp;This is to certify that
-        <b> {{ strtoupper($accreditationCert->fname) }} 
+        <b>{{ mb_strtoupper($accreditationCert->fname) }} 
         @if (!empty($accreditationCert->mname))
-            {{ strtoupper(substr($accreditationCert->mname, 0, 1)) }}.
+            {{ mb_strtoupper(substr($accreditationCert->mname, 0, 1)) }}.
         @endif
-        {{ strtoupper($accreditationCert->lname) }} {{ strtoupper($accreditationCert->suffix) }}</b>
+        {{ mb_strtoupper($accreditationCert->lname) }} {{ mb_strtoupper($accreditationCert->suffix) }}</b>
         with Accreditation No.
-        <b>{{ strtoupper($accreditationCert->accreditation_no) }}</b>
+        <b>{{ str_pad($accreditationCert->accreditation_no, 7, '0', STR_PAD_LEFT) }}</b>
         valid until
         <b>{{ \Carbon\Carbon::parse($accreditationCert->validityDate)->format('F j, Y') }}.</b>
         @if(strtoupper($accreditationCert->sex) === 'MALE')
@@ -855,7 +855,7 @@ line-height:107%'><o:p></o:p></span></b></p>
         a registered and licensed
         <b>Real Estate Broker</b>
         with Registration No.
-        <b>{{ strtoupper($accreditationCert->broker_reg_no) }}</b>.
+        <b>{{ str_pad($accreditationCert->broker_reg_no, 7, '0', STR_PAD_LEFT) }}</b>
     </span>
 </p>
 
