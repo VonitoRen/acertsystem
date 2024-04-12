@@ -6,6 +6,7 @@ use App\Http\Controllers\AppearanceCertificationController;
 use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
 use App\Http\Controllers\LegalCertification;
+use App\Http\Controllers\ComplaintsCertificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
@@ -14,6 +15,7 @@ use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
+use App\Models\ComplaintsCertificationModel;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -91,12 +93,22 @@ Route::get('/fad/dashboard', function () {
 // Legal Dashboard
 Route::get('/legal/dashboard', function () {
     if (auth()->check() && auth()->user()->role == 2) {
-        return view('legal.dashboard');
+        
+        $complaintCert = ComplaintsCertificationModel::all();
+
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+        return view('legal.dashboard', [
+            'complaintCert' => $complaintCert,
+            'signatories' => $signatories,
+            'professions' => $professions,
+]);
     } else {
         return back();
     }
 })->name('legal.dashboard');
 
+Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
 Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'store'])->name('certreg.store');
 
