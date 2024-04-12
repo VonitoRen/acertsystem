@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('dateOfAppearance');
             $table->string('purpose');
             $table->date('date_issues')->default(now());
-            $table->string('placeOfIssue')->default("Baguio City, Philippines");
+            $table->string('placeOfIssue')->default("Baguio City, Benguet, Philippines");
             $table->foreignId('signatoriesid')->constrained('signatories');
             $table->timestamps();
         });

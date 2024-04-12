@@ -799,22 +799,24 @@ style='font-size:16.0pt;line-height:107%'>CERTIFICATE OF APPEARANCE<o:p></o:p></
 IT MAY CONCERN:</span></b></p>
 
 
+<div class="" style="padding-left: 20px; padding-right: 20px;">
 <p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
-style='mso-tab-count:1'></span>&nbsp; &nbsp; &nbsp; &nbsp;This is to certify that <b>{{ mb_strtoupper($appearanceCert->fname) }} 
+style='mso-tab-count:1'></span>This is to certify that <b>{{ mb_strtoupper($appearanceCert->fname) }} 
 @if (!empty($appearanceCert->mname))
     {{ mb_strtoupper(substr($appearanceCert->mname, 0, 1)) }}.
 @endif
 {{ mb_strtoupper($appearanceCert->lname) }} {{ mb_strtoupper($appearanceCert->suffix) }}</b> 
-of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} {{ $appearanceCert->purpose }}.</span>
+of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} for {{ $appearanceCert->purpose }}.</span>
 </p>
 
 
 
 <p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
-style='mso-tab-count:1'></span>&nbsp; &nbsp; &nbsp; &nbsp;This certification is being issued
+style='mso-tab-count:1'></span>This certification is being issued
 upon the request <span class=GramE>of <u><span
 style='mso-spacerun:yes'></span></u></span>above stated individual for
 the purpose of establishing the evidence and duration of appearance in the Office.<o:p></o:p></span></p>
+</div>
 
 
 

@@ -864,7 +864,7 @@ style='font-size:13.0pt;line-height:107%'>{{ $certificationOfRegistrations->sign
 <p class=MsoNormal><span style='font-size:13.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal><span style='font-size:11.0pt;line-height:107%'>(Any
-erasures or alterations invalidate this certification.)<o:p></o:p></span></p>
+erasures or alterations invalidate this certification)<o:p></o:p></span></p>
 
 </div>
 

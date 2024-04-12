@@ -38,7 +38,6 @@ class AppearanceCertificationController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the incoming request data
         $validatedData = $request->validate([
             'lname' => 'required|string|max:255',
             'fname' => 'required|string|max:255',
@@ -51,7 +50,6 @@ class AppearanceCertificationController extends Controller
             'signatoriesid' => 'required|exists:signatories,id',
         ]);
 
-        // Create a new Certificate instance
         $certificate = new AppearanceCertification();
 
         // Assign values from the validated data
@@ -66,8 +64,7 @@ class AppearanceCertificationController extends Controller
         $certificate->signatoriesid = $validatedData['signatoriesid'];
 
         // Assign default values for fields already set in the database
-        $certificate->date_issues = now(); // Set the current timestamp
-        $certificate->placeOfIssue = "Baguio City, Philippines";
+        $certificate->date_issues = now(); 
 
         // Save the Certificate
         $certificate->save();
@@ -100,7 +97,8 @@ class AppearanceCertificationController extends Controller
             'purpose' => 'required|string|max:255',
             'signatoriesid' => 'required|exists:signatories,id',
         ]);
-
+        $validatedData['date_issues'] = now(); 
+        
         $certificate->update($validatedData);
 
         return redirect()->back()->with('success', 'Certificate updated successfully');
