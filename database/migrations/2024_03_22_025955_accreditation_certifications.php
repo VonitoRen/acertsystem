@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('broker_name');
             $table->string('broker_reg_no');
             $table->date('date_issues')->default(now());
-            $table->string('placeOfIssue')->default("Baguio City, Philippines");
+            $table->string('placeOfIssue')->default("Baguio City, Benguet, Philippines");
             $table->foreignId('signatoriesid')->constrained('signatories');
             $table->timestamps();
             $table->string('accreditation_no')->nullable();

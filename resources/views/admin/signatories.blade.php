@@ -199,6 +199,7 @@
                                     <!-- <th>id</th> -->
                                     <th>Name</th>
                                     <th>Position</th>
+                                    <th>Role</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -207,6 +208,7 @@
                                 <tr>
                                     <td>{{ $signatory->name }}</td>
                                     <td>{{ $signatory->position }}</td>
+                                    <td></td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->

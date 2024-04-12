@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('regnum');
             $table->date('registeredDate');
             $table->date('date_issues')->default(now());
-            $table->string('placeOfIssue')->default("Baguio City, Philippines");
+            $table->string('placeOfIssue')->default("Baguio City, Benguet, Philippines");
             $table->foreignId('signatoriesid')->constrained('signatories'); // Link to 'signatories' table
             $table->timestamps();
         });

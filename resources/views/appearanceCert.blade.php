@@ -805,8 +805,7 @@ style='mso-tab-count:1'></span>This is to certify that <b>{{ mb_strtoupper($appe
 @if (!empty($appearanceCert->mname))
     {{ mb_strtoupper(substr($appearanceCert->mname, 0, 1)) }}.
 @endif
-{{ mb_strtoupper($appearanceCert->lname) }} {{ mb_strtoupper($appearanceCert->suffix) }}</b> 
-of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} for {{ $appearanceCert->purpose }}.</span>
+{{ mb_strtoupper($appearanceCert->lname) }} {{ mb_strtoupper($appearanceCert->suffix) }}</b>of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} for {{ $appearanceCert->purpose }}.</span>
 </p>
 
 

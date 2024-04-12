@@ -57,7 +57,6 @@ class AccreditationCertification extends Controller
 
         // Assign default values for fields already set in the database
         $certificate->date_issues = now(); // Set the current timestamp
-        $certificate->placeOfIssue = "Baguio City, Philippines";
 
         // Save the Certificate
         $certificate->save();

@@ -819,7 +819,7 @@ style='font-size:16.0pt;line-height:107%'>CERTIFICATION<o:p></o:p></span></b></p
         @if (!empty($certificationOfRegistrations->mname))
             {{ mb_strtoupper(substr($certificationOfRegistrations->mname, 0, 1)) }}.
         @endif
-        {{ mb_strtoupper($certificationOfRegistrations->lname) }} {{ mb_strtoupper($certificationOfRegistrations->suffix) }}</b> is a registered and licensed
+        {{ mb_strtoupper($certificationOfRegistrations->lname) }} {{ mb_strtoupper($certificationOfRegistrations->suffix) }}</b>is a registered and licensed
         <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No.
         <!-- <b>{{$certificationOfRegistrations->regnum}}</b> -->
         <b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>
