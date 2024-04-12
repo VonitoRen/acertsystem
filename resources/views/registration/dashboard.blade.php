@@ -229,13 +229,13 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." maxlength="7">
                                                 <label for="regnum">Registration No.</label>
                                                 <div class="valid-feedback">
-                                                Sheeesh!
+                                                    Sheeesh!
                                                 </div>
                                                 <div class="invalid-feedback">
-                                                *Required
+                                                    Please enter a 7-digit registration number.
                                                 </div>
                                             </div>
                                         </div>
@@ -425,7 +425,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}" maxlength="7">
                                                                     <label for="regnum">Registration No.</label>
                                                                 </div>
                                                             </div>

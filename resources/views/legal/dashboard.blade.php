@@ -254,9 +254,9 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Sex</th>
-                                    <th>Agency</th>
-                                    <th>Date of Appearance</th>
-                                    <th>Purpose</th>
+                                    <th>Profession</th>
+                                    <th>Registration No</th>
+                                    <th>Registration Date</th>
                                     <th>Place of Issue</th>
                                     <th>Date Issued</th>
                                     <th>Signatory</th>

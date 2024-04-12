@@ -800,32 +800,22 @@ IT MAY CONCERN:</span></b></p>
 
 
 <p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
-style='mso-tab-count:1'></span>&nbsp; &nbsp; &nbsp; &nbsp;This is to certify that <b> @if(strtoupper($appearanceCert->sex) === 'MALE')
-    Mr. 
-@elseif(strtoupper($appearanceCert->sex) === 'FEMALE')
-    Ms. 
-@endif {{ strtoupper($appearanceCert->fname) }} 
+style='mso-tab-count:1'></span>&nbsp; &nbsp; &nbsp; &nbsp;This is to certify that <b>{{ mb_strtoupper($appearanceCert->fname) }} 
 @if (!empty($appearanceCert->mname))
-    {{ strtoupper(substr($appearanceCert->mname, 0, 1)) }}.
+    {{ mb_strtoupper(substr($appearanceCert->mname, 0, 1)) }}.
 @endif
-{{ strtoupper($appearanceCert->lname) }} {{ strtoupper($appearanceCert->suffix) }}</b> 
-of {{ strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} {{ $appearanceCert->purpose }}.</span>
+{{ mb_strtoupper($appearanceCert->lname) }} {{ mb_strtoupper($appearanceCert->suffix) }}</b> 
+of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} {{ $appearanceCert->purpose }}.</span>
 </p>
 
 
-<p class=MsoNormal  style='text-align:justify;' ><span style='text-align:justify;font-size:13.0pt;line-height:200%;'><span
+
+<p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
 style='mso-tab-count:1'></span>&nbsp; &nbsp; &nbsp; &nbsp;This certification is being issued
 upon the request <span class=GramE>of <u><span
-style='mso-spacerun:yes'></span></u></span><b>@if(strtoupper($appearanceCert->sex) === 'MALE')
-    Mr. 
-@elseif(strtoupper($appearanceCert->sex) === 'FEMALE')
-    Ms. 
-@endif {{ strtoupper($appearanceCert->lname) }}</b> for
-the purpose of establishing the evidence and duration of @if(strtoupper($appearanceCert->sex) === 'MALE')
-    his 
-@elseif(strtoupper($appearanceCert->sex) === 'FEMALE')
-    her 
-@endif appearance in the Office.<o:p></o:p></span></p>
+style='mso-spacerun:yes'></span></u></span>above stated individual for
+the purpose of establishing the evidence and duration of appearance in the Office.<o:p></o:p></span></p>
+
 
 
 
