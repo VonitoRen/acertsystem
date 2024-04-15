@@ -139,6 +139,9 @@ Route::put('/update-certificate/{id}', [AccreditationCertification::class, 'upda
 Route::get('/edit-APcertificate/{id}', [AppearanceCertificationController::class, 'editAPCertificate'])->name('edit.APcertificate');
 Route::put('/update-APcertificate/{id}', [AppearanceCertificationController::class, 'updateAPCertificate'])->name('update.APcertificate');
 Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->name('appearance.index');
+// EDIT ROUTES Complaint
+Route::get('/edit-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'editComplaintCertificate'])->name('edit.Complaintcertificate');
+Route::put('/update-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'updateComplaintCertificate'])->name('update.Complaintcertificate');
 
 
 
@@ -146,6 +149,7 @@ Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
+Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 
 
 
