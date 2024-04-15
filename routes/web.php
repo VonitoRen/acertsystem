@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
+use App\Http\Controllers\ComplaintsPDFController;
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\CertificationsOfRegistration;
@@ -32,6 +33,7 @@ Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
+Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -94,12 +96,12 @@ Route::get('/fad/dashboard', function () {
 Route::get('/legal/dashboard', function () {
     if (auth()->check() && auth()->user()->role == 2) {
         
-        $complaintCert = ComplaintsCertificationModel::all();
+        $complaintsCert = ComplaintsCertificationModel::all();
 
         $signatories = Signatories::all();
         $professions = Professions::all();
         return view('legal.dashboard', [
-            'complaintCert' => $complaintCert,
+            'complaintsCert' => $complaintsCert,
             'signatories' => $signatories,
             'professions' => $professions,
 ]);
