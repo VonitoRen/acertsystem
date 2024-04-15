@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AccreditationCertificationModel;
 use App\Models\Professions;
 use App\Models\Signatories;
+use App\Models\PersonRole;
 
 class AccreditationCertification extends Controller
 {
@@ -15,11 +16,19 @@ class AccreditationCertification extends Controller
 
         $professions = Professions::all();
 
+        // Filter the personRoles based on role_id
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 2)
+            ->get();
+        
+
         return view('registration.accreditation', [
             'accreditationCert' => $accreditationCert,
             'signatories' => $signatories,
             'professions' => $professions,
+            'personRoles' => $personRoles,
         ]);
+        
     }
     
     public function store(Request $request)

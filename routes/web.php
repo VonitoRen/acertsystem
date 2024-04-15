@@ -13,6 +13,7 @@ use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Models\Professions;
 use App\Models\Signatories;
+use App\Models\PersonRole;
 use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
 use App\Models\ComplaintsCertificationModel;
@@ -57,33 +58,45 @@ Route::get('/registration/dashboard', function () {
     if (auth()->check() && auth()->user()->role == 3) {
         
         $certificationOfRegistrations = CertificationsOfRegistration::all();
-
         $signatories = Signatories::all();
-
         $professions = Professions::all();
-
+        
+        // Filter the personRoles based on role_id
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 2)
+            ->get();
+        
         return view('registration.dashboard', [
             'certificationOfRegistrations' => $certificationOfRegistrations,
             'signatories' => $signatories,
             'professions' => $professions,
+            'personRoles' => $personRoles,
         ]);
     } else {
         return back();
     }
 })->name('certreg.dashboard');
 
+
 // FAD Dashboard
 Route::get('/fad/dashboard', function () {
     if (auth()->check() && auth()->user()->role == 4) {
         $appearanceCert = AppearanceCertification::all();
+        
 
         $signatories = Signatories::all();
         $professions = Professions::all();
+
+        // Filter the personRoles based on role_id
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 4)
+            ->get();
 
         return view('fad.dashboard', [
                     'appearanceCert' => $appearanceCert,
                     'signatories' => $signatories,
                     'professions' => $professions,
+                    'personRoles' => $personRoles,
         ]);
     } else {
         return back();

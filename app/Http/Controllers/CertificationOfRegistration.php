@@ -6,22 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\CertificationsOfRegistration;
 use App\Models\Professions;
 use App\Models\Signatories;
+use App\Models\PersonRole;
 
 class CertificationOfRegistration extends Controller
 {
-    public function dashboard(){
-        $certificationOfRegistrations = CertificationsOfRegistration::all();
-
-        $signatories = Signatories::all();
-
-        $professions = Professions::all();
-
-        return view('registration.dashboard', [
-            'certificationOfRegistrations' => $certificationOfRegistrations,
-            'signatories' => $signatories,
-            'professions' => $professions,
-        ]);
-    }
+    // public function dashboard()
+    // {
+    //     $certificationOfRegistrations = CertificationsOfRegistration::all();
+    //     $signatories = Signatories::all();
+    //     $professions = Professions::all();
+    //     $personRoles = PersonRole::all();
+        
+    //     return view('registration.dashboard', [
+    //         'certificationOfRegistrations' => $certificationOfRegistrations,
+    //         'signatories' => $signatories,
+    //         'professions' => $professions,
+    //         'personRoles' => $personRoles,
+    //     ]);
+    // }
+    
 
     // public function index()
     // {
