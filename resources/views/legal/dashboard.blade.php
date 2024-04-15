@@ -292,13 +292,12 @@
                                     <th>Amount</th>
                                     <th>Attorney</th>
                                     <th>Signatory</th>
-                                    <th></th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <!-- @if(isset($complaintCert)) -->
+                            <!-- @if(isset($complaintsCert)) -->
                             
-                            @foreach($complaintCert as $cert)       
+                            @foreach($complaintsCert as $cert)       
                             <tbody>
                                 <tr>
                                     <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
@@ -306,7 +305,6 @@
                                     <td>{{ $cert->profession->profession }}</td>
                                     <td>{{ $cert->regnum }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->registeredDate)->format('F j, Y') }}</td>
-                                    
                                     <td>{{ $cert->OR_No }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
                                     <td>{{ $cert->initials }}</td>
@@ -321,7 +319,7 @@
                                             </a>
                                             
                                             <!-- Print Button -->
-                                            <a href="" target="_blank" class="btn btn-success">
+                                            <a href="{{ route('previewComplaints.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             

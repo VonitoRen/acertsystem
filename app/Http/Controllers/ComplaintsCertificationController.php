@@ -13,8 +13,8 @@ class ComplaintsCertificationController extends Controller
 {
     public function dashboard(){
         $complaintCert = ComplaintsCertificationModel::all();
+        // $complaintCert = ComplaintsCertificationModel::with('signatoriesAtty', 'signatoriesid')->get();
         $signatories = Signatories::all();
-
         $professions = Professions::all();
 
         return view('legal.dashboard', [
@@ -23,53 +23,86 @@ class ComplaintsCertificationController extends Controller
             'professions' => $professions,
         ]);
     }
-// todo:
-    public function store(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'lname' => 'required|string|max:255',
-            'fname' => 'required|string|max:255',
-            'mname' => 'nullable|string|max:255',
-            'suffix' => 'nullable|string|max:255',
-            'sex' => 'required|in:MALE,FEMALE',
-            'professionID' => 'required|exists:professions,id',
-            'regnum' => 'required|string|max:255',
-            'registeredDate' => 'required|date',
-            'OR_No' => 'required|string|max:255',
-            'initials' => 'required|string|max:255',
-            'amount' => 'required|string|max:255',
-            'signatoriesAtty' => 'required|exists:signatories,id',
-            'signatoriesid' => 'required|exists:signatories,id',
-        ]);
 
-        // Create a new Certificate instance
-        $certificate = new ComplaintsCertificationModel();
+public function store(Request $request)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'lname' => 'required|string|max:255',
+        'fname' => 'required|string|max:255',
+        'mname' => 'nullable|string|max:255',
+        'suffix' => 'nullable|string|max:255',
+        'sex' => 'required|in:MALE,FEMALE',
+        'professionID' => 'required|exists:professions,id',
+        'regnum' => 'required|string|max:255',
+        'registeredDate' => 'required|date',
+        'OR_No' => 'required|string|max:255',
+        'initials' => 'required|string|max:255',
+        'amount' => 'required|string|max:255',
+        'signatoriesAtty' => 'required|exists:signatories,id',
+        'signatoriesid' => 'required|exists:signatories,id',
+    ]);
 
-        // Assign values from the validated data
-        $certificate->lname = $validatedData['lname'];
-        $certificate->fname = $validatedData['fname'];
-        $certificate->mname = $validatedData['mname'];
-        $certificate->suffix = $validatedData['suffix'];
-        $certificate->sex = $validatedData['sex'];
-        $certificate->professionID = $validatedData['professionID'];
-        $certificate->regnum = $validatedData['regnum'];
-        $certificate->registeredDate = $validatedData['registeredDate'];
-        $certificate->OR_No = $validatedData['OR_No'];
-        $certificate->initials = $validatedData['initials'];
-        $certificate->amount = $validatedData['amount'];
-        $certificate->signatoriesAtty = $validatedData['signatoriesAtty'];
-        $certificate->signatoriesid = $validatedData['signatoriesid'];
+    // Create a new Certificate instance
+    $certificate = new ComplaintsCertificationModel();
 
-        // Assign default values for fields already set in the database
-        $certificate->date_issues = now(); // Set the current timestamp
+    // Assign values from the validated data
+    $certificate->fill($validatedData);
 
-        // Save the Certificate
-        $certificate->save();
+    // Assign default values for fields already set in the database
+    $certificate->date_issues = now(); // Set the current timestamp
 
-        // Redirect the user after successfully saving the certificate
-        return redirect()->back()->with('success', 'Certificate added successfully.');
-    }
+    // Save the Certificate
+    $certificate->save();
+
+    // Redirect the user after successfully saving the certificate
+    return redirect()->back()->with('success', 'Certificate added successfully.');
+}
+
+    // public function store(Request $request)
+    // {
+    //     // Validate the incoming request data
+    //     $validatedData = $request->validate([
+    //         'lname' => 'required|string|max:255',
+    //         'fname' => 'required|string|max:255',
+    //         'mname' => 'nullable|string|max:255',
+    //         'suffix' => 'nullable|string|max:255',
+    //         'sex' => 'required|in:MALE,FEMALE',
+    //         'professionID' => 'required|exists:professions,id',
+    //         'regnum' => 'required|string|max:255',
+    //         'registeredDate' => 'required|date',
+    //         'OR_No' => 'required|string|max:255',
+    //         'initials' => 'required|string|max:255',
+    //         'amount' => 'required|string|max:255',
+    //         'signatoriesAtty' => 'required|exists:signatories,id',
+    //         'signatoriesid' => 'required|exists:signatories,id',
+    //     ]);
+
+    //     // Create a new Certificate instance
+    //     $certificate = new ComplaintsCertificationModel();
+
+    //     // Assign values from the validated data
+    //     $certificate->lname = $validatedData['lname'];
+    //     $certificate->fname = $validatedData['fname'];
+    //     $certificate->mname = $validatedData['mname'];
+    //     $certificate->suffix = $validatedData['suffix'];
+    //     $certificate->sex = $validatedData['sex'];
+    //     $certificate->professionID = $validatedData['professionID'];
+    //     $certificate->regnum = $validatedData['regnum'];
+    //     $certificate->registeredDate = $validatedData['registeredDate'];
+    //     $certificate->OR_No = $validatedData['OR_No'];
+    //     $certificate->initials = $validatedData['initials'];
+    //     $certificate->amount = $validatedData['amount'];
+    //     $certificate->signatoriesAtty = $validatedData['signatoriesAtty'];
+    //     $certificate->signatoriesid = $validatedData['signatoriesid'];
+
+    //     // Assign default values for fields already set in the database
+    //     $certificate->date_issues = now(); // Set the current timestamp
+    //     // Save the Certificate
+    //     $certificate->save();
+    //     // Redirect the user after successfully saving the certificate
+    //     return redirect()->back()->with('success', 'Certificate added successfully.');
+    // }
 
     public function editACCertificate($id)
     {
