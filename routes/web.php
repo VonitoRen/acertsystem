@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
+use App\Http\Controllers\ComplaintsPDFController;
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -33,6 +34,7 @@ Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
+Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -107,12 +109,12 @@ Route::get('/fad/dashboard', function () {
 Route::get('/legal/dashboard', function () {
     if (auth()->check() && auth()->user()->role == 2) {
         
-        $complaintCert = ComplaintsCertificationModel::all();
+        $complaintsCert = ComplaintsCertificationModel::all();
 
         $signatories = Signatories::all();
         $professions = Professions::all();
         return view('legal.dashboard', [
-            'complaintCert' => $complaintCert,
+            'complaintsCert' => $complaintsCert,
             'signatories' => $signatories,
             'professions' => $professions,
 ]);
@@ -150,6 +152,9 @@ Route::put('/update-certificate/{id}', [AccreditationCertification::class, 'upda
 Route::get('/edit-APcertificate/{id}', [AppearanceCertificationController::class, 'editAPCertificate'])->name('edit.APcertificate');
 Route::put('/update-APcertificate/{id}', [AppearanceCertificationController::class, 'updateAPCertificate'])->name('update.APcertificate');
 Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->name('appearance.index');
+// EDIT ROUTES Complaint
+Route::get('/edit-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'editComplaintCertificate'])->name('edit.Complaintcertificate');
+Route::put('/update-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'updateComplaintCertificate'])->name('update.Complaintcertificate');
 
 
 
@@ -157,6 +162,7 @@ Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
+Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 
 
 
