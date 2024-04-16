@@ -73,8 +73,26 @@
     }
     .table-responsive {
     overflow-x: auto;
-}
+}    
+    .btn-primary {
+        color: blue;
+    }
 
+    .btn-primary:hover {
+        color: white;
+    }
+
+    .edit-icon {
+        color: white;
+    }
+
+    .btn-secondary {
+        color: black;
+    }
+
+    .btn-secondary:hover {
+        color: white;
+    }
 </style>
 <body id="page-top">
 
