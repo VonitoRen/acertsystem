@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Professions;
 use App\Models\Signatories;
+use App\Models\Roles;
 use App\Models\User;
+use App\Models\PersonRole;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -25,9 +27,13 @@ class AdminController extends Controller
     public function signatories(){
 
         $signatories = Signatories::all();
+        $roles = Roles::all();
+        $personRoles = PersonRole::all();
 
         return view('admin.signatories', [
             'signatories' => $signatories,
+            'roles' => $roles,
+            'personRoles' => $personRoles,
         ]);
     }
 
@@ -87,27 +93,122 @@ class AdminController extends Controller
 
 
 
+    // public function storesignatory(Request $request)
+    // {
+    //     // Validate the incoming request data
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'position' => 'required|string|max:255',
+    //     ]);
+
+    //     // Create a new Certificate instance
+    //     $signatories = new Signatories();
+
+    //     // Assign values from the validated data
+    //     $signatories->name = $validatedData['name'];
+    //     $signatories->position = $validatedData['position'];
+
+    //     // Save the Certificate
+    //     $signatories->save();
+
+    //     // Redirect the user after successfully saving the certificate
+    //     return redirect()->route('admin.signatories')->with('success', 'Profession added successfully.');
+    // }
+
+    // public function storesignatory(Request $request)
+    // {
+    //     // Validate the incoming request data
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'position' => 'required|string|max:255',
+    //     ]);
+
+    //     // Create a new Signatories instance
+    //     $signatory = new Signatories();
+
+    //     // Assign values from the validated data
+    //     $signatory->name = $validatedData['name'];
+    //     $signatory->position = $validatedData['position'];
+
+    //     // Save the signatory
+    //     $signatory->save();
+
+    //     // Attach roles to the signatory
+    //     $signatory->roles()->attach($validatedData['roles']);
+
+    //     // Redirect the user after successfully saving the signatory
+    //     return redirect()->route('admin.signatories')->with('success', 'Signatory added successfully.');
+    // }
+
     public function storesignatory(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-        ]);
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'position' => 'required|string|max:255',
+        'roles' => 'required|array', // Make sure roles are provided as an array
+        'roles.*' => 'exists:roles,id', // Validate each role ID exists in the roles table
+    ]);
 
-        // Create a new Certificate instance
-        $signatories = new Signatories();
+    // Create a new Signatories instance
+    $signatory = new Signatories();
 
-        // Assign values from the validated data
-        $signatories->name = $validatedData['name'];
-        $signatories->position = $validatedData['position'];
+    // Assign values from the validated data
+    $signatory->name = $validatedData['name'];
+    $signatory->position = $validatedData['position'];
 
-        // Save the Certificate
-        $signatories->save();
+    // Save the signatory
+    $signatory->save();
 
-        // Redirect the user after successfully saving the certificate
-        return redirect()->route('admin.signatories')->with('success', 'Profession added successfully.');
+    // Retrieve the newly created signatory's ID
+    $signatoryId = $signatory->id;
+
+    // Iterate through the roles and insert into person_roles table
+    foreach ($validatedData['roles'] as $roleId) {
+        // Create a new PersonRole instance
+        $personRole = new PersonRole();
+
+        // Assign values for the person_roles table
+        $personRole->person_id = $signatoryId;
+        $personRole->role_id = $roleId;
+
+        // Save the person_role
+        $personRole->save();
     }
+
+    // Redirect the user after successfully saving the signatory
+    return redirect()->route('admin.signatories')->with('success', 'Signatory added successfully.');
+}
+
+
+
+
+    // public function storesignatory(Request $request)
+    // {
+    //     // Validate the incoming request data
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'position' => 'required|string|max:255',
+    //         'roles' => 'required|array', // Make sure roles are provided as an array
+    //         'roles.*' => 'exists:roles,id', // Validate each role ID exists in the roles table
+    //     ]);
+
+    //     // Create a new Signatories instance
+    //     $signatory = new Signatories();
+
+    //     // Assign values from the validated data
+    //     $signatory->name = $validatedData['name'];
+    //     $signatory->position = $validatedData['position'];
+
+    //     // Save the signatory
+    //     $signatory->save();
+
+    //     // Attach roles to the signatory
+    //     $signatory->roles()->attach($validatedData['roles']);
+
+    //     // Redirect the user after successfully saving the signatory
+    //     return redirect()->route('admin.signatories')->with('success', 'Signatory added successfully.');
+    // }
     public function updatesignatories(Request $request, $id)
     {
         $signatories = Signatories::findOrFail($id);
