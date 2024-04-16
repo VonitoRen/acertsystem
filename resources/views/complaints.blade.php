@@ -866,7 +866,7 @@ style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
 style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></b></p> -->
 
 <!-- Display the image as a watermark -->
-<!-- <img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="350px"> -->
+<img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="350px">
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:12.0pt;
 line-height:106%'></span><o:p></o:p> </p>
 <p class=MsoNormal align=center style='text-align:center'><b><span
@@ -928,15 +928,15 @@ style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->signatory->positio
 
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
 line-height:106%'>O.R. No.<span style='mso-spacerun:yes'></span><span
-style='mso-tab-count:1'></span>&nbsp;: &nbsp;<span style='mso-spacerun:yes'>
+style='mso-tab-count:1'></span>&nbsp; : &nbsp;<span style='mso-spacerun:yes'>
 </span>{{ $complaintsCert->OR_No }}</span></p>
 
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>Date<span style='mso-tab-count:2'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;<span
+line-height:106%'>Date<span style='mso-tab-count:2'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;<span
 style='mso-spacerun:yes'></span>{{ \Carbon\Carbon::parse($complaintsCert->date_issues)->format('F j, Y') }}</span></p>
 
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>Amount<span style='mso-tab-count:1'></span>&nbsp;&nbsp;: &nbsp;<span
+line-height:106%'>Amount<span style='mso-tab-count:1'></span>&nbsp;&nbsp; : &nbsp;<span
 style='mso-spacerun:yes'></span><span class=SpellE>Php</span> {{ $complaintsCert->amount }}</span></p><o:p></o:p>
 
 

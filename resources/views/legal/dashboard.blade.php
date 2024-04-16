@@ -103,6 +103,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h4 class="mb-0"></h4>
                                 <!-- Button trigger modal -->
+                                
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
                                 <i class="fas fa-plus"></i> Add Certificate of Complaint
                                 </button>
