@@ -19,7 +19,7 @@ class CertificationsOfRegistration extends Model
         'professionID',
         'regnum', 
         'registeredDate', 
-        'signatoriesid'
+        'person_role_id',
     ];
 
     protected $casts = [
@@ -31,8 +31,8 @@ class CertificationsOfRegistration extends Model
         return $this->belongsTo(Professions::class, 'professionID');
     }
 
-    public function signatory()
+    public function personRole()
     {
-        return $this->belongsTo(Signatories::class, 'signatoriesid');
+        return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
 }

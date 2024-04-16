@@ -20,6 +20,7 @@ class AppearanceCertification extends Model
         'dateOfAppearance',
         'purpose',
         'signatoriesid',
+        'person_role_id',
     ];
 
     public function profession()
@@ -27,8 +28,8 @@ class AppearanceCertification extends Model
         return $this->belongsTo(Professions::class, 'professionID');
     }
 
-    public function signatory()
+    public function personRole()
     {
-        return $this->belongsTo(Signatories::class, 'signatoriesid');
+        return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
 }

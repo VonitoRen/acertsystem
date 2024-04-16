@@ -272,7 +272,7 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                            <select class="form-control" id="personRole" name="personRole">
+                                            <select class="form-control" id="personRole" name="person_role_id">
                                                 <option disabled selected>Select Signatory</option>
                                                 @foreach($personRoles as $personRole)
                                                     <option value="{{ $personRole->id }}">
@@ -324,8 +324,10 @@
                                     <td>{{ \Carbon\Carbon::parse($cert->registeredOn)->format('F j, Y') }}</td>
                                     <td>{{ $cert->placeOfIssue }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
-                                    <td><b> {{ $cert->signatory->name }}</b><br> {{ $cert->signatory->position }}</td>
-                                    <!-- <td>{{ $cert->signatory->position }}</td>  -->
+                                    <td>
+                                        <b>{{ $cert->personRole->person->name }}</b><br>
+                                        {{ $cert->personRole->person->position }}
+                                    </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
@@ -454,7 +456,7 @@
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                <select class="form-control" id="personRole" name="personRole">
+                                                                <select class="form-control" id="personRole" name="person_role_id">
                                                                     <option disabled value="">Select Signatory</option>
                                                                     @foreach($personRoles as $personRole)
                                                                         <option value="{{ $personRole->id }}" {{ optional($cert->personRole)->id == $personRole->id ? 'selected' : '' }}>

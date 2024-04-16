@@ -45,7 +45,7 @@ class AccreditationCertification extends Controller
             'validityDate' => 'required|date',
             'broker_name' => 'nullable|string|max:255',
             'broker_reg_no' => 'nullable|string|max:255',
-            'signatoriesid' => 'required|exists:signatories,id',
+            'person_role_id' => 'required|exists:person_roles,id',
         ]);
 
         // Create a new Certificate instance
@@ -62,7 +62,7 @@ class AccreditationCertification extends Controller
         $certificate->validityDate = $validatedData['validityDate'];
         $certificate->broker_name = $validatedData['broker_name'];
         $certificate->broker_reg_no = $validatedData['broker_reg_no'];
-        $certificate->signatoriesid = $validatedData['signatoriesid'];
+        $certificate->person_role_id = $validatedData['person_role_id'];
 
         // Assign default values for fields already set in the database
         $certificate->date_issues = now(); // Set the current timestamp
@@ -99,7 +99,7 @@ class AccreditationCertification extends Controller
             'validityDate' => 'required|date',
             'broker_name' => 'nullable|string|max:255',
             'broker_reg_no' => 'nullable|string|max:255',
-            'signatoriesid' => 'required|exists:signatories,id',
+            'person_role_id' => 'required|exists:person_roles,id',
         ]);
 
         // Update the certificate with the validated data

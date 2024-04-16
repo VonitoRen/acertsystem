@@ -52,7 +52,7 @@ class CertificationOfRegistration extends Controller
             'professionID' => 'required|string|max:255',
             'regnum' => 'required|string|max:255',
             'registeredDate' => 'required|date',
-            'signatoriesid' => 'required|string|max:255',
+            'person_role_id' => 'required|exists:person_roles,id',
             'sex' => 'required|string|in:MALE,FEMALE', // Add this line for sex validation
         ]);
 
@@ -69,7 +69,7 @@ class CertificationOfRegistration extends Controller
         $certificate->professionID = $validatedData['professionID'];
         $certificate->regnum = $validatedData['regnum'];
         $certificate->registeredDate = $validatedData['registeredDate'];
-        $certificate->signatoriesid = $validatedData['signatoriesid'];
+        $certificate->person_role_id = $validatedData['person_role_id'];
 
         // Save the Certificate
         $certificate->save();
@@ -104,7 +104,7 @@ class CertificationOfRegistration extends Controller
             'professionID' => 'required|exists:professions,id',
             'regnum' => 'required|string|max:255',
             'registeredOn' => 'required|date',
-            'signatoriesid' => 'required|exists:signatories,id',
+            'person_role_id' => 'required|exists:person_roles,id',
             'sex' => 'required|string|in:MALE,FEMALE',
     ]);
 

@@ -239,13 +239,13 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2"> 
-                                                <select class="form-control" id="personRole" name="personRole">
-                                                    <option disabled selected>Select Signatory</option>
-                                                    @foreach($personRoles as $personRole)
-                                                        <option value="{{ $personRole->id }}">
-                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                                    @endforeach
-                                                </select>
+                                            <select class="form-control" id="personRole" name="person_role_id">
+                                                <option disabled selected>Select Signatory</option>
+                                                @foreach($personRoles as $personRole)
+                                                    <option value="{{ $personRole->id }}">
+                                                        {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                @endforeach
+                                            </select>
                                                 <label for="floatingSelect">Signatory</label>
                                                 <div class="valid-feedback">
                                                     A wonderful person!
@@ -296,7 +296,10 @@
                                     <td>{{ $cert->purpose }}</td>
                                     <td>{{ $cert->placeOfIssue }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
-                                    <td><b>{{ $cert->signatory->name }}</b><br> {{ $cert->signatory->position }}</td>
+                                    <td>
+                                        <b>{{ $cert->personRole->person->name }}</b><br>
+                                        {{ $cert->personRole->person->position }}
+                                    </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
@@ -401,11 +404,12 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
-                                                                <select class="form-control" id="personRole" name="personRole">
-                                                                    <option disabled selected>Select Signatory</option>
+                                                                <select class="form-control" id="personRole" name="person_role_id">
+                                                                    <option disabled value="">Select Signatory</option>
                                                                     @foreach($personRoles as $personRole)
-                                                                        <option value="{{ $personRole->id }}">
+                                                                        <option value="{{ $personRole->id }}" {{ optional($cert->personRole)->id == $personRole->id ? 'selected' : '' }}>
                                                                             {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
                                                                     @endforeach
                                                                 </select>
                                                                     <label for="signatoriesid">Signatory</label>

@@ -47,7 +47,7 @@ class AppearanceCertificationController extends Controller
             'agency' => 'required|string|max:255',
             'dateOfAppearance' => 'required|date',
             'purpose' => 'required|string|max:255',
-            'signatoriesid' => 'required|exists:signatories,id',
+            'person_role_id' => 'required|exists:person_roles,id',
         ]);
 
         $certificate = new AppearanceCertification();
@@ -61,7 +61,7 @@ class AppearanceCertificationController extends Controller
         $certificate->agency = $validatedData['agency'];
         $certificate->dateOfAppearance = $validatedData['dateOfAppearance'];
         $certificate->purpose = $validatedData['purpose'];
-        $certificate->signatoriesid = $validatedData['signatoriesid'];
+        $certificate->person_role_id = $validatedData['person_role_id'];
 
         // Assign default values for fields already set in the database
         $certificate->date_issues = now(); 
@@ -95,7 +95,7 @@ class AppearanceCertificationController extends Controller
             'agency' => 'required|string|max:255',
             'dateOfAppearance' => 'required|date',
             'purpose' => 'required|string|max:255',
-            'signatoriesid' => 'required|exists:signatories,id',
+            'person_role_id' => 'required|exists:person_roles,id',
         ]);
         $validatedData['date_issues'] = now(); 
         
