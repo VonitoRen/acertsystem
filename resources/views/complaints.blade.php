@@ -9,32 +9,45 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 15">
 <meta name=Originator content="Microsoft Word 15">
-<link rel=File-List href="CertificationSample_files/filelist.xml">
-<!--[if gte mso 9]><xml>
+<link rel=File-List
+href="C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/filelist.xml">
+<link rel=Edit-Time-Data
+href="C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>prc car</o:Author>
+  <o:Template>Normal</o:Template>
   <o:LastAuthor>prc car</o:LastAuthor>
-  <o:Revision>2</o:Revision>
-  <o:TotalTime>176</o:TotalTime>
-  <o:Created>2024-03-12T00:18:00Z</o:Created>
-  <o:LastSaved>2024-03-12T00:18:00Z</o:LastSaved>
+  <o:Revision>9</o:Revision>
+  <o:TotalTime>29</o:TotalTime>
+  <o:Created>2024-03-25T04:55:00Z</o:Created>
+  <o:LastSaved>2024-03-25T05:32:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>54</o:Words>
-  <o:Characters>312</o:Characters>
-  <o:Lines>2</o:Lines>
+  <o:Words>123</o:Words>
+  <o:Characters>702</o:Characters>
+  <o:Lines>5</o:Lines>
   <o:Paragraphs>1</o:Paragraphs>
-  <o:CharactersWithSpaces>365</o:CharactersWithSpaces>
+  <o:CharactersWithSpaces>824</o:CharactersWithSpaces>
   <o:Version>16.00</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
   <o:AllowPNG/>
  </o:OfficeDocumentSettings>
 </xml><![endif]-->
-<link rel=themeData href="CertificationSample_files/themedata.thmx">
+<link rel=themeData
+href="C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/themedata.thmx">
 <link rel=colorSchemeMapping
-href="CertificationSample_files/colorschememapping.xml">
+href="C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/colorschememapping.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
+  <w:View>Print</w:View>
   <w:SpellingState>Clean</w:SpellingState>
   <w:GrammarState>Clean</w:GrammarState>
   <w:TrackMoves>false</w:TrackMoves>
@@ -59,6 +72,7 @@ href="CertificationSample_files/colorschememapping.xml">
    <w:DontFlipMirrorIndents/>
    <w:OverrideTableStyleHps/>
   </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
   <m:mathPr>
    <m:mathFont m:val="Cambria Math"/>
    <m:brkBin m:val="before"/>
@@ -653,7 +667,6 @@ href="CertificationSample_files/colorschememapping.xml">
  </w:LatentStyles>
 </xml><![endif]-->
 <style>
-
 <!--
  /* Font Definitions */
  @font-face
@@ -671,7 +684,6 @@ href="CertificationSample_files/colorschememapping.xml">
 	mso-font-pitch:variable;
 	mso-font-signature:-469750017 -1073732485 9 0 511 0;}
  /* Style Definitions */
- 
  p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -680,7 +692,7 @@ href="CertificationSample_files/colorschememapping.xml">
 	margin-right:0in;
 	margin-bottom:8.0pt;
 	margin-left:0in;
-	line-height:107%;
+	line-height:106%;
 	mso-pagination:widow-orphan;
 	font-size:11.0pt;
 	font-family:"Calibri",sans-serif;
@@ -694,15 +706,18 @@ href="CertificationSample_files/colorschememapping.xml">
 	mso-bidi-theme-font:minor-bidi;
 	mso-font-kerning:1.0pt;
 	mso-ligatures:standardcontextual;
+
   margin-right: .5in; /* Adjusted to add 1-inch margin */
-  margin-left: .5in; /* Adjusted to add 1-inch margin */
+    margin-left: .5in; /* Adjusted to add 1-inch margin */
 }
-span.GramE
-	{mso-style-name:"";
-	mso-gram-e:yes;}
-.MsoChpDefault
-	{mso-style-type:export-only;
-	mso-default-props:yes;
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0in;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
 	mso-ascii-font-family:Calibri;
 	mso-ascii-theme-font:minor-latin;
 	mso-fareast-font-family:Calibri;
@@ -710,16 +725,90 @@ span.GramE
 	mso-hansi-font-family:Calibri;
 	mso-hansi-theme-font:minor-latin;
 	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;}
-.MsoPapDefault
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;}
+p.msonormal0, li.msonormal0, div.msonormal0
+	{mso-style-name:msonormal;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-font-kerning:1.0pt;
+	mso-ligatures:standardcontextual;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+.MsoChpDefault
 	{mso-style-type:export-only;
-	margin-bottom:8.0pt;
-	line-height:107%;}
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-font-kerning:0pt;
+	mso-ligatures:none;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/header.htm") fs;
+	mso-footnote-continuation-separator:url("C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/header.htm") fcs;
+	mso-endnote-separator:url("C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/header.htm") es;
+	mso-endnote-continuation-separator:url("C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/header.htm") ecs;}
 @page WordSection1
-	{size:8.5in 11.0in;
-	margin:2.5in 1.0in 1.0in 1.0in;
+	{size:595.3pt 841.9pt;
+	margin:1.0in 1.0in 1.0in 1.0in;
 	mso-header-margin:.5in;
 	mso-footer-margin:.5in;
+	mso-footer:url("C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/header.htm") f1;
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
@@ -736,127 +825,162 @@ div.WordSection1
 	mso-style-priority:99;
 	mso-style-parent:"";
 	mso-padding-alt:0in 5.4pt 0in 5.4pt;
-	mso-para-margin-top:0in;
-	mso-para-margin-right:0in;
-	mso-para-margin-bottom:8.0pt;
-	mso-para-margin-left:0in;
-	line-height:107%;
+	mso-para-margin:0in;
 	mso-pagination:widow-orphan;
-	font-size:11.0pt;
+	font-size:10.0pt;
 	font-family:"Calibri",sans-serif;
 	mso-ascii-font-family:Calibri;
 	mso-ascii-theme-font:minor-latin;
 	mso-hansi-font-family:Calibri;
 	mso-hansi-theme-font:minor-latin;
 	mso-bidi-font-family:"Times New Roman";
-	mso-bidi-theme-font:minor-bidi;
-	mso-font-kerning:1.0pt;
-	mso-ligatures:standardcontextual;}
-
-  body{
-  background-image: url('public\img\image001.png');
-  background-size: cover;
-  }
+	mso-bidi-theme-font:minor-bidi;}
 </style>
-
 <![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <o:shapelayout v:ext="edit">
   <o:idmap v:ext="edit" data="1"/>
  </o:shapelayout></xml><![endif]-->
-
 </head>
-<body lang=EN-US style='tab-interval:.5in;word-wrap:break-word;'>
+
+<body lang=EN-US style='tab-interval:.5in;word-wrap:break-word'>
 
 <div class=WordSection1>
-      <style>
+<style>
         .watermark {
             position: absolute;
-            top: 48%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             opacity: .1; /* Adjust opacity as needed */
             z-index: -1; /* Push behind other content */
         }
     </style>
-
-
-<p class=MsoNormal align=center style='text-align:center'><b><span
+    <!-- <p class=MsoNormal align=center style='text-align:center'><b><span
 style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><span
 style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
 <p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></b></p>
-
-
-<!-- Display the image inside the PDF -->
-<!-- <img src="{{ $imageUrl }}" alt="PRC Logo" width="100px"> -->
-<!-- Display the image as a watermark -->
-<!-- <img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="100px"> -->
+style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></b></p> -->
 
 <!-- Display the image as a watermark -->
-<img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="550px">
-<!-- 
-
-
+<img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="350px">
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:12.0pt;
+line-height:106%'></span><o:p></o:p> </p>
 <p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%'>Certification No. CAR-COR-2024-{{$certificationOfRegistrations->id}}<o:p></o:p></span></b></p> -->
-<p class=MsoNormal align=center style='text-align:center'>
-    <b><span style='font-size:13.0pt;line-height:107%'>Certification No. CAR-COR-2024-{{ str_pad($certificationOfRegistrations->id, 5, '0', STR_PAD_LEFT) }}<o:p></o:p></span></b>
-</p>
-
-<p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:16.0pt;line-height:107%'>CERTIFICATION<o:p></o:p></span></b></p>
+style='font-size:18.0pt;line-height:106%'>C E R T I F I C A T I O N<o:p></o:p></span></b></p>
 
 
-<p class="MsoNormal" style="text-align:justify">
-    <span style="font-size:13.0pt; line-height:200%">
-        <span style="mso-tab-count:1"> </span>
-        &nbsp; &nbsp; &nbsp; &nbsp; This is to certify that
-        <b>{{ mb_strtoupper($certificationOfRegistrations->fname) }} 
-        @if (!empty($certificationOfRegistrations->mname))
-            {{ mb_strtoupper(substr($certificationOfRegistrations->mname, 0, 1)) }}.
-        @endif
-        {{ mb_strtoupper($certificationOfRegistrations->lname) }} {{ mb_strtoupper($certificationOfRegistrations->suffix) }}</b>is a registered and licensed
-        <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No.
-        <!-- <b>{{$certificationOfRegistrations->regnum}}</b> -->
-        <b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>
-        registered
-        <span class="GramE">on
-            <b>{{ \Carbon\Carbon::parse($certificationOfRegistrations->registeredDate)->format('F j, Y') }}.</b>
-        </span>
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:106%'>To Whom It
+May Concern:</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in;line-height:200%'><span
+style='font-size:12.0pt;line-height:200%'>This is to certify that based on the
+records of the Professional Regulation Commission-Cordillera Administrative Region
+(PRC-CAR), there is no complaint or derogatory remark filed in PRC-CAR against
+<b>{{ mb_strtoupper($complaintsCert->fname) }} 
+@if (!empty($complaintsCert->mname))
+    {{ mb_strtoupper(substr($complaintsCert->mname, 0, 1)) }}.
+@endif
+{{ mb_strtoupper($complaintsCert->lname) }} {{ mb_strtoupper($complaintsCert->suffix) }}</b>, a <b>{{ mb_strtoupper($complaintsCert->profession->profession) }} </b>with Registration No.
+<b>{{ $complaintsCert->regnum }}</b> dated <b>{{ \Carbon\Carbon::parse($complaintsCert->registeredDate)->format('F j, Y') }}.</b><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:12.0pt;line-height:200%'>This Certification is issued upon the
+request upon the request of {{ $complaintsCert->fname }} {{ $complaintsCert->mname }} {{ $complaintsCert->lname }} {{ $complaintsCert->suffix }}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:106%'></span></p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:107%'><b><u> {{ strtoupper($complaintsCert->attorneySignatory->name) }}</u></b> </span></p>
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->attorneySignatory->position }}</b> </span></p><o:p></o:p><o:p></o:p>
+<p class=MsoNormal style='margin-left:3.0in;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:106%'><span style='mso-spacerun:yes'>
+</span>Noted by:</span></p><o:p></o:p>
+
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:107%'><b><u>{{ strtoupper($complaintsCert->signatory->name) }}</u></b> </span></p>
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->signatory->position }}</b> </span></p><o:p></o:p>
+
+<!-- Display signatoriesid -->
+<!-- <p>Signatory ID: {{ $complaintsCert->signatory->id }}</p>
+<p>Name: {{ strtoupper($complaintsCert->signatory->name) }}</p>
+<p>Position: {{ $complaintsCert->signatory->position }}</p> -->
+
+<!-- Display signatoriesAtty -->
+<!-- <p>Attorney Signatory ID: {{ $complaintsCert->attorneySignatory->id }}</p>
+<p>Attorney Name: {{ strtoupper($complaintsCert->attorneySignatory->name) }}</p>
+<p>Attorney Position: {{ $complaintsCert->attorneySignatory->position }}</p> -->
+
+
+<p class=MsoNormal><span style='font-size:11.0pt;line-height:106%'>SEAL</span></p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
+line-height:106%'>O.R. No.<span style='mso-spacerun:yes'></span><span
+style='mso-tab-count:1'></span>&nbsp; : &nbsp;<span style='mso-spacerun:yes'>
+</span>{{ $complaintsCert->OR_No }}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
+line-height:106%'>Date<span style='mso-tab-count:2'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;<span
+style='mso-spacerun:yes'></span>{{ \Carbon\Carbon::parse($complaintsCert->date_issues)->format('F j, Y') }}</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
+line-height:106%'>Amount<span style='mso-tab-count:1'></span>&nbsp;&nbsp; : &nbsp;<span
+style='mso-spacerun:yes'></span><span class=SpellE>Php</span> {{ $complaintsCert->amount }}</span></p><o:p></o:p>
+
+
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
+line-height:106%'>RO-BAG/ORD/LEGL</span></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
+line-height:106%'>{{ $complaintsCert->initials }}</span></span></p><o:p></o:p>
+
+
+<p class="MsoNormal" style="margin-bottom:0in">
+    <span style="font-size:11.0pt; line-height:106%">
+        Control No. <b>{{ date('y') }}-{{ str_pad($complaintsCert->id, 3, '0', STR_PAD_LEFT) }}</b>
     </span>
 </p>
+<br>
 
-<p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%'></span></b></p>
-<p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%'></span></b></p>
-<p class=MsoNormal style='text-align:justify'><span style='font-size:13.0pt;
-line-height:100%'><span style='mso-tab-count:1'> </span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;This
-Certification is issued for whatever legal purpose it may serve.<o:p></o:p></span></p>
+<p class=MsoNormal style='margin-bottom:0in'><i><span style='font-size:11.0pt;
+line-height:106%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'>(Any
+material alteration invalidates this certification. Not valid without dry seal
+and documentary stamp/s.)</span></i></p>
+
+<p class=MsoNormal style='margin-bottom:0in'><i><span style='font-size:13.0pt;
+line-height:106%;mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><o:p>&nbsp;</o:p></span></i></p>
 
 
-<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ $certificationOfRegistrations->placeOfIssue }}</span></p>
 
-<p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ \Carbon\Carbon::parse($certificationOfRegistrations->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
+<p class=MsoNormal><span style='font-size:8.0pt;line-height:120%'>
+______________________________________<br>
+As per LERIS,
+not tagged<span style='mso-tab-count:1'></span></span></p>
 
-<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
-margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($certificationOfRegistrations->personRole->person->name) }}</b> </span></p>
+<p class=MsoNormal  align=right style='text-align:right'><span style='font-size:8.0pt;line-height:106%'>
+BAG-ORD-LEGL-19 <br>
+Rev. 01 <br>
+January 14, 2019 <br>
+Page 1 of 1<br>
+<span style='mso-tab-count:1'></span><o:p></o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
-margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $certificationOfRegistrations->personRole->person->position }}</b> </span></p>
-
-<p class=MsoNormal><span style='font-size:13.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:11.0pt;line-height:107%'>(Any
-erasures or alterations invalidate this certification)<o:p></o:p></span></p>
+<!-- <p class=MsoNormal align=right style='text-align:right'>BAG-ORD-LEGL-19 <o:p></o:p></p>
+<p class=MsoNormal align=right style='text-align:right'>Rev. 01 <o:p></o:p></p>
+<p class=MsoNormal align=right style='text-align:right'>January 14, 2019 <o:p></o:p></p>
+<p class=MsoNormal align=right style='text-align:right'>Page 1 of 1</p> -->
 
 </div>
 

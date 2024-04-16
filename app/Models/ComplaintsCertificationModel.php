@@ -40,4 +40,8 @@ class ComplaintsCertificationModel extends Model
     {
         return $this->belongsTo(Signatories::class, 'signatoriesid');
     }
+    public function attorneySignatory()
+    {
+        return $this->belongsTo(Signatories::class, 'signatoriesAtty');
+    }
 }

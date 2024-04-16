@@ -144,52 +144,54 @@
                         <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Signatories</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div><br>
-                                <div class="modal-body">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="name" placeholder="name" required>
-                                                    <label for="validationCustom01">Name</label>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="addCertLabel">Add Signatories</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="name" placeholder="name" required>
+                                                        <label for="validationCustom01">Name</label>
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                        <div class="invalid-feedback">*Required</div>
                                                     </div>
-                                                    <div class="invalid-feedback">
-                                                        *Required
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="position" placeholder="position" required>
+                                                        <label for="validationCustom01">Position</label>
+                                                        <div class="valid-feedback">Looks good!</div>
+                                                        <div class="invalid-feedback">*Required</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-floating mb-2">
-                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="position" placeholder="position" required>
-                                                    <label for="validationCustom01">Position</label>
-                                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
-                                                    <div class="invalid-feedback">
-                                                        *Required
-                                                    </div>
+                                            <!-- Role checkboxes -->
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @foreach($roles as $role)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="role{{ $role->id }}" name="roles[]">
+                                                            <label class="form-check-label" for="role{{ $role->id }}">{{ $role->name }}</label>
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-primary btn-primary-pro" value="Submit">
-                                </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <input type="submit" class="btn btn-primary btn-primary-pro" value="Submit">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </form>
+
+                    
+
                 
                 <div class="p-1">
                     <div class="table-responsive">
@@ -208,7 +210,8 @@
                                 <tr>
                                     <td>{{ $signatory->name }}</td>
                                     <td>{{ $signatory->position }}</td>
-                                    <td></td>
+                                    <td>
+                                    </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->

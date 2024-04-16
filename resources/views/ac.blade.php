@@ -878,11 +878,11 @@ margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; 
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($accreditationCert->signatory->name) }}</b> </span></p>
+style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($accreditationCert->personRole->person->name) }}</b> </span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $accreditationCert->signatory->position }}</b> </span></p>
+style='font-size:13.0pt;line-height:107%'>{{ $accreditationCert->personRole->person->position }}</b> </span></p>
 
 <p class=MsoNormal><span style='font-size:12.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
 

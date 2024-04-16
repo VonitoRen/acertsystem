@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('certification_of_complaints', function (Blueprint $table) {
-        $table->id();
+        $table->id(); 
         $table->string('lname');
         $table->string('fname');
         $table->string('mname')->nullable();

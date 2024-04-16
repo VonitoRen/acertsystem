@@ -25,6 +25,7 @@ class AccreditationCertificationModel extends Model
         'broker_reg_no',
         'registeredDate',
         'signatoriesid',
+        'person_role_id',
     ];
 
     public function profession()
@@ -32,8 +33,8 @@ class AccreditationCertificationModel extends Model
         return $this->belongsTo(Professions::class, 'professionID');
     }
 
-    public function signatory()
+    public function personRole()
     {
-        return $this->belongsTo(Signatories::class, 'signatoriesid');
+        return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
 }
