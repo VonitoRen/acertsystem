@@ -845,21 +845,13 @@ margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
 margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ \Carbon\Carbon::parse($certificationOfRegistrations->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
 
-<!-- <p class=MsoNormal><span style='font-size:13.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p> -->
-<!-- <p class=MsoNormal align=center style='margin-bottom:0in;margin-right:.6in;text-align:right'><span
-style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($certificationOfRegistrations->signatory->name) }}</b></span></p> -->
+<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
+margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
+style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($certificationOfRegistrations->personRole->person->name) }}</b> </span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($certificationOfRegistrations->signatory->name) }}</b> </span></p>
-
-<p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
-margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $certificationOfRegistrations->signatory->position }}</b> </span></p>
-
-<!-- <p class=MsoNormal align=right style='margin-bottom:0in;text-align:right'><span
-style='font-size:13.0pt;line-height:107%'>{{ $certificationOfRegistrations->signatory->position }}<o:p></o:p></span></p>  -->
-
+style='font-size:13.0pt;line-height:107%'>{{ $certificationOfRegistrations->personRole->person->position }}</b> </span></p>
 
 <p class=MsoNormal><span style='font-size:13.0pt;line-height:107%'><o:p>&nbsp;</o:p></span></p>
 

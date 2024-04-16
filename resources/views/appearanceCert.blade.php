@@ -829,11 +829,11 @@ style='font-size:13.0pt'>&nbsp; &nbsp; &nbsp; &nbsp;{{ $appearanceCert->placeOfI
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($appearanceCert->signatory->name) }}</b></span></p>
+style='font-size:13.0pt;line-height:107%'><b>{{ strtoupper($appearanceCert->personRole->person->name) }}</b></span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $appearanceCert->signatory->position }}</b> </span></p>
+style='font-size:13.0pt;line-height:107%'>{{ $appearanceCert->personRole->person->position }}</b> </span></p>
 
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
