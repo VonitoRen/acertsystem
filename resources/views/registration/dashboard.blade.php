@@ -239,6 +239,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="registeredDate" name="registeredDate" placeholder="Registered Date" required>

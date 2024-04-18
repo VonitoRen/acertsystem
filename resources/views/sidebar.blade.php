@@ -45,7 +45,13 @@
         <li class="nav-item" style="{{ Request::routeIs('legal.dashboard') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
             <a class="nav-link" href="{{ route('legal.dashboard') }}">
                 <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('legal.dashboard') ? 'color: white;' : '' }}"></i>
-                <span style="{{ Request::routeIs('legal.dashboard') ? 'color: white;' : '' }}">Legal</span>
+                <span style="{{ Request::routeIs('legal.dashboard') ? 'color: white;' : '' }}">Complaint or Derogatory</span>
+            </a>
+        </li>
+        <li class="nav-item" style="{{ Request::routeIs('legal.finality') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
+            <a class="nav-link" href="{{ route('legal.finality') }}">
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('legal.finality') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('legal.finality') ? 'color: white;' : '' }}">Certificate of Finality</span>
             </a>
         </li>
     @endif

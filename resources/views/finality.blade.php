@@ -662,6 +662,42 @@ href="CertificateOfFinality_files/colorschememapping.xml">
  </w:LatentStyles>
 </xml><![endif]-->
 <style>
+        .container {
+            overflow: hidden; /* Clearfix */
+        }
+
+        .left-content {
+            float: left;
+        }
+        .right-content {
+            float: right;
+            position: absolute;
+            height: height: 20px;
+        }
+        .clear {
+            clear: both;
+        }
+        .right-content-foot {
+            /* float: right;
+            position: absolute;
+            height: height: 20px; */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%; /* Ensure footer stretches across the paper */
+            height: 20px;
+        }
+        .paper {
+            position: relative;
+            min-height: 100vh; /* Ensure paper fills the viewport height */
+        }
+
+        .content {
+            /* Styles for your content */
+            padding-bottom: 40px; /* Adjust to provide space for the footer */
+        }
+        
+    
 <!--
  /* Font Definitions */
  @font-face
@@ -912,31 +948,28 @@ div.WordSection1
  </o:shapelayout></xml><![endif]-->
 </head>
 
-<body lang=EN-US style='tab-interval:.5in;word-wrap:break-word'>
+<body lang=EN-US style='tab-interval:.5in;word-wrap:break-word;margin:55px;'>
 
+<div class="paper">
+
+<div class="content">
 <div class=WordSection1>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
 style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
-
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
-
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+<!-- <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p> --><br><br>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>&lt;BOARD&gt;<span
-style='mso-spacerun:yes'>        </span><o:p></o:p></span></u></p>
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b>{{ strtoupper($finalityCert->board) }}</b><span
+style='mso-spacerun:yes'> </span></span></u></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>BOARD<o:p></o:p></span></b></p>
+style='font-size:14.0pt;line-height:107%;font-family:"Arial",sans-serif'>BOARD</span></b></p><br>
 
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></b></p>
+<!-- <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></b></p> -->
 
 <p class=MsoNormal style='margin-bottom:0in'><!--[if gte vml 1]><v:shapetype
  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
@@ -984,55 +1017,75 @@ BAAEAPMAAAB6BQAAAAA=
 style='mso-ignore:vglayout;position:absolute;z-index:251657216;margin-left:
 504px;margin-top:59px;width:201px;height:65px'>
 
-<table cellpadding=0 cellspacing=0>
- <tr>
-  <td width=201 height=65 style='vertical-align:top'><![endif]><![if !mso]><span
-  style='position:absolute;mso-ignore:vglayout;z-index:251657216'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="Text_x0020_Box_x0020_2" style='padding:3.6pt 7.2pt 3.6pt 7.2pt'
-    class=shape>
-    <p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:
-    12.0pt;line-height:107%;font-family:"Arial",sans-serif'>ADMIN. CASE NO.<o:p></o:p></span></b></p>
-    <p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:
-    12.0pt;line-height:107%;font-family:"Arial",sans-serif'>BAG </span></b><u><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>&lt;CASE
-    NO.&gt;</span></u><span style='font-size:12.0pt;line-height:107%;
-    font-family:"Arial",sans-serif'><o:p></o:p></span></p>
+<div class="container">
+    <div class="right-content">
+        <p class="MsoNormal" style="margin-bottom:0in;text-align: center;">
+            <b>
+                <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">
+                    ADMIN. CASE NO. <br>
+                    BAG {{ $finalityCert->caseNo }}
+                </span>
+            </b>
+        </p>
     </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
-
-</span><![endif]><u><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span style='mso-spacerun:yes'>      
-</span>&lt;COMPLAINANTS&gt;<span style='mso-spacerun:yes'>      </span></span></u><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>,<o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'><span
-style='mso-spacerun:yes'>                           </span><span
-style='mso-spacerun:yes'>     </span>Complainant/s,<o:p></o:p></span></p>
+    <div class="left-content">
+        <p class="MsoNormal" style="margin-bottom:0in">
+            <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">
+                <span style="mso-spacerun:yes"></span><b>{{ strtoupper($finalityCert->complainants) }}</b><span style="mso-spacerun:yes"></span><span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">,</span>
+            </span>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:0in">
+            <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif;padding-left: 130px;">
+                <span style="mso-spacerun:yes"></span>
+                <span style="mso-spacerun:yes"></span>
+                Complainant/s
+            </span>
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>
+<br>
 
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:9.0pt;
-line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+line-height:107%;font-family:"Arial",sans-serif'></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:12.0pt;
 line-height:107%;font-family:"Arial",sans-serif'><span
-style='mso-spacerun:yes'>            </span>- versus -<o:p></o:p></span></b></p>
+style='mso-spacerun:yes'> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- versus -</span></b></p><br>
 
 <p class=MsoNormal style='margin-bottom:0in'><b><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></b></p>
+line-height:107%;font-family:"Arial",sans-serif'></span></b></p>
 
-<p class=MsoNormal style='margin-bottom:0in'><u><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'><span
-style='mso-spacerun:yes'>       </span>&lt;RESPONDENT/S&gt;<span
-style='mso-spacerun:yes'>      </span></span></u><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'>,<o:p></o:p></span></p>
+<div class="container">
+    <div class="right-content">
+        <p class="MsoNormal" style="margin-bottom:0in;">
+            <b>
+                <div style="text-align:center;">
+                <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">
+                    <b>FOR:</b> <br>
+                    {{ $finalityCert->for_ }}
+                </span>
+                </div>
+            </b>
+        </p>
+
+    </div>
+    <div class="left-content">
+        <p class="MsoNormal" style="margin-bottom:0in">
+            <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">
+                <span style="mso-spacerun:yes"></span><b>{{ strtoupper($finalityCert->respondents) }}</b><span style="mso-spacerun:yes"></span><span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif">,</span>
+            </span>
+        </p>
+        <p class="MsoNormal" style="margin-bottom:0in">
+            <span style="font-size:12.0pt;line-height:107%;font-family:'Arial',sans-serif;padding-left: 130px;">
+                <span style="mso-spacerun:yes"></span>
+                <span style="mso-spacerun:yes"></span>
+                Respondent/s
+            </span>
+        </p>
+    </div>
+    <div class="clear"></div>
+</div>
 
 <p class=MsoNormal style='margin-bottom:0in'><!--[if gte vml 1]><v:shape id="_x0000_s1027"
  type="#_x0000_t202" style='position:absolute;margin-left:-6.5pt;margin-top:13.3pt;
@@ -1075,147 +1128,73 @@ BgAAAAAEAAQA8wAAAH8FAAAAAA==
 style='mso-ignore:vglayout;position:absolute;z-index:251660288;margin-left:
 -3px;margin-top:91px;width:581px;height:42px'>
 
-<table cellpadding=0 cellspacing=0>
- <tr>
-  <td width=581 height=42 style='vertical-align:top'><![endif]><![if !mso]><span
-  style='position:absolute;mso-ignore:vglayout;z-index:251660288'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="_x0000_s1027" style='padding:3.6pt 7.2pt 3.6pt 7.2pt'
-    class=shape>
-    <p class=MsoNormal><b>x</b><span
-    style='mso-spacerun:yes'>                                               
-    </span><span style='mso-spacerun:yes'>                              </span><b>x</b></p>
-    </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
 
-</span><![endif]><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span
-style='mso-spacerun:yes'>                                </span>Respondent/s.<o:p></o:p></span></p>
-
-<p class=MsoNormal><!--[if gte vml 1]><v:line id="Straight_x0020_Connector_x0020_3"
- o:spid="_x0000_s1026" style='position:absolute;flip:y;z-index:251661312;
- visibility:visible;mso-wrap-style:square;mso-wrap-distance-left:9pt;
- mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;
- mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;
- mso-position-horizontal-relative:text;mso-position-vertical:absolute;
- mso-position-vertical-relative:text' from="9.75pt,10.5pt" to="198.4pt,11pt"
- o:gfxdata="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
-AA==
-" strokecolor="black [3213]" strokeweight="1pt">
- <v:stroke dashstyle="dash" joinstyle="miter"/>
-</v:line><![endif]--><![if !vml]><span style='mso-ignore:vglayout'>
-
-<table cellpadding=0 cellspacing=0 align=left>
- <tr>
-  <td width=22 height=91></td>
- </tr>
- <tr>
-  <td></td>
-  <td><img width=254 height=2 src="CertificateOfFinality_files/image001.png"
-  v:shapes="Straight_x0020_Connector_x0020_3"></td>
- </tr>
-</table>
-
-</span><![endif]><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:16.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal><b>x - - - - - - - - - - - - - - - - - - - - - - - - - -</b><span style='mso-spacerun:yes'>
+</span><span style='mso-spacerun:yes'></span><b>x</b></p>
+</div>
 
 <br style='mso-ignore:vglayout' clear=ALL>
 
 <p class=MsoNormal align=center style='text-align:center'><b><span
 style='font-size:14.0pt;line-height:107%;font-family:"Arial",sans-serif'>CERTIFICATE
-OF FINALITY<o:p></o:p></span></b></p>
+OF FINALITY</span></b></p>
 
 <p class=MsoNormal align=center style='text-align:center'><b><span
-style='font-size:14.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></b></p>
+style='font-size:14.0pt;line-height:107%;font-family:"Arial",sans-serif'></span></b></p><br>
 
-<p class=MsoNormal style='margin-bottom:.25in;text-align:justify;line-height:
-115%'><span style='font-size:12.0pt;line-height:115%;font-family:"Arial",sans-serif'><span
-style='mso-tab-count:1'>          </span>This is to certify that the <b>DECISION/ORDER</b>
-rendered/issued in the above-entitled case on _____, the dispositive portion of
-which is herein quoted:<o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:.25in;text-align:justify;line-height:150%">
+    <span style="font-size:12.0pt;line-height:115%;font-family:'Arial',sans-serif">
+        <span style="mso-tab-count:1">&nbsp;</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to certify that the <b>DECISION/ORDER</b> rendered/issued in the above-entitled case on <u>{{ \Carbon\Carbon::parse($finalityCert->caseDate)->format('F j, Y') }}</u>, the dispositive portion of which is herein quoted:
+    </span>
+</p>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span style='mso-tab-count:1'>          </span><span
-style='mso-tab-count:1'>          </span><b>“WHEREFORE,</b><o:p></o:p></span></p>
+<p class="MsoNormal" style="text-align: justify; padding-left: 0.4in; padding-right: 0.4in;">
+    <span style="font-size: 12.0pt; line-height: 150%; font-family: 'Arial', sans-serif;">
+        <span style="mso-tab-count: 1"> </span>
+        <span style="mso-tab-count: 1"> </span>
+        <b>"WHEREFORE,</b> <u>@php $paragraphs = explode("\n", $finalityCert->description);@endphp@foreach($paragraphs as $paragraph){{ $paragraph }}<br>@endforeach</u>
+    </span>
+    
+</p>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span style='mso-tab-count:1'>          </span><span
-style='mso-tab-count:1'>          </span>_____________________________________<o:p></o:p></span></p>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span style='mso-tab-count:1'>          </span><span
-style='mso-tab-count:1'>          </span>_____________________________________<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><span style='mso-tab-count:1'>          </span><span
-style='mso-tab-count:1'>          </span>_____________________________________.<o:p></o:p></span></p>
-
-<p class=MsoNormal style='margin-bottom:.25in'><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'><span style='mso-tab-count:
-1'>          </span><span style='mso-tab-count:1'>          </span><b>SO
-ORDERED.”<o:p></o:p></b></span></p>
-
+<p class="MsoNormal" style="text-align: justify; padding-left: 0.4in; padding-right: 0.4in;">
+    <span style="font-size:12.0pt;line-height:150%;font-family:'Arial',sans-serif">
+        <span style="mso-tab-count:1"> </span>
+        <span style="mso-tab-count:1"> </span>
+        <b>SO ORDERED."</b>
+    </span>
+</p>
+<br>
 <p class=MsoNormal style='margin-bottom:.25in;text-align:justify;line-height:
 115%'><span style='font-size:12.0pt;line-height:115%;font-family:"Arial",sans-serif'>has,
-on <u><span style='mso-spacerun:yes'>  </span>&lt;DATE&gt;<span
-style='mso-spacerun:yes'>  </span></u>, became final and executory, and is
-hereby recorded in the book of entries of this Office.<o:p></o:p></span></p>
+on <u><span style='mso-spacerun:yes'></span>{{ \Carbon\Carbon::parse($finalityCert->finalAndExecutoryDate)->format('F j, Y') }}<span
+style='mso-spacerun:yes'></span></u>, became final and executory, and is
+hereby recorded in the book of entries of this Office.</span></p>
 
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:85%;font-family:
+"Arial",sans-serif'>City of Baguio, <u><span style='mso-spacerun:yes'></span>{{ \Carbon\Carbon::parse($finalityCert->dateDate)->format('F j, Y') }}<span
+style='mso-spacerun:yes'></span></u>.<o:p></o:p></span></p>
+
+<br><br>
 <p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'>City of Baguio, <u><span style='mso-spacerun:yes'>  </span>&lt;DATE&gt;<span
-style='mso-spacerun:yes'>  </span></u>.<o:p></o:p></span></p>
+"Arial",sans-serif'><u><strong>{{ strtoupper($finalityCert->signatory->name) }}</strong></u><br>{{ $finalityCert->signatory->position }}<br>PRC-CAR</span></p>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'>&lt;NAME&gt;<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'>&lt;POSITION&gt;<o:p></o:p></span></p>
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
-
+    </div>
+    <footer class="right-content-foot">
+    <p class="MsoNormal" style="margin-bottom:0in; font-size:7pt; text-align:right;">
+        <b>
+            BAG-ORD-LEGL-10<br>
+            Rev. 00<br>
+            January 14, 2019<br>
+            Page 1 of 1<br>
+        </b>
+    </p>
+    </footer>
+    </div>
 </div>
-
 </body>
-
 </html>
+
+

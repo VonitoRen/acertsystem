@@ -3,20 +3,29 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppearanceCertificationController;
+use App\Http\Controllers\FinalityCertificationController;
+
 use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
 use App\Http\Controllers\LegalCertification;
 use App\Http\Controllers\ComplaintsCertificationController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\ComplaintsPDFController;
+=======
+use App\Http\Controllers\FinalityPDFController;
+
+>>>>>>> Stashed changes
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
 use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
+use App\Models\FinalityCertificationModel;
 use App\Models\ComplaintsCertificationModel;
 
 Route::get('/', function () {
@@ -34,7 +43,11 @@ Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
+<<<<<<< Updated upstream
 Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
+=======
+Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
+>>>>>>> Stashed changes
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -123,6 +136,22 @@ Route::get('/legal/dashboard', function () {
     }
 })->name('legal.dashboard');
 
+// Finality
+Route::get('/legal/finality', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        
+        $finalityCert = FinalityCertificationModel::all();
+        $signatories = Signatories::all();
+        
+        return view('legal.finality', [
+            'finalityCert' => $finalityCert,
+            'signatories' => $signatories,
+]);
+    } else {
+        return back();
+    }
+})->name('legal.finality');
+
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
 Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'store'])->name('certreg.store');
@@ -156,13 +185,22 @@ Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->
 Route::get('/edit-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'editComplaintCertificate'])->name('edit.Complaintcertificate');
 Route::put('/update-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'updateComplaintCertificate'])->name('update.Complaintcertificate');
 
+// EDIT ROUTES FINALITY
+Route::get('/edit-FINALITYcertificate/{id}', [FinalityCertificationController::class, 'editFINALITYCertificate'])->name('edit.FINALITYcertificate');
+Route::put('/update-FINALITYcertificate/{id}', [FinalityCertificationController::class, 'updateFINALITYCertificate'])->name('update.FINALITYcertificate');
+Route::get('/finality', [FinalityCertificationController::class, 'index'])->name('finality.index');
+
 
 
 // all delete
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
+<<<<<<< Updated upstream
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
+=======
+Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
+>>>>>>> Stashed changes
 
 
 
@@ -178,6 +216,8 @@ Route::post('/certregistration', [CertificationOfRegistration::class, 'store'])-
 Route::get('/accreditation_index', [AccreditationCertification::class, 'index'])->name('accreditation.index');
 Route::post('/appearance', [AppearanceCertificationController::class, 'store'])->name('appearance.store');
 
+Route::get('/finality', [FinalityCertification::class, 'index'])->name('finality.index');
+Route::post('/legal/finality', [FinalityCertificationController::class, 'store'])->name('finality.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
