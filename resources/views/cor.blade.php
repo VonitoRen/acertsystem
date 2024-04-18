@@ -814,15 +814,14 @@ style='font-size:16.0pt;line-height:107%'>CERTIFICATION<o:p></o:p></span></b></p
 <p class="MsoNormal" style="text-align:justify">
     <span style="font-size:13.0pt; line-height:200%">
         <span style="mso-tab-count:1"> </span>
-        &nbsp; &nbsp; &nbsp; &nbsp; This is to certify that
+        &nbsp; &nbsp; &nbsp; &nbsp;This is to certify that
         <b>{{ mb_strtoupper($certificationOfRegistrations->fname) }} 
         @if (!empty($certificationOfRegistrations->mname))
             {{ mb_strtoupper(substr($certificationOfRegistrations->mname, 0, 1)) }}.
         @endif
         {{ mb_strtoupper($certificationOfRegistrations->lname) }} {{ mb_strtoupper($certificationOfRegistrations->suffix) }}</b>is a registered and licensed
         <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No.
-        <!-- <b>{{$certificationOfRegistrations->regnum}}</b> -->
-        <b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>
+        <!-- <b>{{$certificationOfRegistrations->regnum}}</b> --><b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>
         registered
         <span class="GramE">on
             <b>{{ \Carbon\Carbon::parse($certificationOfRegistrations->registeredDate)->format('F j, Y') }}.</b>
