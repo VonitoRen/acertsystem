@@ -14,12 +14,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\ComplaintsPDFController;
-=======
 use App\Http\Controllers\FinalityPDFController;
 
->>>>>>> Stashed changes
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -43,11 +40,8 @@ Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
-<<<<<<< Updated upstream
 Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
-=======
 Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
->>>>>>> Stashed changes
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -196,11 +190,8 @@ Route::get('/finality', [FinalityCertificationController::class, 'index'])->name
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
-<<<<<<< Updated upstream
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
-=======
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
->>>>>>> Stashed changes
 
 
 
