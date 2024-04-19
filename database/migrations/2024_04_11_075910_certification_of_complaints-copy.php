@@ -25,8 +25,9 @@ return new class extends Migration
         $table->string('initials');
         $table->string('amount');
         $table->date('date_issues')->default(now());
-        $table->foreignId('signatoriesAtty')->constrained('signatories');
-        $table->foreignId('signatoriesid')->constrained('signatories');
+        $table->foreignId('signatoriesAtty')->constrained('person_roles');
+        // $table->foreignId('signatoriesid')->constrained('signatories');
+        $table->foreignId('person_role_id')->constrained('person_roles');
         $table->timestamps();
         });
     }

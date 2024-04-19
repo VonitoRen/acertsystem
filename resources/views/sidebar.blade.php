@@ -34,6 +34,12 @@
                 <span style="{{ Request::routeIs('accreditation.index') ? 'color: white;' : '' }}">Accreditation</span>
             </a>
         </li>
+        <li class="nav-item" style="{{ Request::routeIs('former.index') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
+            <a class="nav-link" href="{{ route('former.index') }}">
+                <i class="fas fa-fw fa-file-alt" style="{{ Request::routeIs('former.index') ? 'color: white;' : '' }}"></i>
+                <span style="{{ Request::routeIs('former.index') ? 'color: white;' : '' }}">Former Filipino</span>
+            </a>
+        </li>
     @elseif($userRole == 4)
         <li class="nav-item" style="{{ Request::routeIs('fad.dashboard') ? 'background-color: rgba(220, 220, 220, 0.1); color: white;' : '' }}">
             <a class="nav-link" href="{{ route('fad.dashboard') }}">

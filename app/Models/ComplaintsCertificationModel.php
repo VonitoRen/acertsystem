@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ComplaintsCertificationModel extends Model
 {
     use HasFactory;
+    
     protected $table = 'certification_of_complaints';
 
     protected $fillable = [
-        'id',
         'lname',
         'fname', 
         'mname', 
@@ -24,7 +24,7 @@ class ComplaintsCertificationModel extends Model
         'initials',
         'amount',
         'signatoriesAtty',
-        'signatoriesid'
+        'person_role_id',
     ];
 
     protected $casts = [
@@ -36,12 +36,15 @@ class ComplaintsCertificationModel extends Model
         return $this->belongsTo(Professions::class, 'professionID');
     }
 
-    public function signatory()
+    public function personRole()
     {
-        return $this->belongsTo(Signatories::class, 'signatoriesid');
+        return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
-    public function attorneySignatory()
+
+    public function attypersonRole()
     {
-        return $this->belongsTo(Signatories::class, 'signatoriesAtty');
+        return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
+
+    
 }
