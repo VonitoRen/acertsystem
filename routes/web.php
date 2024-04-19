@@ -15,8 +15,12 @@ use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\FinalityPDFController;
 
+=======
+use App\Http\Controllers\FormerFilipinoController;
+>>>>>>> Stashed changes
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -98,7 +102,7 @@ Route::get('/fad/dashboard', function () {
 
         // Filter the personRoles based on role_id
         $personRoles = PersonRole::with('person')
-            ->where('role_id', 4)
+            ->where('role_id', 1)
             ->get();
 
         return view('fad.dashboard', [
@@ -120,16 +124,24 @@ Route::get('/legal/dashboard', function () {
 
         $signatories = Signatories::all();
         $professions = Professions::all();
+
+        // Filter the personRoles based on role_id
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 3)
+            ->get();
+
         return view('legal.dashboard', [
             'complaintsCert' => $complaintsCert,
             'signatories' => $signatories,
             'professions' => $professions,
+            'personRoles' => $personRoles,
 ]);
     } else {
         return back();
     }
 })->name('legal.dashboard');
 
+<<<<<<< Updated upstream
 // Finality
 Route::get('/legal/finality', function () {
     if (auth()->check() && auth()->user()->role == 2) {
@@ -145,6 +157,20 @@ Route::get('/legal/finality', function () {
         return back();
     }
 })->name('legal.finality');
+=======
+// Route::get('/legal/dashboard', function () {
+//     if (auth()->check() && auth()->user()->role == 2) {
+//         $complaintsCert = ComplaintsCertificationModel::all();
+//         $signatories = Signatories::all();
+//         $professions = Professions::all();
+//         $personRoles = PersonRole::with('person')->where('role_id', 3)->get();
+
+//         return view('legal.dashboard', compact('complaintsCert', 'signatories', 'professions', 'personRoles'));
+//     } else {
+//         return back()->with('error', 'Unauthorized access.');
+//     }
+// })->name('legal.dashboard');
+>>>>>>> Stashed changes
 
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
@@ -205,6 +231,7 @@ Route::get('/registration', [CertificationOfRegistration::class, 'index'])->name
 Route::post('/certregistration', [CertificationOfRegistration::class, 'store'])->name('certregistration.store');
 
 Route::get('/accreditation_index', [AccreditationCertification::class, 'index'])->name('accreditation.index');
+Route::get('/former_index', [FormerFilipinoController::class, 'index'])->name('former.index');
 Route::post('/appearance', [AppearanceCertificationController::class, 'store'])->name('appearance.store');
 
 Route::get('/finality', [FinalityCertification::class, 'index'])->name('finality.index');

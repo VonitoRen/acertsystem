@@ -896,30 +896,22 @@ style='font-size:13.0pt;line-height:106%'></span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b><u> {{ strtoupper($complaintsCert->attorneySignatory->name) }}</u></b> </span></p>
+style='font-size:13.0pt;line-height:107%'><b><u> {{ strtoupper($complaintsCert->attypersonRole->person->name) }}</u></b> </span></p>
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->attorneySignatory->position }}</b> </span></p><o:p></o:p><o:p></o:p>
+style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->attypersonRole->person->position }}</b> </span></p><o:p></o:p><o:p></o:p>
 <p class=MsoNormal style='margin-left:3.0in;text-indent:.5in'><span
 style='font-size:13.0pt;line-height:106%'><span style='mso-spacerun:yes'>
 </span>Noted by:</span></p><o:p></o:p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b><u>{{ strtoupper($complaintsCert->signatory->name) }}</u></b> </span></p>
+style='font-size:13.0pt;line-height:107%'><b><u>{{ strtoupper($complaintsCert->personRole->person->name) }}</u></b> </span></p>
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->signatory->position }}</b> </span></p><o:p></o:p>
+style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->personRole->person->position }}</b> </span></p><o:p></o:p>
 
-<!-- Display signatoriesid -->
-<!-- <p>Signatory ID: {{ $complaintsCert->signatory->id }}</p>
-<p>Name: {{ strtoupper($complaintsCert->signatory->name) }}</p>
-<p>Position: {{ $complaintsCert->signatory->position }}</p> -->
 
-<!-- Display signatoriesAtty -->
-<!-- <p>Attorney Signatory ID: {{ $complaintsCert->attorneySignatory->id }}</p>
-<p>Attorney Name: {{ strtoupper($complaintsCert->attorneySignatory->name) }}</p>
-<p>Attorney Position: {{ $complaintsCert->attorneySignatory->position }}</p> -->
 
 
 <p class=MsoNormal><span style='font-size:11.0pt;line-height:106%'>SEAL</span></p>
