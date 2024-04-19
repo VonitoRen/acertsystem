@@ -11,6 +11,7 @@ class SurrenderedDocuments extends Model
     protected $table = 'surrendered_documents';
 
     protected $fillable = [
+        'board',
         'doc_surrendered',
         'lname',
         'fname',
@@ -19,6 +20,7 @@ class SurrenderedDocuments extends Model
         'sex',
         'professionID',
         'returnedDate',
+        'regnum',
         'penalty',
         'case_title',
         'case_no',

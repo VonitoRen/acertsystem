@@ -140,7 +140,13 @@
                                 <div class="modal-body">
                                 <div class="container">
                                 <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="board" name="board" placeholder="Board" required>
+                                                <label for="board">Board</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="doc_surrendered" name="doc_surrendered" placeholder="Document Surrendered" required>
                                                 <label for="doc_surrendered">Document Surrendered</label>
@@ -235,13 +241,20 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration Number" required>
+                                                <label for="regnum">Registration Number</label>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row">
+                                    <div class="col-md-4">
+                                            <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="penalty" name="penalty" placeholder="Penalty" required>
                                                 <label for="penalty">Penalty</label>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="case_title" name="case_title" placeholder="Case Title" required>
@@ -367,11 +380,13 @@
                         <table id="datatable1" class="display" style="width:100%; text-align: center;">
                             <thead>
                                 <tr>
+                                    <th>Board</th>
                                     <th>Document Surrendered</th>
                                     <th>Respondent</th>
                                     <th>Sex</th>
                                     <th>Profession</th>
                                     <th>Returned Date</th>
+                                    <th>Registration No.</th>
                                     <th>Penalty</th>
                                     <th>Case Title</th>
                                     <th>Case No</th>
@@ -386,11 +401,13 @@
                             @foreach($surrenderedCert as $cert)
                             <tbody>
                                 <tr>
+                                    <td> {{$cert->board}} </td>
                                     <td> {{$cert->doc_surrendered}} </td>
                                     <td> {{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
                                     <td> {{ $cert->sex }} </td>
                                     <td> {{ $cert->profession->profession }} </td>
                                     <td> {{ \Carbon\Carbon::parse($cert->returnedDate)->format('F j, Y') }} </td>
+                                    <td> {{ $cert->regnum }} </td>
                                     <td> {{ $cert->penalty }} </td>
                                     <td> {{ $cert->case_title }} </td>
                                     <td> {{ $cert->case_no }} </td>
@@ -409,7 +426,7 @@
                                             </a>
                                             
                                             <!-- Print Button -->
-                                            <a href="" target="_blank" class="btn btn-success">
+                                            <a href="{{ route('previewSurrenderedDocs.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             

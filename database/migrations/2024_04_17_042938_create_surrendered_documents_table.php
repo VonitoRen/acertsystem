@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('surrendered_documents', function (Blueprint $table) {
             $table->id();
+            $table->string('board');
             $table->string('doc_surrendered');
             $table->string('lname');
             $table->string('fname');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('sex');
             $table->foreignId('professionID')->constrained('professions'); 
             $table->date('returnedDate');
+            $table->string('regnum');
             $table->string('penalty');
             $table->string('case_title');
             $table->string('case_no');

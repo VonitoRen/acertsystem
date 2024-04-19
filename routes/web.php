@@ -9,6 +9,7 @@ use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
 use App\Http\Controllers\LegalCertification;
 use App\Http\Controllers\ComplaintsCertificationController;
+use App\Http\Controllers\DocumentSurrenderedController;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CorPdfController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
 <<<<<<< Updated upstream
 use App\Http\Controllers\FinalityPDFController;
+use App\Http\Controllers\DocumentSurrenderedPDF;
 
 =======
 use App\Http\Controllers\FormerFilipinoController;
@@ -28,6 +30,7 @@ use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
 use App\Models\FinalityCertificationModel;
 use App\Models\ComplaintsCertificationModel;
+use App\Models\SurrenderedDocuments;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -46,6 +49,7 @@ Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name(
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
 Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
 Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
+Route::get('preview-surrendered-pdf/{id}', [DocumentSurrenderedPDF::class, 'previewPdf'])->name('previewSurrenderedDocs.pdf');
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -140,6 +144,28 @@ Route::get('/legal/dashboard', function () {
         return back();
     }
 })->name('legal.dashboard');
+// Doc Surrendered
+Route::get('/legal/doc-surrendered', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        
+        $surrenderedCert = SurrenderedDocuments::all();
+
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 3)
+            ->get();
+        return view('legal.doc-surrendered', [
+            'surrenderedCert' => $surrenderedCert,
+            'signatories' => $signatories,
+            'professions' => $professions,
+            'personRoles' => $personRoles,
+]);
+    } else {
+        return back();
+    }
+})->name('legal.doc-surrendered');
 
 <<<<<<< Updated upstream
 // Finality
@@ -173,6 +199,8 @@ Route::get('/legal/finality', function () {
 >>>>>>> Stashed changes
 
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
+
+Route::post('/legal/doc-surrendered', [DocumentSurrenderedController::class, 'store'])->name('surrendered.store');
 
 Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'store'])->name('certreg.store');
 
