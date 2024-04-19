@@ -27,6 +27,7 @@ class DocumentSurrenderedController extends Controller
     {
         // Validate the incoming request data
         $validatedData = $request->validate([
+            'board' => 'required|string|max:255',
             'doc_surrendered' => 'required|string|max:255',
             'lname' => 'required|string|max:255',
             'fname' => 'required|string|max:255',
@@ -35,6 +36,7 @@ class DocumentSurrenderedController extends Controller
             'sex' => 'required|in:MALE,FEMALE',
             'professionID' => 'required|exists:professions,id',
             'returnedDate' => 'required|date',
+            'regnum' => 'required|string|max:255',
             'penalty' => 'required|string|max:255',
             'case_title' => 'required|string|max:255',
             'case_no' => 'required|string|max:255',
