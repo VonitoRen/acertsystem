@@ -16,13 +16,10 @@ use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\FinalityPDFController;
 use App\Http\Controllers\DocumentSurrenderedPDF;
 
-=======
 use App\Http\Controllers\FormerFilipinoController;
->>>>>>> Stashed changes
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -167,7 +164,6 @@ Route::get('/legal/doc-surrendered', function () {
     }
 })->name('legal.doc-surrendered');
 
-<<<<<<< Updated upstream
 // Finality
 Route::get('/legal/finality', function () {
     if (auth()->check() && auth()->user()->role == 2) {
@@ -183,7 +179,6 @@ Route::get('/legal/finality', function () {
         return back();
     }
 })->name('legal.finality');
-=======
 // Route::get('/legal/dashboard', function () {
 //     if (auth()->check() && auth()->user()->role == 2) {
 //         $complaintsCert = ComplaintsCertificationModel::all();
@@ -196,7 +191,6 @@ Route::get('/legal/finality', function () {
 //         return back()->with('error', 'Unauthorized access.');
 //     }
 // })->name('legal.dashboard');
->>>>>>> Stashed changes
 
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
@@ -237,6 +231,9 @@ Route::put('/update-Complaintcertificate/{id}', [ComplaintsCertificationControll
 Route::get('/edit-FINALITYcertificate/{id}', [FinalityCertificationController::class, 'editFINALITYCertificate'])->name('edit.FINALITYcertificate');
 Route::put('/update-FINALITYcertificate/{id}', [FinalityCertificationController::class, 'updateFINALITYCertificate'])->name('update.FINALITYcertificate');
 Route::get('/finality', [FinalityCertificationController::class, 'index'])->name('finality.index');
+// EDIT ROUTES Document Surrendered
+Route::get('/edit-certificate/{id}',  [DocumentSurrenderedController::class, 'editDocSurrenderedCertificate'])->name('edit.doc-surrendered');
+Route::put('/update-certificate/{id}', [DocumentSurrenderedController::class, 'updateDocSurrenderedCertificate'])->name('update.doc-surrendered');
 
 
 
@@ -246,6 +243,7 @@ Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'delet
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
+Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
 
 
 
