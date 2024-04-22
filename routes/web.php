@@ -16,13 +16,10 @@ use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\FinalityPDFController;
 use App\Http\Controllers\DocumentSurrenderedPDF;
 
-=======
 use App\Http\Controllers\FormerFilipinoController;
->>>>>>> Stashed changes
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -167,7 +164,6 @@ Route::get('/legal/doc-surrendered', function () {
     }
 })->name('legal.doc-surrendered');
 
-<<<<<<< Updated upstream
 // Finality
 Route::get('/legal/finality', function () {
     if (auth()->check() && auth()->user()->role == 2) {
@@ -183,7 +179,6 @@ Route::get('/legal/finality', function () {
         return back();
     }
 })->name('legal.finality');
-=======
 // Route::get('/legal/dashboard', function () {
 //     if (auth()->check() && auth()->user()->role == 2) {
 //         $complaintsCert = ComplaintsCertificationModel::all();
@@ -196,7 +191,6 @@ Route::get('/legal/finality', function () {
 //         return back()->with('error', 'Unauthorized access.');
 //     }
 // })->name('legal.dashboard');
->>>>>>> Stashed changes
 
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
