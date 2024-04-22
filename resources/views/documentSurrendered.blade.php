@@ -982,6 +982,20 @@ ul
 
 <div class=WordSection1>
 
+<style>
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: .1; /* Adjust opacity as needed */
+            z-index: -1; /* Push behind other content */
+        }
+</style>
+
+<!-- Display the image as a watermark -->
+<img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="350px">
+
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
 style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
