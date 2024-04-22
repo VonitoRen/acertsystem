@@ -284,7 +284,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        <!-- <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateDate" name="dateDate" placeholder="dateDate" required>
                                                 <label for="dateDate">Date</label>
@@ -295,7 +295,7 @@
                                                 *Required
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                             
                                     <div class="row">
@@ -345,7 +345,7 @@
                     <th>Case Date</th>
                     <th>Description</th>
                     <th>Final & Executory Date</th>
-                    <th>Date</th>
+                    <th>Date of Issuance</th>
                     <th>Signatory</th>
                     <th>Actions</th>
                 </tr>

@@ -21,7 +21,7 @@ class FinalityCertificationModel extends Model
         'caseDate',
         'description',
         'finalAndExecutoryDate',
-        'dateDate',
+        // 'dateDate',
         'signatoriesid',
     ];
 
