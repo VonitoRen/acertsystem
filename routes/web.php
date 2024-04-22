@@ -18,11 +18,8 @@ use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
 use App\Http\Controllers\FinalityPDFController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\DocumentSurrenderedPDF;
-=======
 use App\Http\Controllers\PiccorPDFController;
->>>>>>> Stashed changes
 
 use App\Http\Controllers\FormerFilipinoController;
 use App\Models\Professions;
@@ -52,11 +49,8 @@ Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name(
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
 Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
 Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
-<<<<<<< Updated upstream
 Route::get('preview-surrendered-pdf/{id}', [DocumentSurrenderedPDF::class, 'previewPdf'])->name('previewSurrenderedDocs.pdf');
-=======
 Route::get('preview-piccor-pdf/{id}', [PiccorPDFController::class, 'previewPdf'])->name('previewPiccor.pdf');
->>>>>>> Stashed changes
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -280,11 +274,8 @@ Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'delet
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
-<<<<<<< HEAD
 Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
-=======
 Route::delete('/certificate-piccor/{id}', [PiccorCertificationController::class, 'deleteCertificate'])->name('delete.certificate-piccor');
->>>>>>> 3f0a39b827640c54b808e792e992d55a034ba12c
 
 
 
