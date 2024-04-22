@@ -30,7 +30,7 @@ class FinalityCertificationController extends Controller
             'caseDate' => 'required|date',
             'description' => 'required|string',
             'finalAndExecutoryDate' => 'required|date',
-            'dateDate' => 'required|date',
+            // 'dateDate' => 'required|date',
             'signatoriesid' => 'required|exists:signatories,id',
         ]);
 
@@ -46,8 +46,10 @@ class FinalityCertificationController extends Controller
         $certificate->caseDate = $validatedData['caseDate'];
         $certificate->description = $validatedData['description'];
         $certificate->finalAndExecutoryDate = $validatedData['finalAndExecutoryDate'];
-        $certificate->dateDate = $validatedData['dateDate'];
+        // $certificate->dateDate = $validatedData['dateDate'];
         $certificate->signatoriesid = $validatedData['signatoriesid'];
+
+        $certificate->dateDate = now(); 
 
         // Save the Certificate
         $certificate->save();
@@ -81,6 +83,7 @@ class FinalityCertificationController extends Controller
             'dateDate' => 'required|date',
             'signatoriesid' => 'required|exists:signatories,id',
         ]);
+        $validatedData['date_issues'] = now(); 
 
         // Update the certificate with the validated data
         $certificate->update($validatedData);

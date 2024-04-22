@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppearanceCertificationController;
 use App\Http\Controllers\FinalityCertificationController;
+use App\Http\Controllers\PiccorCertificationController;
 
 use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
@@ -17,7 +18,11 @@ use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
 use App\Http\Controllers\FinalityPDFController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\DocumentSurrenderedPDF;
+=======
+use App\Http\Controllers\PiccorPDFController;
+>>>>>>> Stashed changes
 
 use App\Http\Controllers\FormerFilipinoController;
 use App\Models\Professions;
@@ -26,6 +31,7 @@ use App\Models\PersonRole;
 use App\Models\CertificationsOfRegistration;
 use App\Models\AppearanceCertification;
 use App\Models\FinalityCertificationModel;
+use App\Models\PicCorCertificationModel;
 use App\Models\ComplaintsCertificationModel;
 use App\Models\SurrenderedDocuments;
 
@@ -46,7 +52,11 @@ Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name(
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
 Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
 Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
+<<<<<<< Updated upstream
 Route::get('preview-surrendered-pdf/{id}', [DocumentSurrenderedPDF::class, 'previewPdf'])->name('previewSurrenderedDocs.pdf');
+=======
+Route::get('preview-piccor-pdf/{id}', [PiccorPDFController::class, 'previewPdf'])->name('previewPiccor.pdf');
+>>>>>>> Stashed changes
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -192,6 +202,29 @@ Route::get('/legal/finality', function () {
 //     }
 // })->name('legal.dashboard');
 
+// PIC-COR
+Route::get('/legal/piccor', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        
+        $piccorCert = PicCorCertificationModel::all();
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+
+        $personRoles = PersonRole::with('person')
+        ->where('role_id', 3)
+        ->get();
+        
+        return view('legal.piccor', [
+            'piccorCert' => $piccorCert,
+            'signatories' => $signatories,
+            'professions' => $professions,
+            'personRoles' => $personRoles,
+]);
+    } else {
+        return back();
+    }
+})->name('legal.piccor');
+
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
 Route::post('/legal/doc-surrendered', [DocumentSurrenderedController::class, 'store'])->name('surrendered.store');
@@ -223,6 +256,7 @@ Route::put('/update-certificate/{id}', [AccreditationCertification::class, 'upda
 Route::get('/edit-APcertificate/{id}', [AppearanceCertificationController::class, 'editAPCertificate'])->name('edit.APcertificate');
 Route::put('/update-APcertificate/{id}', [AppearanceCertificationController::class, 'updateAPCertificate'])->name('update.APcertificate');
 Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->name('appearance.index');
+
 // EDIT ROUTES Complaint
 Route::get('/edit-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'editComplaintCertificate'])->name('edit.Complaintcertificate');
 Route::put('/update-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'updateComplaintCertificate'])->name('update.Complaintcertificate');
@@ -235,7 +269,10 @@ Route::get('/finality', [FinalityCertificationController::class, 'index'])->name
 Route::get('/edit-certificate/{id}',  [DocumentSurrenderedController::class, 'editDocSurrenderedCertificate'])->name('edit.doc-surrendered');
 Route::put('/update-certificate/{id}', [DocumentSurrenderedController::class, 'updateDocSurrenderedCertificate'])->name('update.doc-surrendered');
 
-
+// EDIT ROUTES PIC-COR
+Route::get('/edit-PICCORcertificate/{id}', [PiccorCertificationController::class, 'editPICCORCertificate'])->name('edit.PICCORcertificate');
+Route::put('/update-PICCORcertificate/{id}', [PiccorCertificationController::class, 'updatePICCORCertificate'])->name('update.PICCORcertificate');
+Route::get('/piccor', [PiccorCertificationController::class, 'index'])->name('piccor.index');
 
 // all delete
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
@@ -243,7 +280,11 @@ Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'delet
 Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class, 'deleteCertificate'])->name('delete.certificate-ap');
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
+<<<<<<< HEAD
 Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
+=======
+Route::delete('/certificate-piccor/{id}', [PiccorCertificationController::class, 'deleteCertificate'])->name('delete.certificate-piccor');
+>>>>>>> 3f0a39b827640c54b808e792e992d55a034ba12c
 
 
 
@@ -262,6 +303,9 @@ Route::post('/appearance', [AppearanceCertificationController::class, 'store'])-
 
 Route::get('/finality', [FinalityCertification::class, 'index'])->name('finality.index');
 Route::post('/legal/finality', [FinalityCertificationController::class, 'store'])->name('finality.store');
+
+Route::get('/piccor', [PiccorCertification::class, 'index'])->name('piccor.index');
+Route::post('/legal/piccor', [PiccorCertificationController::class, 'store'])->name('piccor.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
