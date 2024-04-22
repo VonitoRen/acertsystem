@@ -430,11 +430,7 @@
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <!-- Delete Form -->
-<<<<<<< HEAD
-                                            <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-doc-surrendered', $cert->id) }}" method="POST">
-=======
                                            <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-doc-surrendered', $cert->id) }}" method="POST">
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
@@ -446,11 +442,8 @@
                                 </tr>
                         </tbody>
                          <!-- Edit Modal -->
-<<<<<<< HEAD
 
-=======
                     
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                          <div class="modal fade" id="editCertificateModal{{ $cert->id }}" tabindex="-1" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
@@ -517,11 +510,8 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" value="{{ $cert->suffix }}" placeholder="Suffix">
                                                 <label for="suffix">Suffix</label>
-<<<<<<< HEAD
 
-=======
                                                 
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -540,15 +530,12 @@
                                     </div>
 
                                     <div class="row">
-<<<<<<< HEAD
 
 
 
-=======
                                         
 
                                         
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                     </div>
 
                                     <div class="row">
@@ -583,11 +570,8 @@
                                                 <label for="regnum">Registration Number</label>
                                             </div>
                                         </div>
-<<<<<<< HEAD
 
-=======
                                         
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                     </div>
 
                                     <div class="row">
@@ -617,11 +601,8 @@
                                         </div> -->
                                     </div>
                                     <div class="row">
-<<<<<<< HEAD
 
-=======
                                         
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2"> 
                                             <select class="form-control" id="personRole" name="person_role_id">
@@ -685,11 +666,8 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainant_suffix" name="complainant_suffix" placeholder="Suffix" value="{{ $cert->complainant_suffix }}">
                                                 <label for="suffix">Suffix</label>
-<<<<<<< HEAD
 
-=======
                                                 
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -722,11 +700,8 @@
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </div>
-<<<<<<< HEAD
 
-=======
                                 
->>>>>>> 4dd9558d97919a5482c053a472adbc1dd2143d05
                     </form>
                     </div>
                             </div>
