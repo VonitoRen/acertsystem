@@ -264,7 +264,9 @@ Route::get('/finality', [FinalityCertificationController::class, 'index'])->name
 Route::get('/edit-PICCORcertificate/{id}', [PiccorCertificationController::class, 'editPICCORCertificate'])->name('edit.PICCORcertificate');
 Route::put('/update-PICCORcertificate/{id}', [PiccorCertificationController::class, 'updatePICCORCertificate'])->name('update.PICCORcertificate');
 Route::get('/piccor', [PiccorCertificationController::class, 'index'])->name('piccor.index');
-
+// EDIT ROUTES Document Surrendered
+Route::get('/edit-certificate/{id}',  [DocumentSurrenderedController::class, 'editDocSurrenderedCertificate'])->name('edit.doc-surrendered');
+Route::put('/update-certificate/{id}', [DocumentSurrenderedController::class, 'updateDocSurrenderedCertificate'])->name('update.doc-surrendered');
 // all delete
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
@@ -272,7 +274,7 @@ Route::delete('/certificate-ap/{id}', [AppearanceCertificationController::class,
 Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController::class, 'deleteCertificate'])->name('delete.certificate-complaint');
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
 Route::delete('/certificate-piccor/{id}', [PiccorCertificationController::class, 'deleteCertificate'])->name('delete.certificate-piccor');
-
+Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
 
 
 Route::get('/admin/signatories',[AdminController::class,'signatories'])->name('admin.signatories');
