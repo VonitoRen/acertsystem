@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -150,9 +150,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -165,9 +162,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -214,9 +208,6 @@
                                                     @endforeach
                                                 </select>
                                                 <label for="floatingSelect">Profession</label>
-                                                <div class="valid-feedback">
-                                                    Looks professional!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -228,13 +219,17 @@
 
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." maxlength="7">
+                                            <!-- <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." maxlength="7" required>
                                                 <label for="regnum">Registration No.</label>
-                                                <div class="valid-feedback">
-                                                    Sheeesh!
-                                                </div>
                                                 <div class="invalid-feedback">
+                                                    Please enter a 7-digit registration number.
+                                                </div>
+                                            </div> -->
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." maxlength="7" minlength="7" required>
+                                                <label for="regnum">Registration No.</label>
+                                                <div id="regnumFeedback" class="invalid-feedback">
                                                     Please enter a 7-digit registration number.
                                                 </div>
                                             </div>
@@ -244,9 +239,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="registeredDate" name="registeredDate" placeholder="Registered Date" required>
                                                 <label for="registeredDate">Registered Date</label>
-                                                <div class="valid-feedback">
-                                                    Amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -273,14 +265,17 @@
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                            <select class="form-control" id="personRole" name="person_role_id">
-                                                <option disabled selected>Select Signatory</option>
+                                            <select class="form-control" id="personRole" name="person_role_id" required>
+                                                <option value="" disabled selected>Select Signatory</option>
                                                 @foreach($personRoles as $personRole)
                                                     <option value="{{ $personRole->id }}">
                                                         {{ $personRole->person->name }} - {{ $personRole->person->position }}
                                                 @endforeach
                                             </select>
                                                 <label for="personRole">Signatory</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
 
@@ -290,6 +285,8 @@
                                 </div>
                                 
                                 </div>
+
+
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
@@ -302,7 +299,7 @@
                 
                 <div class="p-1">
                     <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                        <table id="datatable1" class="display" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -312,7 +309,6 @@
                                     <th>Place of Issue</th>
                                     <th>Date Issued</th>
                                     <th>Signatory</th>
-                                    <!-- <th>Position/Designation</th> -->
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -322,7 +318,7 @@
                                     <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
                                     <td>{{ $cert->profession->profession }}</td>
                                     <td>{{ $cert->regnum }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($cert->registeredOn)->format('F j, Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cert->registeredDate)->format('F j, Y') }}</td>
                                     <td>{{ $cert->placeOfIssue }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
                                     <td>
@@ -335,12 +331,6 @@
                                             <a href="{{ route('edit.CORcertificate', $cert->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
                                                 <i class="fas fa-edit edit-icon"></i>
                                             </a>
-                                            <!-- <a href="/pdf" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#">
-                                                <i class="fas fa-print"></i>
-                                            </a> -->
-                                            <!-- <button class="btn btn-success">
-                                                <i class="fas fa-print"></i>
-                                            </button> -->
 
                                             <!-- Print Button -->
                                             <a href="{{ route('preview.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
@@ -450,12 +440,20 @@
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="registeredOn" name="registeredOn" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredOn)->format('Y-m-d') }}">
-                                                                    <label for="registeredOn">Registered Date</label>
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="registeredDate" name="registeredDate" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredDate)->format('Y-m-d') }}">
+                                                                    <label for="registeredDate">Registered Date</label>
                                                                 </div>
                                                             </div>
-
                                                             <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="date_issues" name="date_issues" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->date_issues)->format('Y-m-d') }}">
+                                                                    <label for="date_issues">Date of Issuance</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row">
+                                                            <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
                                                                 <select class="form-control" id="personRole" name="person_role_id">
                                                                     <option disabled value="">Select Signatory</option>
@@ -469,6 +467,7 @@
                                                                     <label for="signatoriesid">Signatory</label>
                                                                 </div>
                                                             </div>
+                                                        </div>
 
                                                         </div>
                                                     </div>
@@ -570,10 +569,27 @@
 
     </script>
     
+@if (session('success') && session('refresh'))
+    <script>
+        window.location.href = window.location.href.split('?')[0];
+
+    </script>
+@endif
 
 </body>
 
 </html>
+
+<script>
+    // Function to reload the modal content
+    function reloadModalContent() {
+        $('#addCert').load(window.location.href + ' #addCert');
+    }
+
+    @if(session('success') && session('refresh'))
+        reloadModalContent();
+    @endif
+</script>
 
 
 <script>
@@ -629,5 +645,19 @@
                 $('#deleteForm' + id).submit();
             }
         });
+    });
+</script>
+
+<script>
+    document.getElementById('regnum').addEventListener('input', function(event) {
+        const regnumInput = event.target.value.trim();
+        const regnumFeedback = document.getElementById('regnumFeedback');
+
+        if (regnumInput.length !== 7 || isNaN(regnumInput)) {
+            regnumFeedback.style.display = 'block';
+            regnumFeedback.innerHTML = 'Please enter a valid 7-digit registration number.';
+        } else {
+            regnumFeedback.style.display = 'none';
+        }
     });
 </script>

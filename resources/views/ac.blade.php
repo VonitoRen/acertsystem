@@ -838,9 +838,9 @@ line-height:107%'><o:p></o:p></span></b></p>
         &nbsp; &nbsp; &nbsp; &nbsp;This is to certify that
         <b>{{ mb_strtoupper($accreditationCert->fname) }} 
         @if (!empty($accreditationCert->mname))
-            {{ mb_strtoupper(substr($accreditationCert->mname, 0, 1)) }}.
+            {{ mb_strtoupper(substr($accreditationCert->mname, 0)) }}
         @endif
-        {{ mb_strtoupper($accreditationCert->lname) }} {{ mb_strtoupper($accreditationCert->suffix) }}</b>with Accreditation No.
+        {{ mb_strtoupper($accreditationCert->lname) }} @if(!empty($accreditationCert->suffix)) {{ mb_strtoupper($accreditationCert->suffix) }} @endif</b>with Accreditation No.
         <b>{{ str_pad($accreditationCert->accreditation_no, 7, '0', STR_PAD_LEFT) }}</b>
         valid until
         <b>{{ \Carbon\Carbon::parse($accreditationCert->validityDate)->format('F j, Y') }}.</b>
@@ -869,10 +869,10 @@ Certification is issued for whatever legal purpose it may serve.<o:p></o:p></spa
 
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ $accreditationCert->placeOfIssue }}</span></p>
+margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>{{ $accreditationCert->placeOfIssue }}</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ \Carbon\Carbon::parse($accreditationCert->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
+margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>{{ \Carbon\Carbon::parse($accreditationCert->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
 
 
 

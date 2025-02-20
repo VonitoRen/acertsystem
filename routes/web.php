@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppearanceCertificationController;
 use App\Http\Controllers\FinalityCertificationController;
 use App\Http\Controllers\PiccorCertificationController;
-
+use App\Http\Controllers\FormerFilipinoController;
 use App\Http\Controllers\AccreditationCertification;
 use App\Http\Controllers\CertificationOfRegistration;
 use App\Http\Controllers\LegalCertification;
@@ -17,11 +17,10 @@ use App\Http\Controllers\CorPdfController;
 use App\Http\Controllers\AcPdfController;
 use App\Http\Controllers\AppearancePDFController;
 use App\Http\Controllers\ComplaintsPDFController;
+use App\Http\Controllers\FormerFilipinoPDFController;
 use App\Http\Controllers\FinalityPDFController;
 use App\Http\Controllers\DocumentSurrenderedPDF;
 use App\Http\Controllers\PiccorPDFController;
-
-use App\Http\Controllers\FormerFilipinoController;
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
@@ -30,15 +29,43 @@ use App\Models\AppearanceCertification;
 use App\Models\FinalityCertificationModel;
 use App\Models\PicCorCertificationModel;
 use App\Models\ComplaintsCertificationModel;
+use App\Models\FormerFilipinoCertificationModel;
 use App\Models\SurrenderedDocuments;
+use App\Http\Controllers\ListingController;
 
+Route::get('/approvals', [ListingController::class, 'show'])->middleware('role:super-admin');
+
+
+// Redirect the root URL to the login page
 Route::get('/', function () {
+    return redirect()->route('login'); // Redirect to the login route
+});
+
+Route::get('/ACert', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Grouping routes that require the same role check
+Route::middleware('role:admin')->group(function () {
+    
+    if (auth()->check() && auth()->user()->role == 1) {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        });
+    
+    } else {
+        return back();
+    }
+
+ 
+    
+});
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware('auth');
@@ -47,10 +74,11 @@ Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-ac-pdf/{id}', [AcPdfController::class, 'previewPdf'])->name('previewAC.pdf');
 Route::get('preview-appearance-pdf/{id}', [AppearancePDFController::class, 'previewPdf'])->name('previewAppearance.pdf');
-Route::get('preview-complaints-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('previewComplaints.pdf');
+Route::get('preview-pdf/{id}', [ComplaintsPDFController::class, 'previewPdf'])->name('preview.pdf');
 Route::get('preview-finality-pdf/{id}', [FinalityPDFController::class, 'previewPdf'])->name('previewFinality.pdf');
 Route::get('preview-surrendered-pdf/{id}', [DocumentSurrenderedPDF::class, 'previewPdf'])->name('previewSurrenderedDocs.pdf');
 Route::get('preview-piccor-pdf/{id}', [PiccorPDFController::class, 'previewPdf'])->name('previewPiccor.pdf');
+Route::get('preview-formerfilipino-pdf/{id}', [FormerFilipinoPDFController::class, 'previewPdf'])->name('previewFormerFilipino.pdf');
 
 // dashboards
 // Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
@@ -70,6 +98,7 @@ Route::get('/admin/dashboard', function () {
         return back();
     }
 })->name('admin.dashboard');
+
 
 // Registration Dashboard
 Route::get('/registration/dashboard', function () {
@@ -145,6 +174,7 @@ Route::get('/legal/dashboard', function () {
         return back();
     }
 })->name('legal.dashboard');
+
 // Doc Surrendered
 Route::get('/legal/doc-surrendered', function () {
     if (auth()->check() && auth()->user()->role == 2) {
@@ -174,15 +204,21 @@ Route::get('/legal/finality', function () {
         
         $finalityCert = FinalityCertificationModel::all();
         $signatories = Signatories::all();
+
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 3)
+            ->get();
         
         return view('legal.finality', [
             'finalityCert' => $finalityCert,
             'signatories' => $signatories,
+            'personRoles' => $personRoles,
 ]);
     } else {
         return back();
     }
 })->name('legal.finality');
+
 // Route::get('/legal/dashboard', function () {
 //     if (auth()->check() && auth()->user()->role == 2) {
 //         $complaintsCert = ComplaintsCertificationModel::all();
@@ -219,6 +255,29 @@ Route::get('/legal/piccor', function () {
     }
 })->name('legal.piccor');
 
+// FORMER FILIPINO
+Route::get('/registration/formerfilipino', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        
+        $formerfilipinoCert = FormerFilipinoCertificationModel::all();
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+
+        $personRoles = PersonRole::with('person')
+        ->where('role_id', 3)
+        ->get();
+        
+        return view('registration.formerfilipino', [
+            'formerfilipinoCert' => $formerfilipinoCert,
+            'signatories' => $signatories,
+            'professions' => $professions,
+            'personRoles' => $personRoles,
+]);
+    } else {
+        return back();
+    }
+})->name('registration.formerfilipino');
+
 Route::post('/legal/dashboard', [ComplaintsCertificationController::class, 'store'])->name('complaints.store');
 
 Route::post('/legal/doc-surrendered', [DocumentSurrenderedController::class, 'store'])->name('surrendered.store');
@@ -227,6 +286,8 @@ Route::post('/registration/dashboard', [CertificationOfRegistration::class, 'sto
 
 Route::get('/registration/cor',[CertificationOfRegistration::class,'index'])->name('certreg.cor');
 
+Route::get('/registration/report', [CertificationOfRegistration::class, 'report'])->name('registration.report');
+Route::get('/legal/report', [ComplaintsCertificationController::class, 'report'])->name('legal.report');
 
 
 // EDIT ROUTES COR
@@ -243,13 +304,14 @@ Route::get('/edit-CORcertificate/{id}',  [CertificationOfRegistration::class, 'e
 Route::put('/update-CORcertificate/{id}', [CertificationOfRegistration::class, 'updateCORCertificate'])->name('update.CORcertificate');
 
 // EDIT ROUTES AC
-Route::get('/edit-certificate/{id}',  [AccreditationCertification::class, 'editACCertificate'])->name('edit.certificateAC');
-Route::put('/update-certificate/{id}', [AccreditationCertification::class, 'updateACCertificate'])->name('update.certificateAC');
+Route::get('/edit-ACcertificate/{id}',  [AccreditationCertification::class, 'editACCertificate'])->name('edit.certificateAC');
+Route::put('/update-ACcertificate/{id}', [AccreditationCertification::class, 'updateACCertificate'])->name('update.certificateAC');
 
 // EDIT ROUTES AP
 Route::get('/edit-APcertificate/{id}', [AppearanceCertificationController::class, 'editAPCertificate'])->name('edit.APcertificate');
 Route::put('/update-APcertificate/{id}', [AppearanceCertificationController::class, 'updateAPCertificate'])->name('update.APcertificate');
 Route::get('/appearance', [AppearanceCertificationController::class, 'index'])->name('appearance.index');
+Route::get('/appearance/report', [AppearanceCertificationController::class, 'report'])->name('appearance.report');
 
 // EDIT ROUTES Complaint
 Route::get('/edit-Complaintcertificate/{id}', [ComplaintsCertificationController::class, 'editComplaintCertificate'])->name('edit.Complaintcertificate');
@@ -267,9 +329,18 @@ Route::put('/update-certificate/{id}', [DocumentSurrenderedController::class, 'u
 Route::get('/edit-PICCORcertificate/{id}', [PiccorCertificationController::class, 'editPICCORCertificate'])->name('edit.PICCORcertificate');
 Route::put('/update-PICCORcertificate/{id}', [PiccorCertificationController::class, 'updatePICCORCertificate'])->name('update.PICCORcertificate');
 Route::get('/piccor', [PiccorCertificationController::class, 'index'])->name('piccor.index');
+
+// CONFLICT AREA
 // EDIT ROUTES Document Surrendered
 Route::get('/edit-certificate/{id}',  [DocumentSurrenderedController::class, 'editDocSurrenderedCertificate'])->name('edit.doc-surrendered');
 Route::put('/update-certificate/{id}', [DocumentSurrenderedController::class, 'updateDocSurrenderedCertificate'])->name('update.doc-surrendered');
+
+// EDIT ROUTES FORMER FILIPINO
+Route::get('/edit-FORMERFILIPINOcertificate/{id}', [FormerFilipinoController::class, 'editFORMERFILIPINOCertificate'])->name('edit.FORMERFILIPINOcertificate');
+Route::put('/update-FORMERFILIPINOcertificate/{id}', [FormerFilipinoController::class, 'updateFORMERFILIPINOCertificate'])->name('update.FORMERFILIPINOcertificate');
+Route::get('/formerfilipino', [FormerFilipinoController::class, 'index'])->name('formerfilipino.index');
+// END OF CONFLICT AREA
+
 // all delete
 Route::delete('/certificate-cor/{id}', [CertificationOfRegistration::class, 'deleteCertificate'])->name('delete.certificate-cor');
 Route::delete('/certificate-ac/{id}', [AccreditationCertification::class, 'deleteCertificate'])->name('delete.certificate-ac');
@@ -278,10 +349,15 @@ Route::delete('/certificate-complaint/{id}', [ComplaintsCertificationController:
 Route::delete('/certificate-finality/{id}', [FinalityCertificationController::class, 'deleteCertificate'])->name('delete.certificate-finality');
 Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
 Route::delete('/certificate-piccor/{id}', [PiccorCertificationController::class, 'deleteCertificate'])->name('delete.certificate-piccor');
+
+// CONFLICT AREA
 Route::delete('/certificate-doc-surrendered/{id}', [DocumentSurrenderedController::class, 'deleteCertificate'])->name('delete.certificate-doc-surrendered');
+Route::delete('/certificate-formerfilipino/{id}', [FormerFilipinoController::class, 'deleteCertificate'])->name('delete.certificate-formerfilipino');
+// END OF CONFLICT AREA
 
 
 Route::get('/admin/signatories',[AdminController::class,'signatories'])->name('admin.signatories');
+Route::get('/admin/report',[AdminController::class,'report'])->name('admin.report');
 Route::get('/admin/users',[AdminController::class,'users'])->name('admin.users');
 
 // Route::get('/fad/dashboard',[FadController::class,'dashboard'])->name('fad.dashboard');
@@ -299,6 +375,9 @@ Route::post('/legal/finality', [FinalityCertificationController::class, 'store']
 
 Route::get('/piccor', [PiccorCertification::class, 'index'])->name('piccor.index');
 Route::post('/legal/piccor', [PiccorCertificationController::class, 'store'])->name('piccor.store');
+
+Route::get('/formerfilipino', [FormerFilipinoCertification::class, 'index'])->name('formerfilipino.index');
+Route::post('/registration/formerfilipino', [FormerFilipinoController::class, 'store'])->name('formerfilipino.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

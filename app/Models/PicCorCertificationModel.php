@@ -26,6 +26,7 @@ class PiccorCertificationModel extends Model
         'penalty',
         'caseTitle',
         'administrativeCaseNo',
+        'dateOfDocument',
         'dateofIssuance',
         'hearingOfficer',
         'person_role_id',
@@ -35,6 +36,7 @@ class PiccorCertificationModel extends Model
         'complainantsuffix',
         'complainantsex',
         'legalDivisionChief',
+        'position_officer',
     ];
 
     public function profession()

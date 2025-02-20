@@ -40,15 +40,27 @@ class LoginRequest extends FormRequest
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
-
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+    
+        // Check if a user with the provided email (username) exists
+        $user = User::where('email', $this->input('email'))->first();
+    
+        // If user doesn't exist, return an error indicating "Username does not exist"
+        if (!$user) {
             RateLimiter::hit($this->throttleKey());
-
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => trans('auth.failed'), // Username does not exist
             ]);
         }
-
+    
+        // If the user exists, now check the password
+        if (!Auth::attempt(['email' => $this->input('email'), 'password' => $this->input('password')], $this->boolean('remember'))) {
+            RateLimiter::hit($this->throttleKey());
+            throw ValidationException::withMessages([
+                'password' => trans('auth.failed'), // Password is incorrect
+            ]);
+        }
+    
+        // Clear the rate limiter once authentication is successful
         RateLimiter::clear($this->throttleKey());
     }
 

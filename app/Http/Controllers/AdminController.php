@@ -12,23 +12,99 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Database\QueryException;
+
+use App\Models\AccreditationCertificationModel;
+use App\Models\CertificationsOfRegistration;
+
+use App\Models\FinalityCertificationModel;
+use App\Models\PicCorCertificationModel;
+use App\Models\ComplaintsCertificationModel;
+use App\Models\SurrenderedDocuments;
+use App\Models\FormerFilipinoCertificationModel;
+
+use App\Models\AppearanceCertification;
+
 
 class AdminController extends Controller
 {
     public function dashboard(){
 
-        $professions = Professions::all();
+        $professions = Professions::orderBy('profession', 'asc')->get(); // Sort alphabetically by 'profession' column
+
 
         return view('admin.dashboard', [
             'professions' => $professions,
         ]);
     }
 
-    public function signatories(){
+    public function report(){
+        // REG POH
+        $accreditationCert = AccreditationCertificationModel::all();
+        $certificationOfRegistrations = CertificationsOfRegistration::all();
+        $formerfilipinoCert = FormerFilipinoCertificationModel::all();
 
+        // LEGAL
+        $complaintsCert = ComplaintsCertificationModel::all();
+        $surrenderedCert = SurrenderedDocuments::all();
+        $finalityCert = FinalityCertificationModel::all();
+        $piccorCert = PicCorCertificationModel::all();
+
+        // FAD
+        $appearanceCert = AppearanceCertification::all();
+
+
+        return view('admin.report', [
+            'accreditationCert' => $accreditationCert,
+            'certificationOfRegistrations' => $certificationOfRegistrations,
+            'complaintsCert' => $complaintsCert,
+            'surrenderedCert' => $surrenderedCert,
+            'finalityCert' => $finalityCert,
+            'piccorCert' => $piccorCert,
+            'appearanceCert' => $appearanceCert,
+            'formerfilipinoCert' => $formerfilipinoCert,
+        ]);
+    }
+
+    // public function signatories(){
+
+    //     $signatories = Signatories::all();
+    //     $roles = Roles::all();
+    //     $personRoles = PersonRole::all();
+
+    //     return view('admin.signatories', [
+    //         'signatories' => $signatories,
+    //         'roles' => $roles,
+    //         'personRoles' => $personRoles,
+    //     ]);
+    // }
+
+    public function signatories()
+    {
+
+
+        
+        // working function
+
+
+
+
+
+        // Retrieve all signatories
         $signatories = Signatories::all();
+        
+        // Retrieve all roles
         $roles = Roles::all();
-        $personRoles = PersonRole::all();
+
+        // Retrieve distinct person_ids
+        $distinctPersonIds = PersonRole::distinct()->pluck('person_id');
+
+
+
+        // Retrieve personRoles using the distinct person_ids
+        $personRoles = PersonRole::with('person', 'role')
+            ->whereIn('person_id', $distinctPersonIds)
+            ->get();
 
         return view('admin.signatories', [
             'signatories' => $signatories,
@@ -209,30 +285,186 @@ class AdminController extends Controller
     //     // Redirect the user after successfully saving the signatory
     //     return redirect()->route('admin.signatories')->with('success', 'Signatory added successfully.');
     // }
-    public function updatesignatories(Request $request, $id)
-    {
-        $signatories = Signatories::findOrFail($id);
+    // public function updatesignatories(Request $request, $id)
+    // {
+    //     $signatories = Signatories::findOrFail($id);
 
-        // dd($request->all());
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'position' => 'required|string|max:255',
-        ]);
-        // Update the professions with the validated data
-        $signatories->update($validatedData);
+    //     // dd($request->all());
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'position' => 'required|string|max:255',
+    //     ]);
+    //     // Update the professions with the validated data
+    //     $signatories->update($validatedData);
 
-        return redirect()->route('admin.signatories')->with('success', 'Certificate updated successfully');
-    }
+    //     return redirect()->route('admin.signatories')->with('success', 'Certificate updated successfully');
+    // }
+    // public function deletesignatories($id)
+    // {
+    //     // Find the certification by ID
+    //     $signatories = Signatories::findOrFail($id);
+
+    //     // Delete the certification
+    //     $signatories->delete();
+
+    //     // Redirect back or wherever you want
+    //     return redirect()->back()->with('success', 'Certificate deleted successfully');
+    // }
+
+    // public function deletesignatories($id)
+    // {
+    //     try {
+    //         // Find the signatory by ID
+    //         $signatories = Signatories::findOrFail($id);
+
+    //         // Delete the signatory
+    //         $signatories->delete();
+
+    //         // Redirect back or wherever you want
+    //         return redirect()->back()->with('success', 'Signatory deleted successfully');
+    //     } catch (QueryException $e) {
+    //         // If the signatory is used as a foreign key, it cannot be deleted
+    //         // Handle the error accordingly, e.g., redirect back with an error message
+    //         return redirect()->back()->with('error', 'Cannot delete the signatory. It may be in use elsewhere.');
+    //     }
+    // }
+
+
+//     public function deletesignatories($id)
+// {
+//     try {
+//         // Find the signatory by ID
+//         $signatories = Signatories::findOrFail($id);
+
+//         // Delete the signatory
+//         $signatories->delete();
+
+//         // If deletion is successful, display a success message directly in the view
+//         return redirect()->back()->with('success', 'Signatory deleted successfully');
+//     } catch (QueryException $e) {
+//         // If the signatory is used as a foreign key, it cannot be deleted
+//         // Extract the error message from the exception
+//         $errorMessage = $e->getMessage();
+
+//         // Display the error message directly in the view
+//         // return view('your.view')->with('error', $errorMessage);
+//         return redirect()->back()->with('error', 'Cannot delete this signatory');
+//     }
+// }
+
+// public function deletesignatories($id)
+// {
+//     try {
+//         // Find the signatory by ID
+//         $signatories = Signatories::findOrFail($id);
+
+//         // Delete the signatory
+//         $signatories->delete();
+
+//         // If deletion is successful, display a success message directly in the view
+//         return redirect()->back()->with('success', 'Signatory deleted successfully');
+//     } catch (QueryException $e) {
+//         // Check if the error message contains the specific error code for a foreign key constraint violation
+//         if ($e->getCode() === '23000') {
+//             // If the signatory is used as a foreign key, it cannot be deleted
+//             return redirect()->back()->with('error', 'Cannot delete this signatory. It is associated with other records.');
+//         } else {
+//             // For other types of errors, display a generic error message
+//             return redirect()->back()->with('error', 'An error occurred while deleting the signatory.');
+//         }
+//     }
+// }
+
+// public function deletesignatories($id)
+// {
+//     try {
+//         // Find the signatory by ID
+//         $signatories = Signatories::findOrFail($id);
+
+//         // Delete the signatory
+//         $signatories->delete();
+
+//         // If deletion is successful, display a success message directly in the view
+//         return redirect()->back()->with('success', 'Signatory deleted successfully');
+//     } catch (QueryException $e) {
+//         // Check if the error message contains the specific error code for a foreign key constraint violation
+//         if ($e->getCode() === '23000') {
+//             // If the signatory is used as a foreign key, it cannot be deleted
+//             $errorMessage = 'Cannot delete this signatory. It is associated with other records.';
+//         } else {
+//             // For other types of errors, display a generic error message
+//             $errorMessage = 'An error occurred while deleting the signatory.';
+//         }
+
+//         // Pass the error message to the Blade view
+//         return redirect()->back()->with('error', $errorMessage);
+//     }
+// }
+
+public function updateSignatories(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string',
+        'position' => 'required|string',
+        'selected_roles' => 'array', // Ensure roles are sent as an array
+        'selected_roles.*' => 'exists:roles,id', // Ensure each role ID exists in the roles table
+    ]);
+
+    // Find the signatory
+    $signatory = Signatories::findOrFail($id);
+
+    // Update the signatory details
+    $signatory->update([
+        'name' => $request->input('name'),
+        'position' => $request->input('position'),
+    ]);
+
+    // Sync the roles for the signatory
+    $signatory->roles()->sync($request->input('selected_roles'));
+
+    // Optionally, you can return a response indicating success
+    return redirect()->back()->with('success', 'Signatory updated successfully');
+
+}
+
+
     public function deletesignatories($id)
     {
-        // Find the certification by ID
-        $signatories = Signatories::findOrFail($id);
+        try {
+            // Find the signatory by ID
+            $signatory = Signatories::find($id);
 
-        // Delete the certification
-        $signatories->delete();
+            // Check if the signatory exists
+            if (!$signatory) {
+                return redirect()->back()->with('error', 'Signatory not found.');
+            }
 
-        // Redirect back or wherever you want
-        return redirect()->back()->with('success', 'Certificate deleted successfully');
+            // Find all person_role records associated with the signatory
+            $personRoles = PersonRole::where('person_id', $signatory->id)->get();
+
+            // Delete all associated person_role records
+            foreach ($personRoles as $personRole) {
+                $personRole->delete();
+            }
+
+            // Now, delete the signatory
+            $signatory->delete();
+
+            // If deletion is successful, display a success message directly in the view
+            return redirect()->back()->with('success', 'Signatory deleted successfully');
+        } catch (QueryException $e) {
+            // Check if the error message contains the specific error code for a foreign key constraint violation
+            if ($e->getCode() === '23000') {
+                // If the signatory is used as a foreign key, it cannot be deleted
+                $errorMessage = 'Cannot delete this signatory. It is associated with other records.';
+            } else {
+                // For other types of errors, display a generic error message
+                $errorMessage = 'An error occurred while deleting the signatory.';
+            }
+
+            // Pass the error message to the Blade view
+            return redirect()->back()->with('error', $errorMessage);
+        }
     }
 
 
@@ -256,22 +488,44 @@ class AdminController extends Controller
 
         return redirect()->route('admin.users')->with('success', 'User added successfully.');
     }
-    public function updateusers(Request $request, $id)
-    {
-        $users = User::findOrFail($id);
+    // public function updateusers(Request $request, $id)
+    // {
+    //     $users = User::findOrFail($id);
 
-        $validatedData = $request->validate([
-            'name' => 'string|max:255',
-            'email' => 'string', 'max:255', 'unique:users',
-            'role' => 'numeric'
-        ]);
+    //     $validatedData = $request->validate([
+    //         'name' => 'string|max:255',
+    //         'email' => 'string', 'max:255', 'unique:users',
+    //         'role' => 'numeric'
+    //     ]);
 
-        // Update the user with the validated data
-        $users->update($validatedData);
+    //     // Update the user with the validated data
+    //     $users->update($validatedData);
 
-        return redirect()->route('admin.users')->with('success', 'User updated successfully.');
-    }
+    //     return redirect()->route('admin.users')->with('success', 'User updated successfully.');
+    // }
+// public function updateusers(Request $request, $id)
+// {
+//     $user = User::findOrFail($id);
 
+//     $validatedData = $request->validate([
+//         'name' => 'string|max:255',
+//         'email' => 'string|max:255|unique:users,email,'.$id, // Ensure unique email excluding the current user
+//         'email_fp' => 'nullable|string|max:255|email', // Adjusted validation for email_fp
+//         'role' => 'numeric'
+//     ]);
+
+//     // Update the user with the validated data
+//     $user->fill($validatedData);
+
+//     // If email_fp is updated, reset verification status
+//     if ($user->isDirty('email_fp')) {
+//         $user->email_fp = $validatedData['email_fp']; // Use $validatedData to get the updated value
+//     }
+
+//     $user->save();
+
+//     return redirect()->route('admin.users')->with('success', 'User updated successfully.');
+// }
     public function deleteusers($id)
     {
         // Find the certification by ID
@@ -283,4 +537,34 @@ class AdminController extends Controller
         // Redirect back or wherever you want
         return redirect()->back()->with('success', 'Certificate deleted successfully');
     }
+    public function updateusers(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+
+    $validatedData = $request->validate([
+        'name' => 'string|max:255',
+        'email' => 'string|max:255|unique:users,email,'.$id, // Ensure unique email excluding the current user
+        'email_fp' => 'nullable|string|max:255|email', // Adjusted validation for email_fp
+        'role' => 'numeric',
+        'password_fp' => 'nullable|string|min:8', // Validation rule for password_fp
+    ]);
+
+    // Update the user with the validated data
+    $user->fill($validatedData);
+
+    // If password_fp is provided and not empty, hash and update the password
+    if (!empty($validatedData['password_fp'])) {
+        $user->password = Hash::make($validatedData['password_fp']);
+    }
+
+    // If email_fp is updated, reset verification status
+    if ($user->isDirty('email_fp')) {
+        $user->email_fp = $validatedData['email_fp']; // Use $validatedData to get the updated value
+    }
+
+    $user->save();
+
+    return redirect()->route('admin.users')->with('success', 'User updated successfully.');
+}
+
 }

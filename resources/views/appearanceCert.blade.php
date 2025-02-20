@@ -799,32 +799,54 @@ style='font-size:16.0pt;line-height:107%'>CERTIFICATE OF APPEARANCE<o:p></o:p></
 IT MAY CONCERN:</span></b></p>
 
 
-<div class="" style="padding-left: 20px; padding-right: 20px;">
-<p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
+<!-- <div class="" style="padding-left: 20px; padding-right: 20px;"> -->
+<p class=MsoNormal style='text-align:justify;text-indent: 0.7in;'><span style='font-size:13.0pt;line-height:200%;'><span
 style='mso-tab-count:1'></span>This is to certify that <b>{{ mb_strtoupper($appearanceCert->fname) }} 
 @if (!empty($appearanceCert->mname))
     {{ mb_strtoupper(substr($appearanceCert->mname, 0, 1)) }}.
 @endif
-{{ mb_strtoupper($appearanceCert->lname) }} {{ mb_strtoupper($appearanceCert->suffix) }}</b>of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }} for {{ $appearanceCert->purpose }}.</span>
+{{ mb_strtoupper($appearanceCert->lname) }} @if(!empty($appearanceCert ->suffix)) {{ mb_strtoupper($appearanceCert ->suffix) }} @endif</b>of {{ mb_strtoupper($appearanceCert->agency) }} personally appeared in this Office on 
+<!-- {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j') }} -->
+
+{{-- Check if dateOfAppearance_two is set --}}
+@if ($appearanceCert->dateOfAppearance_two)
+    {{-- If dateOfAppearance_two is consecutive with dateOfAppearance --}}
+    {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j') }}
+    @if (\Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->addDay()->eq(\Carbon\Carbon::parse($appearanceCert->dateOfAppearance_two)))
+        and {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance_two)->format('j') }},
+    @else
+        and {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance_two)->format('F j') }},
+    @endif
+    {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('Y') }}
+@else
+    {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('F j, Y') }}
+@endif
+
+{{-- Output the year --}}
+<!-- {{ \Carbon\Carbon::parse($appearanceCert->dateOfAppearance)->format('Y') }} -->
+
+
+
+ {{ $appearanceCert->purpose }}.</span>
 </p>
 
 
 
-<p class=MsoNormal style='text-align:justify;'><span style='font-size:13.0pt;line-height:200%;'><span
+<p class=MsoNormal style='text-align:justify;text-indent: 0.7in;'><span style='font-size:13.0pt;line-height:200%;'><span
 style='mso-tab-count:1'></span>This certification is being issued
 upon the request <span class=GramE>of <u><span
 style='mso-spacerun:yes'></span></u></span>above stated individual for
 the purpose of establishing the evidence and duration of appearance in the Office.<o:p></o:p></span></p>
-</div>
+<!-- </div> -->
 
 
 
 
 <p class=MsoNoSpacing><span style='mso-tab-count:1'></span><span
-style='font-size:13.0pt'>&nbsp; &nbsp; &nbsp; &nbsp;{{ $appearanceCert->placeOfIssue }}</span></p>
+style='font-size:13.0pt'>{{ $appearanceCert->placeOfIssue }}</span></p>
 
 <p class=MsoNoSpacing><span style='font-size:13.0pt'><span style='mso-tab-count:
-1'></span>&nbsp; &nbsp; &nbsp; &nbsp;{{ \Carbon\Carbon::parse($appearanceCert->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
+1'></span>{{ \Carbon\Carbon::parse($appearanceCert->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
 
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
@@ -837,7 +859,7 @@ style='font-size:13.0pt;line-height:107%'>{{ $appearanceCert->personRole->person
 
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
-<p class=MsoNormal> <i>Note: Not valid without dry seal and if there is any altercation</i></p>
+<p class=MsoNormal> <i>Note: Not valid without dry seal and if there is any alteration</i></p>
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>

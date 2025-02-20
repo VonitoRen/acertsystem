@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -154,9 +154,6 @@
                                 <div class="form-floating mb-2">
                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="name" placeholder="Name" required>
                                     <label for="validationCustom01">Name</label>
-                                    <div class="valid-feedback">
-                                                        Looks good!
-                                                    </div>
                                                     <div class="invalid-feedback">
                                                         *Required
                                                     </div>
@@ -166,9 +163,6 @@
                                 <div class="form-floating mb-2">
                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="email" placeholder="Email" required>
                                     <label for="validationCustom01">Username</label>
-                                    <div class="valid-feedback">
-                                                        Looks nice!
-                                                    </div>
                                                     <div class="invalid-feedback">
                                                         *Required
                                                     </div>
@@ -180,9 +174,6 @@
                                 <div class="form-floating mb-2">
                                     <input type="password" class="form-control" style="border-radius: 5px; border-color: lightgrey;" name="password" placeholder="Password" required>
                                     <label for="validationCustom01">Password</label>
-                                    <div class="valid-feedback">
-                                                        Looks amazing!
-                                                    </div>
                                                     <div class="invalid-feedback">
                                                         *Required
                                                     </div>
@@ -198,9 +189,6 @@
                                         <option value="4">Finance and Administrative Division</option>
                                     </select>
                                     <label for="validationCustom01">Role</label>
-                                    <div class="valid-feedback">
-                                                        Well done!
-                                                    </div>
                                                     <div class="invalid-feedback">
                                                         *Required
                                                     </div>
@@ -227,6 +215,7 @@
                                     <!-- <th>id</th> -->
                                     <th>Name</th>
                                     <th>Username</th>
+                                    <!-- <th>Email</th> -->
                                     <th>Role</th>
                                     <th>Actions</th>
                                 </tr>
@@ -236,6 +225,7 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <!-- <td>{{ $user->email_fp }}</td> -->
                                     <td>
                                         @php
                                             $roleName = '';
@@ -314,10 +304,17 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
+                                                            
                                                         <div class="row">
 
-                                                           <div class="col-md-6">
+                                                           
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="password" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="password_fp" placeholder="password_fp">
+                                                                    <label for="validationCustom01">New Password</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
                                                                     <select class="form-select" id="validationCustom01" name="role" required>
                                                                         <option value="" disabled selected>Select Role</option>

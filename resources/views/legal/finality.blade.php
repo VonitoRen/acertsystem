@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
     
     <!-- Custom fonts for this template-->
@@ -152,9 +152,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="board" placeholder="Board" required>
                                                 <label for="validationCustom01">Board</label>
-                                                <div class="valid-feedback">
-                                                Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -167,9 +164,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainants" name="complainants" placeholder="Complainant/s" required>
                                                 <label for="complainants">Complainant/s</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -180,9 +174,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="respondents" name="respondents" placeholder="Respondent/s" required>
                                                 <label for="respondents">Respondent/s</label>
-                                                <div class="valid-feedback">
-                                                Looks great!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -193,9 +184,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="for_" name="for_" placeholder="FOR" required>
                                                 <label for="for_">FOR</label>
-                                                <div class="valid-feedback">
-                                                Looks great!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -208,9 +196,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="caseNo" name="caseNo" placeholder="Case No." required>
                                                 <label for="caseNo">Case No.</label>
-                                                <div class="valid-feedback">
-                                                Fantastic!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -221,9 +206,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="caseDate" name="caseDate" placeholder="Case Date" required>
                                                 <label for="caseDate">Case Date</label>
-                                                <div class="valid-feedback">
-                                                Delightful!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -238,9 +220,6 @@
                                          
                                                 <label for="description">Description</label>
                                         
-                                                <div class="valid-feedback">
-                                                    You can do this!
-                                                </div>
                                    
                                                 <div class="invalid-feedback">
                                                     *Required
@@ -275,9 +254,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="finalAndExecutoryDate" name="finalAndExecutoryDate" placeholder="Final & Executory Date" required>
                                                 <label for="finalAndExecutoryDate">Final & Executory Date</label>
-                                                <div class="valid-feedback">
-                                                Looks exactly!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -301,10 +277,12 @@
                                     <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-floating mb-2">
-                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoriesid" required>
+                                                <select class="form-control" id="signatory" name="person_role_id" required>
                                                     <option value="" disabled selected>Select Signatory</option>
-                                                    @foreach($signatories as $signatory)
-                                                        <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
+                                                    @foreach($personRoles as $personRole)
+                                                        <option value="{{ $personRole->id }}">
+                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 <label for="signatoriesid">Signatory</label>
@@ -334,7 +312,7 @@
                 <!--  -->
                 <div class="p-1">
     <div class="table-responsive">
-        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+        <table id="datatable1" class="display" style="width:100%;">
             <thead>
                 <tr>
                     <th>Board</th>
@@ -498,7 +476,7 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
                                                                     <input type="date" required class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateDate" name="dateDate" placeholder="Date of Appearance" value="{{ \Carbon\Carbon::parse($cert->dateDate)->format('Y-m-d') }}">
-                                                                    <label for="dateDate">Date</label>
+                                                                    <label for="dateDate">Date of Issuance</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -534,10 +512,10 @@
     </div>
 </div>
 
-                <!--  -->
+    <!--  -->
 
-            </div>
         </div>
+    </div>
                         
                 </div>
                 <!-- /.container-fluid -->
@@ -586,9 +564,9 @@
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="script.js"></script>   
+<script src="/script.js"></script>   
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="sweetalert2.min.js"></script>
+<script src="/sweetalert2.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#datatable1').DataTable();
@@ -653,6 +631,7 @@
                     confirmButtonText: 'Yes, delete it!',
                     cancelButtonText: 'No, cancel!',
                     reverseButtons: true
+                    
                 }).then((result) => {
                     // If user clicks on confirm button
                     if (result.isConfirmed) {
@@ -660,10 +639,10 @@
                         var form = document.getElementById('deleteForm' + caseNo);
                         form.submit();
                     }
-                });
+                });             
             });
         });
-    });
+    }); 
 
 
     // Wait for the document to be fully loaded

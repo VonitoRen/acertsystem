@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
     
     <!-- Custom fonts for this template-->
@@ -20,9 +20,11 @@
 
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- DT -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
         <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
@@ -129,174 +131,180 @@
                             <!-- Modal -->
                             
                             <form class="needs-validation" action="{{ route('complaints.store') }}" method="post" novalidate>
-    @csrf
-    <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Complaints</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <br>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
-                                    <label for="lname">Last Name</label>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        *Required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
-                                    <label for="fname">First Name</label>
-                                    <div class="valid-feedback">
-                                        Looks nice!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        *Required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
-                                    <label for="mname">Middle Name</label>
-                                </div>
-                            </div>
-                        </div>
+                                @csrf
+                                <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Complaints</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <br>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" required>
+                                                                <label for="lname">Last Name</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" required>
+                                                                <label for="fname">First Name</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="mname" name="mname" placeholder="Middle Name">
+                                                                <label for="mname">Middle Name</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix">
-                                    <label for="suffix">Suffix</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label>SEX:</label> <br>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
-                                    <label class="form-check-label" for="male">MALE</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
-                                    <label class="form-check-label" for="female">FEMALE</label>
-                                </div>
-                            </div>
-                        </div>
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="suffix" name="suffix" placeholder="Suffix">
+                                                                <label for="suffix">Suffix</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <label>SEX:</label> <br>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
+                                                                <label class="form-check-label" for="male">MALE</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
+                                                                <label class="form-check-label" for="female">FEMALE</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <select class="form-select" id="professionID" name="professionID" required>
-                                        <option disabled selected value="">Select Profession</option>
-                                        @foreach($professions as $profession)
-                                            <option value="{{ $profession->id }}">{{ $profession->profession }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label for="professionID">Profession</label>
-                                    <div class="valid-feedback">
-                                        Looks professional!
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating">
+                                                                <select class="form-select" id="professionID" name="professionID" required>
+                                                                    <option disabled selected value="">Select Profession</option>
+                                                                    @foreach($professions as $profession)
+                                                                        <option value="{{ $profession->id }}">{{ $profession->profession }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="professionID">Profession</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="date" class="form-control" id="registeredDate" name="registeredDate" placeholder="Registration Date" required>
+                                                                <label for="registeredDate">Registration Date</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration Number" maxlength="7" minlength="7" required>
+                                                                <label for="regnum">Registration Number</label>
+                                                                <div class="invalid-feedback">
+                                                                    Please enter a 7-digit registration number.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="OR_No" name="OR_No" placeholder="O.R. No." required>
+                                                                <label for="OR_No">O.R. No.</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" required>
+                                                                <label for="amount">Amount</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="form-floating mb-2">
+                                                                <input type="text" class="form-control" id="initials" name="initials" placeholder="Initials" required>
+                                                                <label for="initials">Initials</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="attorney" name="signatoriesAtty" required>
+                                                                    <option value="" disabled selected>Select Attorney</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="attorney">Attorney</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="signatory" name="person_role_id" required>
+                                                                    <option value="" disabled selected>Select Signatory</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="signatory">Signatory</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <input type="submit" class="btn btn-primary" value="Submit">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        *Required
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="date" class="form-control" id="registeredDate" name="registeredDate" required>
-                                    <label for="registeredDate">Registration Date</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="regnum" name="regnum" placeholder="Registration Number" required>
-                                    <label for="regnum">Registration Number</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="OR_No" name="OR_No" placeholder="O.R. No." required>
-                                    <label for="OR_No">O.R. No.</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" required>
-                                    <label for="amount">Amount</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-2">
-                                    <input type="text" class="form-control" id="initials" name="initials" placeholder="Initials" required>
-                                    <label for="initials">Initials</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-floating mb-2">
-                                    <select class="form-control" id="attorney" name="signatoriesAtty" required>
-                                        <option disabled selected>Select Attorney</option>
-                                        @foreach($personRoles as $personRole)
-                                            <option value="{{ $personRole->id }}">
-                                                {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <label for="attorney">Attorney</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating mb-2">
-                                    <select class="form-control" id="signatory" name="person_role_id" required>
-                                        <option disabled selected>Select Signatory</option>
-                                        @foreach($personRoles as $personRole)
-                                            <option value="{{ $personRole->id }}">
-                                                {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <label for="signatory">Signatory</label>
-                                    <div class="valid-feedback">
-                                        A wonderful person!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        *Required
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Submit">
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+                            </form>
 
                 
                 <div class="p-1">
                     <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                        <table id="datatable1" class="display" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -329,11 +337,11 @@
                                     <td>{{ $cert->amount }}</td>
                                     <!-- wait lang -->
                                     <td>
-                                        <b>{{ $cert->attypersonRole->person->name }}</b><br>
+                                        <b>{{ $cert->attorneyRole->person->name }}</b><br>
                                         {{ $cert->personRole->person->position }}
                                     </td>
                                     <td>
-                                        <b>{{ $cert->personRole->person->name }}</b><br>
+                                        <b>{{ $cert->personRole->person->name }}</b><b  r>
                                         {{ $cert->personRole->person->position }}
                                     </td>
 
@@ -346,7 +354,7 @@
                                             
                                             
                                             <!-- Print Button -->
-                                            <a href="{{ route('previewComplaints.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
+                                            <a href="" target="_blank" class="btn btn-success">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             
@@ -354,7 +362,7 @@
                                            <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-complaint', $cert->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-danger delete-btn" data-id="" style="border-radius: 0 0.25rem 0.25rem 0;">
+                                                <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -443,9 +451,6 @@
                                                 <label class="form-check-label" for="female">FEMALE</label>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
@@ -465,6 +470,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="registeredDate" name="registeredDate" placeholder="Registration Date" value="{{ \Carbon\Carbon::parse($cert->registeredDate)->format('Y-m-d') }}" required>
@@ -475,6 +483,12 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration Number" value="{{ $cert->regnum }}" required>
                                                 <label for="regnum">Registration Number</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="date_issues" name="date_issues" placeholder="Date of Issuance" value="{{ $cert->date_issues }}" required>
+                                                <label for="date_issues">Date of Issuance</label>
                                             </div>
                                         </div>
                                     </div>
@@ -502,16 +516,16 @@
                                     <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-floating mb-2">
-                                        <select class="form-control" id="personRole" name="person_role_id">
-                                                                    <option disabled value="">Select Attorney</option>
-                                                                    @foreach($personRoles as $personRole)
-                                                                        <option value="{{ $personRole->id }}" {{ optional($cert->personRole)->id == $personRole->id ? 'selected' : '' }}>
-                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
-                                                <label for="signatoriesAtty">Attorney</label>
-                                            </div>
+                                            <select class="form-control" id="personRole" name="signatoriesAtty">
+                                                <option disabled value="">Select Attorney</option>
+                                                @foreach($personRoles as $personRole)
+                                                    <option value="{{ $personRole->id }}" {{ optional($cert)->signatoriesAtty == $personRole->id ? 'selected' : '' }}>
+                                                        {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <label for="signatoriesAtty">Attorney</label>
+                                        </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2"> 
@@ -641,4 +655,41 @@
       }, false)
     })
 })()
+
+
+ // Wait for the document to be fully loaded
+ document.addEventListener('DOMContentLoaded', function() {
+        // Get all delete buttons with class "delete-btn"
+        var deleteButtons = document.querySelectorAll('.delete-btn');
+
+        // Loop through each delete button
+        deleteButtons.forEach(function(button) {
+            // Add click event listener to each delete button
+            button.addEventListener('click', function(event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Get the data-id attribute value which contains the caseNo
+                var caseNo = this.getAttribute('data-id');
+
+                // Show SweetAlert confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover this certificate!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true
+                }).then((result) => {
+                    // If user clicks on confirm button
+                    if (result.isConfirmed) {
+                        // Proceed with deletion by submitting the form
+                        var form = document.getElementById('deleteForm' + caseNo);
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
 </script>

@@ -42,6 +42,7 @@ class AuthenticationTest extends TestCase
         $this->assertGuest();
     }
 
+
     public function test_users_can_logout(): void
     {
         $user = User::factory()->create();

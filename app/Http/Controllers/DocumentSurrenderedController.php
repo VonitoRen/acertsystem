@@ -48,6 +48,7 @@ class DocumentSurrenderedController extends Controller
             'complainant_suffix' => 'nullable|string|max:255',
             'complainant_sex' => 'required|in:MALE,FEMALE',
             'chief' => 'required|string|max:255',
+            'position_officer' => 'required|string|max:255',
         ]);
 
         // Create a new Certificate instance
@@ -88,6 +89,7 @@ class DocumentSurrenderedController extends Controller
             'suffix' => 'nullable|string|max:255',
             'sex' => 'required|in:MALE,FEMALE',
             'professionID' => 'required|exists:professions,id',
+            'date_issues' => 'required|date',
             'returnedDate' => 'required|date',
             'regnum' => 'required|string|max:255',
             'penalty' => 'required|string|max:255',
@@ -101,6 +103,7 @@ class DocumentSurrenderedController extends Controller
             'complainant_suffix' => 'nullable|string|max:255',
             'complainant_sex' => 'required|in:MALE,FEMALE',
             'chief' => 'required|string|max:255',
+            'position_officer' => 'required|string|max:255',
         ]);
 
         // Update the certificate with the validated data

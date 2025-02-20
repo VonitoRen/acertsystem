@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -91,6 +91,14 @@
         color: white;
     }
 
+    .btn-secondary {
+        color: black;
+    }
+
+    .btn-secondary:hover {
+        color: white;
+    }
+
 
 </style>
 
@@ -142,9 +150,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                                <div class="valid-feedback">
-                                                Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -155,9 +160,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks nice!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -194,41 +196,46 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="agency" name="agency" placeholder="Agency" required>
                                                 <label for="agency">Agency</label>
-                                                <div class="valid-feedback">
-                                                    Amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" required>
-                                                <label for="dateOfAppearance">Date of Appearance</label>
-                                                <div class="valid-feedback">
-                                                    Delightful!
-                                                </div>
+                                                <label for="dateOfAppearance">Date of Appearance 1</label>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance_two" name="dateOfAppearance_two" placeholder="Date of Appearance" >
+                                                <label for="dateOfAppearance_two">Date of Appearance 2 (optional)</label>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="col-md-6">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance_three" name="dateOfAppearance_three" placeholder="Date of Appearance" >
+                                                <label for="dateOfAppearance_three">Date of Appearance 3 (optional)</label>
+                                            </div>
+                                        </div> -->
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="purpose" name="purpose" placeholder="Purpose" required>
                                                 <label for="purpose">Purpose</label>
-                                                <div class="valid-feedback">
-                                                    You can do it!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -247,9 +254,6 @@
                                                 @endforeach
                                             </select>
                                                 <label for="floatingSelect">Signatory</label>
-                                                <div class="valid-feedback">
-                                                    A wonderful person!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -270,7 +274,7 @@
                 
                 <div class="p-1">
                     <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                        <table id="datatable1" class="display" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -292,7 +296,7 @@
                                     <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
                                     <td>{{ $cert->sex }}</td>
                                     <td>{{ $cert->agency }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($cert->dateOfAppearance)->format('F j, Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cert->dateOfAppearance)->format('F j, Y') }}, {{ \Carbon\Carbon::parse($cert->dateOfAppearance_two)->format('F j, Y') }} </td>
                                     <td>{{ $cert->purpose }}</td>
                                     <td>{{ $cert->placeOfIssue }}</td>
                                     <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
@@ -375,23 +379,38 @@
                                                                     <label class="form-check-label" for="female">FEMALE</label>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" required class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="date_issues" name="date_issues" placeholder="Date of Issuance" value="{{ \Carbon\Carbon::parse($cert->date_issues)->format('Y-m-d') }}">
+                                                                    <label for="date_issues">Date of Issuance</label>
+                                                                </div>  
+                                                            </div>
                                                         </div>
                                                         
                                                         <div class="row">
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
                                                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="agency" name="agency" placeholder="Agency" value="{{ $cert->agency }}" required>
                                                                     <label for="agency">Agency</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-4">
+                                                            
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
                                                                 <div class="form-floating mb-2">
                                                                     <input type="date" required class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance" name="dateOfAppearance" placeholder="Date of Appearance" value="{{ \Carbon\Carbon::parse($cert->dateOfAppearance)->format('Y-m-d') }}">
                                                                     <label for="dateOfAppearance">Date of Appearance</label>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfAppearance_two" name="dateOfAppearance_two" placeholder="Date of Appearance" value="{{ \Carbon\Carbon::parse($cert->dateOfAppearance_two)->format('Y-m-d') }}">
+                                                                    <label for="dateOfAppearance_two">Date of Appearance 2 (optional)</label>
+                                                                </div>
+                                                            </div>
+                                                            
                                                         </div>
-
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-floating mb-2">

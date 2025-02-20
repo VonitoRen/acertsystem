@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION | ACCREDITATION</title>
+    <title>PRC-CAR | ACERT</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -93,6 +93,14 @@
         color: white;
     }
 
+    .btn-secondary {
+        color: black;
+    }
+
+    .btn-secondary:hover {
+        color: white;
+    }
+
 
 </style>
 
@@ -124,7 +132,7 @@
                                 <h2 class="mb-0"><b>Accreditation</b></h2>
                                 <!-- Button trigger modal -->
                                 <button type="button" style="margin-bottom:5px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i>Add Accreditation Certificate
+                                <i class="fas fa-plus"></i> Add Accreditation Certificate
                                 </button>
                             </div>
                         
@@ -146,21 +154,24 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                            </div>
-                                            <div class="valid-feedback">
-                                            Looks good!
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name">
                                                 <label for="mname">Middle Name</label>
                                             </div>
                                         </div>
@@ -175,24 +186,26 @@
                                                 <label for="suffix">Suffix</label>
                                             </div>
                                         </div>
-
-
                                         
                                         <div class="col-md-4">
                                             <label for="">SEX:</label> <br>  
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
                                                 <label class="form-check-label" for="male">MALE</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE">
+                                                <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" required>
                                                 <label class="form-check-label" for="female">FEMALE</label>
                                             </div>
                                         </div>
+
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." maxlength="7">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No."  required>
                                                 <label for="accreditation_no">Accreditation No.</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -208,18 +221,27 @@
                                                     @endforeach
                                                 </select>
                                                 <label for="floatingSelect">Profession</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validityDate" name="validityDate" placeholder="Validity Date" required>
                                                 <label for="validityDate">Validity Date</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_name" name="broker_name" placeholder="Broker Name">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_name" name="broker_name" placeholder="Broker Name" required>
                                                 <label for="broker_name">Broker Name</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -230,22 +252,27 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." maxlength="7">
-                                                <label for="Broker Registration No.">Broker Registration No.</label>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." maxlength="7" minlength="7" required>
+                                                <label for="regnum">Broker Registration No.</label>
+                                                <div id="regnumFeedback" class="invalid-feedback">
+                                                    Please enter a 7-digit registration number.
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-8">
                                             <div class="form-floating mb-2"> 
-                                            <select class="form-control" id="personRole" name="person_role_id">
-                                                <option disabled selected>Select Signatory</option>
+                                            <select class="form-control" id="personRole" name="person_role_id" required>
+                                                <option value="" disabled selected>Select Signatory</option>
                                                 @foreach($personRoles as $personRole)
                                                     <option value="{{ $personRole->id }}">
                                                         {{ $personRole->person->name }} - {{ $personRole->person->position }}
                                                 @endforeach
                                             </select>
-   
                                                 <label for="floatingSelect">Signatory</label>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +291,7 @@
                 
                 <div class="p-0">
                 <div class="table-responsive">
-                <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                <table id="datatable1" class="display" style="width:100%;">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -385,7 +412,7 @@
                                                         <div class="row">
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." value="{{ $cert->accreditation_no }}" maxlength="7" required>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." value="{{ $cert->accreditation_no }}" required>
                                                                     <label for="accreditation_no">Accreditation No.</label>
                                                                 </div>
                                                             </div>
@@ -413,7 +440,7 @@
 
                                                         <div class="row">
 
-                                                            <div class="col-md-8">
+                                                            <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
                                                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_name" name="broker_name" placeholder="Broker Name" value="{{ $cert->broker_name }}">
                                                                     <label for="regnum">Broker Name</label>
@@ -424,6 +451,13 @@
                                                                 <div class="form-floating mb-2">
                                                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}" maxlength="7">
                                                                     <label for="registeredOn">Broker Registration No.</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="date_issues" name="date_issues" placeholder="Date Of Issuance" value="{{ $cert->date_issues }}" maxlength="7">
+                                                                    <label for="registeredOn">Date Of Issuance</label>
                                                                 </div>
                                                             </div>
                                                         </div>

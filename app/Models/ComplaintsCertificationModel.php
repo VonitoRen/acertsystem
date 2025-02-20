@@ -12,6 +12,7 @@ class ComplaintsCertificationModel extends Model
     protected $table = 'certification_of_complaints';
 
     protected $fillable = [
+        'id_reset',
         'lname',
         'fname', 
         'mname', 
@@ -23,6 +24,7 @@ class ComplaintsCertificationModel extends Model
         'OR_No',
         'initials',
         'amount',
+        'date_issues',
         'signatoriesAtty',
         'person_role_id',
     ];
@@ -41,9 +43,14 @@ class ComplaintsCertificationModel extends Model
         return $this->belongsTo(PersonRole::class, 'person_role_id');
     }
 
-    public function attypersonRole()
+    // public function attorneyRole()
+    // {
+    //     return $this->belongsTo(PersonRole::class, 'signatoriesAtty');
+    // }
+
+    public function attorneyRole()
     {
-        return $this->belongsTo(PersonRole::class, 'person_role_id');
+        return $this->belongsTo(PersonRole::class, 'signatoriesAtty');
     }
 
     

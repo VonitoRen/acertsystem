@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -133,7 +133,7 @@
                                 <h4 class="mb-0"></h4>
                                 <!-- Button trigger modal -->
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i> Add Profession
+                                <i class="fas fa-plus"></i> Add Signatory
                                 </button>
                             </div>
                         
@@ -155,7 +155,6 @@
                                                     <div class="form-floating mb-2">
                                                         <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="name" placeholder="name" required>
                                                         <label for="validationCustom01">Name</label>
-                                                        <div class="valid-feedback">Looks good!</div>
                                                         <div class="invalid-feedback">*Required</div>
                                                     </div>
                                                 </div>
@@ -163,7 +162,6 @@
                                                     <div class="form-floating mb-2">
                                                         <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="position" placeholder="position" required>
                                                         <label for="validationCustom01">Position</label>
-                                                        <div class="valid-feedback">Looks good!</div>
                                                         <div class="invalid-feedback">*Required</div>
                                                     </div>
                                                 </div>
@@ -190,102 +188,142 @@
                         </div>
                     </form>
 
+                    <br>
                     
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                 
-                <div class="p-1">
-                    <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%;">
-                            <thead>
-                                <tr>
-                                    <!-- <th>id</th> -->
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Role</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($signatories as $signatory)
-                                <tr>
-                                    <td>{{ $signatory->name }}</td>
-                                    <td>{{ $signatory->position }}</td>
-                                    <td>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Actions">
-                                            <!-- Edit Button -->
-                                            <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $signatory->id }}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-
-                                            <form id="deleteForm{{ $signatory->id }}" action="{{ route('delete.signatories', $signatory->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger delete-btn">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        
-                        <!-- Edit Certificate Modal -->
-                        <div class="modal fade" id="editCertificateModal{{ $signatory->id }}" tabindex="-1" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editCertificateModalLabel">Edit Signatory</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    
-                                    <form action="{{ route('update.signatories', $signatory->id) }}" method="post">
-                                        @csrf
-                                            @method('PUT')
-                                                <div class="modal-body">
-                                                    <div class="modal-body">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="name" name="name" placeholder="Name" value="{{ $signatory->name }}" required>
-                                                                    <label for="validationCustom01">Name</label>
+                    <div class="p-1">
+                        <div class="table-responsive">
+                            <table id="datatable1" class="display" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>id</th> -->
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $uniquePersons = $personRoles->unique('person_id');
+                                    @endphp
+                                    @foreach($uniquePersons as $personRole)
+                                        <tr>
+                                            <td>{{ $personRole->person->name }}</td>
+                                            <td>{{ $personRole->person->position }}</td>
+                                            <!-- <td>
+                                                @foreach($personRoles->where('person_id', $personRole->person_id) as $role)
+                                                    {{ $role->role->name }}<br>
+                                                @endforeach
+                                            </td> -->
+                                            <td>
+                                                @foreach($personRoles->where('person_id', $personRole->person_id) as $role)
+                                                    <span class="badge bg-secondary">{{ $role->role->name }}</span>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Actions">
+                                                    <!-- Edit Button -->
+                                                    <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $personRole->person->id }}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <form id="deleteForm{{ $personRole->person->id }}" action="{{ route('delete.signatories', $personRole->person->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger delete-btn">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!-- Edit Certificate Modal -->
+                                        <div class="modal fade" id="editCertificateModal{{ $personRole->person->id }}" tabindex="-1" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editCertificateModalLabel">Edit Signatory</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="{{ route('update.signatories', $personRole->person->id) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="name" name="name" placeholder="Name" value="{{ $personRole->person->name }}" required>
+                                                                            <label for="validationCustom01">Name</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position" name="position" placeholder="Position" value="{{ $personRole->person->position }}" required>
+                                                                            <label for="validationCustom01">Position</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <!-- <label for="roles">Roles</label> -->
+                                                                        <div class="form-floating mb-3">
+                                                                            <!-- <label for="roles">Roles</label><br> -->
+                                                                            <!-- <div class="checkbox-list">
+                                                                                @foreach($roles as $role)
+                                                                                    <div class="form-check">
+                                                                                        @php
+                                                                                            $isChecked = $personRole && $personRole->roles && $personRole->roles->contains('id', $role->id);
+                                                                                        @endphp
+                                                                                        <input class="form-check-input" type="checkbox" id="role_{{ $role->id }}" name="roles[]" value="{{ $role->id }}" @if($isChecked) checked @endif>
+                                                                                        <label class="form-check-label" for="role_{{ $role->id }}">{{ $role->name }}</label>
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            </div> -->
+                                                                            <ul style="padding:15px;">
+                                                                            <label for="roles">Roles</label>
+                                                                                @if($personRole && $personRoles)
+                                                                                    @foreach($roles as $role)
+                                                                                        @php
+                                                                                            $isSelected = $personRoles->where('person_id', $personRole->person_id)->contains('role_id', $role->id);
+                                                                                        @endphp
+                                                                                        <li>
+                                                                                            <input type="checkbox" class="form-check-input" name="selected_roles[]" value="{{ $role->id }}" @if($isSelected) checked @endif>
+                                                                                            <label>{{ $role->name }}</label>
+                                                                                        </li>
+                                                                                    @endforeach
+                                                                                @endif
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position" name="position" placeholder="position" value="{{ $signatory->position }}" required>
-                                                                    <label for="validationCustom01">Position</label>
-                                                                </div>
-                                                            </div>
-                                                            
                                                         </div>
-
-                                                    </div>
-                                                    </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary btn-secondary-pro" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary btn-primary-pro">Save changes</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary btn-secondary-pro" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary btn-primary-pro">Save changes</button>
-                                                </div>
-                                            </form>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        </div>    
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+
             </div>
         <!-- /.container-fluid -->
         </div>

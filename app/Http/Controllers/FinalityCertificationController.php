@@ -10,11 +10,24 @@ class FinalityCertificationController extends Controller
 {
     public function index(){
         $finalityCert = FinalityCertificationModel::all();
-        $signatories = Signatories::all();
+        // $signatories = Signatories::all();
 
+        // return view('legal.finality', [
+        //     'finalityCert' => $finalityCert,
+        //     'signatories' => $signatories,
+        // ]);
+
+        $signatories = Signatories::all();
+        $professions = Professions::all();
+
+        $personRoles = PersonRole::with('person')
+            ->where('role_id', 3)
+            ->get();
         return view('legal.finality', [
             'finalityCert' => $finalityCert,
             'signatories' => $signatories,
+            'professions' => $professions,
+            'personRoles' => $personRoles,
         ]);
     }
     

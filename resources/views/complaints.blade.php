@@ -667,6 +667,16 @@ href="C%20E%20R%20T%20I%20F%20I%20C%20A%20T%20I%20O%20N_files/colorschememapping
  </w:LatentStyles>
 </xml><![endif]-->
 <style>
+      .right-content-foot {
+            /* float: right;
+            position: absolute;
+            height: height: 20px; */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%; /* Ensure footer stretches across the paper */
+            height: 100px;
+        }
 <!--
  /* Font Definitions */
  @font-face
@@ -878,28 +888,41 @@ May Concern:</span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:.5in;line-height:200%'><span
 style='font-size:12.0pt;line-height:200%'>This is to certify that based on the
-records of the Professional Regulation Commission-Cordillera Administrative Region
-(PRC-CAR), there is no complaint or derogatory remark filed in PRC-CAR against
-<b>{{ mb_strtoupper($complaintsCert->fname) }} 
-@if (!empty($complaintsCert->mname))
-    {{ mb_strtoupper(substr($complaintsCert->mname, 0, 1)) }}.
-@endif
-{{ mb_strtoupper($complaintsCert->lname) }} {{ mb_strtoupper($complaintsCert->suffix) }}</b>, a <b>{{ mb_strtoupper($complaintsCert->profession->profession) }} </b>with Registration No.
+records of the Professional Regulation Commission
+(PRC), there is no complaint or derogatory remark filed in PRC against
+<b>{{ $complaintsCert->fname }} {{ $complaintsCert->mname }} {{ $complaintsCert->lname }}@if(!empty($complaintsCert->suffix)) {{ mb_strtoupper($complaintsCert->suffix) }}@else.@endif</b>,
+@php
+    $profession = $complaintsCert->profession->profession;
+
+    // Check if profession contains "REGISTERED" and convert it to uppercase
+    if (strpos($profession, 'REGISTERED') !== false) {
+        $profession = str_replace('REGISTERED ', '', strtoupper($profession));
+        $registered = true;
+    } else {
+        $registered = false;
+    }
+@endphp
+
+a {!! ($registered ? '<b>REGISTERED </b>' : 'registered ') !!}<b>{{ mb_strtoupper($profession) }}</b> with Registration No.
+
+
+
 <b>{{ $complaintsCert->regnum }}</b> dated <b>{{ \Carbon\Carbon::parse($complaintsCert->registeredDate)->format('F j, Y') }}.</b><o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
 style='font-size:12.0pt;line-height:200%'>This Certification is issued upon the
-request upon the request of {{ $complaintsCert->fname }} {{ $complaintsCert->mname }} {{ $complaintsCert->lname }} {{ $complaintsCert->suffix }}<o:p></o:p></span></p>
+request upon the request of {{ $complaintsCert->fname }} {{ $complaintsCert->mname }} {{ $complaintsCert->lname }}@if(!empty($complaintsCert->suffix)) {{ mb_strtoupper($complaintsCert->suffix) }}@else.@endif
+<o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:.5in'><span
 style='font-size:13.0pt;line-height:106%'></span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'><b><u> {{ strtoupper($complaintsCert->attypersonRole->person->name) }}</u></b> </span></p>
+style='font-size:13.0pt;line-height:107%'><b><u> {{ strtoupper($complaintsCert->attorneyRole->person->name) }}</u></b> </span></p>
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span
-style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->attypersonRole->person->position }}</b> </span></p><o:p></o:p><o:p></o:p>
+style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->attorneyRole->person->position }}</b> </span></p><o:p></o:p><o:p></o:p>
 <p class=MsoNormal style='margin-left:3.0in;text-indent:.5in'><span
 style='font-size:13.0pt;line-height:106%'><span style='mso-spacerun:yes'>
 </span>Noted by:</span></p><o:p></o:p>
@@ -918,18 +941,27 @@ style='font-size:13.0pt;line-height:107%'>{{ $complaintsCert->personRole->person
 
 
 
-<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>O.R. No.<span style='mso-spacerun:yes'></span><span
-style='mso-tab-count:1'></span>&nbsp; : &nbsp;<span style='mso-spacerun:yes'>
-</span>{{ $complaintsCert->OR_No }}</span></p>
+<p class="MsoNormal" style="margin-bottom:0in">
+    <span style="display:inline-block; width:0.7in;">O.R. No.</span>
+    <span>: </span>
+    <span>&nbsp;&nbsp;{{ $complaintsCert->OR_No }}</span>
+</p>
 
-<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>Date<span style='mso-tab-count:2'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;<span
-style='mso-spacerun:yes'></span>{{ \Carbon\Carbon::parse($complaintsCert->date_issues)->format('F j, Y') }}</span></p>
+<p class="MsoNormal" style="margin-bottom:0in">
+    <span style="display:inline-block; width:0.7in;">Date</span>
+    <span>: </span>
+    <span>&nbsp;&nbsp;{{ \Carbon\Carbon::parse($complaintsCert->date_issues)->format('F j, Y') }}</span>
+</p>
 
-<p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>Amount<span style='mso-tab-count:1'></span>&nbsp;&nbsp; : &nbsp;<span
-style='mso-spacerun:yes'></span><span class=SpellE>Php</span> {{ $complaintsCert->amount }}</span></p><o:p></o:p>
+<p class="MsoNormal" style="margin-bottom:0in">
+    <span style="display:inline-block; width:0.7in;">Amount</span>
+    <span>: </span>
+    <span>&nbsp;&nbsp;Php {{ $complaintsCert->amount }}.00</span>
+</p>
+
+
+
+<o:p></o:p>
 
 
 
@@ -937,12 +969,15 @@ style='mso-spacerun:yes'></span><span class=SpellE>Php</span> {{ $complaintsCert
 line-height:106%'>RO-BAG/ORD/LEGL</span></p>
 
 <p class=MsoNormal style='margin-bottom:0in'><span style='font-size:11.0pt;
-line-height:106%'>{{ $complaintsCert->initials }}</span></span></p><o:p></o:p>
+line-height:106%'>JLD/CBL/HBBM/{{ $complaintsCert->initials }}</span></span></p><o:p></o:p>
 
 
 <p class="MsoNormal" style="margin-bottom:0in">
-    <span style="font-size:11.0pt; line-height:106%">
+    <!-- <span style="font-size:11.0pt; line-height:106%">
         Control No. <b>{{ date('y') }}-{{ str_pad($complaintsCert->id, 3, '0', STR_PAD_LEFT) }}</b>
+    </span> -->
+    <span style="font-size:11.0pt; line-height:106%">
+        Control No. <b>{{ $complaintsCert->id_reset }}</b>
     </span>
 </p>
 <br>
@@ -962,12 +997,22 @@ ______________________________________<br>
 As per LERIS,
 not tagged<span style='mso-tab-count:1'></span></span></p>
 
-<p class=MsoNormal  align=right style='text-align:right'><span style='font-size:8.0pt;line-height:106%'>
+<!-- <p class=MsoNormal  align=right style='text-align:right'><span style='font-size:8.0pt;line-height:106%'>
 BAG-ORD-LEGL-19 <br>
 Rev. 01 <br>
 January 14, 2019 <br>
 Page 1 of 1<br>
-<span style='mso-tab-count:1'></span><o:p></o:p></span></p>
+<span style='mso-tab-count:1'></span><o:p></o:p></span></p> -->
+<footer class="right-content-foot">
+    <p class="MsoNormal" style="margin-bottom:0in; font-size:7pt; text-align:right;">
+        <b>
+            <br><br><br><br>BAG-ORD-LEGL-19<br>
+            Rev. 01<br>
+            January 14, 2019<br>
+            Page 1 of 1
+        </b>
+    </p>
+  </footer>
 
 <!-- <p class=MsoNormal align=right style='text-align:right'>BAG-ORD-LEGL-19 <o:p></o:p></p>
 <p class=MsoNormal align=right style='text-align:right'>Rev. 01 <o:p></o:p></p>

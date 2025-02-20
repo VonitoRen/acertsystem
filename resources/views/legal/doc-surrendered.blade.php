@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
     
     <!-- Custom fonts for this template-->
@@ -22,6 +22,8 @@
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- DT -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
@@ -123,7 +125,7 @@
                                 <!-- Button trigger modal -->
                                 
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i> Add Certificate of Document Surrendered 
+                                <i class="fas fa-plus"></i> Add Certificate of Returned Documents
                                 </button>
                             </div>
                             <!-- Modal -->
@@ -144,12 +146,18 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="board" name="board" placeholder="Board" required>
                                                 <label for="board">Board</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="doc_surrendered" name="doc_surrendered" placeholder="Document Surrendered" required>
                                                 <label for="doc_surrendered">Document Surrendered</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -159,9 +167,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                                <div class="valid-feedback">
-                                                Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -171,9 +176,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks nice!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -193,7 +195,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" placeholder="Suffix">
                                                 <label for="suffix">Suffix</label>
-                                                
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -211,8 +212,6 @@
 
                                     <div class="row">
                                         
-
-                                        
                                     </div>
 
                                     <div class="row">
@@ -225,9 +224,6 @@
                                                     @endforeach
                                                 </select>
                                                 <label for="floatingSelect">Profession</label>
-                                                <div class="valid-feedback">
-                                                    Looks professional!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -237,12 +233,18 @@
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="returnedDate" name="returnedDate" placeholder="Returned Date" required>
                                                 <label for="returnedDate">Returned Date</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration Number" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration Number" maxlength="7" minlength="7" required>
                                                 <label for="regnum">Registration Number</label>
+                                                <div class="invalid-feedback">
+                                                Please enter a 7-digit registration number.
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -253,18 +255,27 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="penalty" name="penalty" placeholder="Penalty" required>
                                                 <label for="penalty">Penalty</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="case_title" name="case_title" placeholder="Case Title" required>
                                                 <label for="case_title">Case Title</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="case_no" name="case_no" placeholder="Case Number" required>
                                                 <label for="case_no">Case Number</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- <div class="col-md-4">
@@ -275,31 +286,39 @@
                                         </div> -->
                                     </div>
                                     <div class="row">
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-2"> 
-                                            <select class="form-control" id="personRole" name="person_role_id">
-                                                <option disabled selected>Select Signatory</option>
-                                                @foreach($personRoles as $personRole)
-                                                    <option value="{{ $personRole->id }}">
-                                                        {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                                @endforeach
-                                            </select>
-                                                <label for="floatingSelect">Signatory</label>
-                                                <div class="valid-feedback">
-                                                    A wonderful person!
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    *Required
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="hearing_officer" name="hearing_officer" placeholder="Hearing Officer, Legal Division" required>
-                                                <label for="hearing_officer">Hearing Officer</label>
-                                            </div>
-                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="attorney" name="signatoriesAtty" required>
+                                                                    <option value="" disabled selected>Select Attorney</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="attorney">Attorney</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="signatory" name="person_role_id" required>
+                                                                    <option value="" disabled selected>Select Signatory</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>   
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="signatory">Signatory</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
                                     </div><hr>
                                     <div class="row">
                                         <label for="">Complainant</label>
@@ -307,9 +326,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="complainant_lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
-                                                <div class="valid-feedback">
-                                                Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -319,9 +335,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="complainant_fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks nice!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -357,8 +370,23 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="chief" name="chief" placeholder="Chief, Legal Division" required>
-                                                <label for="chief">Chief, Legal Division</label>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="chief" name="chief" placeholder="Legal Division Name" required>
+                                                <label for="chief">Legal Division Name</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position_officer" name="position_officer" placeholder="Legal Division Position" required>
+                                                <label for="position_officer">Legal Division Position</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -377,7 +405,7 @@
                 
                 <div class="p-1">
                     <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                        <table id="datatable1" class="display" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th>Board</th>
@@ -390,10 +418,11 @@
                                     <th>Penalty</th>
                                     <th>Case Title</th>
                                     <th>Case No</th>
-                                    <th>Hearing Officer</th>
+                                    <th>Attorney</th>
                                     <th>Signatory</th>
                                     <th>Complainant</th>
-                                    <th>Chief</th>
+                                    <th>Legal Division Name</th>
+                                    <th>Date of Issuance</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -417,7 +446,8 @@
                                         {{ $cert->personRole->person->position }} 
                                     </td>
                                     <td>{{ $cert->complainant_lname }}, {{ $cert->complainant_fname }} {{ $cert->complainant_mname }} {{ $cert->complainant_suffix }}</td>
-                                    <td>{{ $cert->chief }} </td>
+                                    <td><b>{{ $cert->chief }}</b> <br>  {{ $cert->position_officer }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
@@ -510,8 +540,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" value="{{ $cert->suffix }}" placeholder="Suffix">
                                                 <label for="suffix">Suffix</label>
-
-                                                
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -525,6 +553,12 @@
                                                 <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" 
                                                 {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="female">FEMALE</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="date_issues" name="date_issues" value="{{ $cert->date_issues }}" placeholder="Date of Issuance">
+                                                <label for="date_issues">Date of Issuance</label>
                                             </div>
                                         </div>
                                     </div>
@@ -601,33 +635,38 @@
                                         </div> -->
                                     </div>
                                     <div class="row">
-
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-2"> 
-                                            <select class="form-control" id="personRole" name="person_role_id">
-                                                <option disabled value="">Select Attorney</option>
-                                                @foreach($personRoles as $personRole)
-                                                <option value="{{ $personRole->id }}" {{ optional($cert->personRole)->id == $personRole->id ? 'selected' : '' }}>
-                                                {{ $personRole->person->name }} - {{ $personRole->person->position }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                                <label for="floatingSelect">Signatory</label>
-                                                <div class="valid-feedback">
-                                                    A wonderful person!
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    *Required
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="hearing_officer" name="hearing_officer" placeholder="Hearing Officer, Legal Division" value="{{ $cert->hearing_officer }}" required>
-                                                <label for="hearing_officer">Hearing Officer</label>
-                                            </div>
-                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="attorney" name="signatoriesAtty" required>
+                                                                    <option value="" disabled selected>Select Attorney</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="attorney">Attorney</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-floating mb-2">
+                                                                <select class="form-control" id="signatory" name="person_role_id" required>
+                                                                    <option value="" disabled selected>Select Signatory</option>
+                                                                    @foreach($personRoles as $personRole)
+                                                                        <option value="{{ $personRole->id }}">
+                                                                            {{ $personRole->person->name }} - {{ $personRole->person->position }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <label for="signatory">Signatory</label>
+                                                                <div class="invalid-feedback">
+                                                                    *Required
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                     </div><hr>
                                     <div class="row">
                                         <label for="">Complainant</label>
@@ -693,6 +732,23 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position_officer" value="{{ $cert->position_officer }}" name="position_officer" placeholder="Legal Division Position" required>
+                                                                                    <label for="position_officer">Legal Division Position</label>
+                                                                                    <div class="valid-feedback">
+                                                                                    Looks great!
+                                                                                    </div>
+                                                                                    <div class="invalid-feedback">
+                                                                                    *Required
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        <!-- END -->
+                                                                        
+                                                                    </div>
                                     </div>
                                 </div>
 
@@ -802,4 +858,69 @@
       }, false)
     })
 })()
+
+document.addEventListener('DOMContentLoaded', function() {
+        // Get all delete buttons with class "delete-btn"
+        var deleteButtons = document.querySelectorAll('.delete-btn');
+
+        // Loop through each delete button
+        deleteButtons.forEach(function(button) {
+            // Add click event listener to each delete button
+            button.addEventListener('click', function(event) {
+                // Prevent default form submission
+                event.preventDefault();
+
+                // Get the data-id attribute value which contains the caseNo
+                var caseNo = this.getAttribute('data-id');
+
+                // Show SweetAlert confirmation dialog
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: 'You will not be able to recover this certificate!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    reverseButtons: true
+                }).then((result) => {
+                    // If user clicks on confirm button
+                    if (result.isConfirmed) {
+                        // Proceed with deletion by submitting the form
+                        var form = document.getElementById('deleteForm' + caseNo);
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+
+// Wait for the document to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the textarea element
+        var descriptionTextarea = document.getElementById('description');
+
+        // Add keydown event listener to the textarea
+        descriptionTextarea.addEventListener('keydown', function(event) {
+            // Check if the pressed key is Enter (key code 13) and Shift key is not pressed
+            if (event.keyCode === 13 && !event.shiftKey) {
+                // Prevent default behavior (form submission)
+                event.preventDefault();
+                
+                // Get the current cursor position in the textarea
+                var cursorPos = this.selectionStart;
+                
+                // Get the textarea value
+                var textareaValue = this.value;
+                
+                // Insert a newline character (\n) at the current cursor position
+                var updatedValue = textareaValue.substring(0, cursorPos) + "\n" + textareaValue.substring(cursorPos);
+
+                // Update the textarea value
+                this.value = updatedValue;
+
+                // Move the cursor to the position after the inserted newline character
+                this.setSelectionRange(cursorPos + 1, cursorPos + 1);
+            }
+        });
+    }); 
 </script>

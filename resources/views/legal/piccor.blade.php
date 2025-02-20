@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
+    <title>PRC-CAR | ACERT</title>
     <link rel="icon" type="image/png" sizes="32x32" href="\img\prclogo.svg">
     
     <!-- Custom fonts for this template-->
@@ -131,7 +131,7 @@
                                 <h4 class="mb-0"></h4>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i> Add Certificate of PIC & COR
+                                <i class="fas fa-plus"></i> Add Certificate of Document Surrendered
                                 </button>
                             </div>
                             <!-- Modal -->
@@ -142,7 +142,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of PIC & COR</h1>
+                                    <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Document Surrendered</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div><br>
                                 <div class="modal-body">
@@ -152,9 +152,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="board" placeholder="Board" required>
                                                 <label for="validationCustom01">Board</label>
-                                                <div class="valid-feedback">
-                                                Looks good!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -164,9 +161,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regDate" name="regDate" placeholder="Registration Date" required>
                                                 <label for="regDate">Registration Date</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -179,9 +173,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" required>
                                                 <label for="lname">Last Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -192,9 +183,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -205,9 +193,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="mname" name="mname" placeholder="Middle Name">
                                                 <label for="mname">Middle Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -220,9 +205,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="suffix" name="suffix" placeholder="Suffix">
                                                 <label for="suffix">Suffix</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -257,13 +239,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regNo" name="regNo" placeholder="Registration No." required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regNo" name="regNo" placeholder="Registration No." minlength="7" maxlength="7" required>
                                                 <label for="regNo">Registration No.</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
-                                                *Required
+                                                Please enter a 7-digit registration number.
                                                 </div>
                                             </div>
                                         </div>
@@ -271,10 +250,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="returnedDate" name="returnedDate" placeholder="Returned Date" required>
-                                                <label for="returnedDate">Returned Date</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
+                                                <label for="returnedDate">Surrendered Date</label>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -286,10 +262,7 @@
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="penalty" name="penalty" placeholder="Penalty" required>
-                                                <label for="penalty">Penalty</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
+                                                <label for="penalty">Duration of Penalty</label>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -300,9 +273,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="caseTitle" name="caseTitle" placeholder="Case Title" required>
                                                 <label for="caseTitle">Case Title</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -315,15 +285,21 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="administrativeCaseNo" name="administrativeCaseNo" placeholder="Administrative Case No." required>
                                                 <label for="administrativeCaseNo">Administrative Case No.</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfDocument" name="dateOfDocument" placeholder="Date of Document" required>
+                                                <label for="dateOfDocument">Date of Document</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
+                                            </div>
+                                        </div>
+<!-- 
                                         <div class="col-md-6">
                                             <div class="form-floating mb-2">
                                                 <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateofIssuance" name="dateofIssuance" placeholder="Date of Issuance" required>
@@ -335,21 +311,18 @@
                                                 *Required
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div><br>
 
                                     <div class="row">
-                                    <b>For the Board:</b>
+                                    <b>Approved By:</b>
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="hearingOfficer" name="hearingOfficer" placeholder="Hearing Officer" required>
-                                                <label for="hearingOfficer">Hearing Officer</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
-                                                <div class="invalid-feedback">
+                                                <label for="hearingOfficer">Attorney</label>
+                                            <div class="invalid-feedback">
                                                 *Required
-                                                </div>
+                                            </div>
                                             </div>
                                         </div>
                                     </div><br>
@@ -366,9 +339,6 @@
                                                 @endforeach
                                             </select>
                                                 <label for="floatingSelect">Signatory</label>
-                                                <div class="valid-feedback">
-                                                    A wonderful person!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
@@ -382,9 +352,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainantlname" name="complainantlname" placeholder="Complainant Last Name" required>
                                                 <label for="complainantlname">Complainant Last Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -396,9 +363,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainantfname" name="complainantfname" placeholder="Complainant First Name" required>
                                                 <label for="complainantfname">Complainant First Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -410,9 +374,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainantmname" name="complainantmname" placeholder="Complainant Middle Name">
                                                 <label for="complainantmname">Complainant Middle Name</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -425,9 +386,6 @@
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="complainantsuffix" name="complainantsuffix" placeholder="Complainant Suffix">
                                                 <label for="complainantsuffix">Complainant Suffix</label>
-                                                <div class="valid-feedback">
-                                                Looks amazing!
-                                                </div>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
@@ -450,16 +408,28 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="legalDivisionChief" name="legalDivisionChief" placeholder="Legal Division Chief" required>
-                                                <label for="legalDivisionChief">Legal Division Chief</label>
-                                                <div class="valid-feedback">
-                                                Looks great!
-                                                </div>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="legalDivisionChief" name="legalDivisionChief" placeholder="Legal Division Name" required>
+                                                <label for="legalDivisionChief">Legal Division Name</label>
                                                 <div class="invalid-feedback">
                                                 *Required
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position_officer" name="position_officer" placeholder="Legal Division Position" required>
+                                                <label for="position_officer">Legal Division Position</label>
+                                                <div class="invalid-feedback">
+                                                *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                                 </div>
@@ -477,7 +447,7 @@
                 <!--  -->
                 <div class="p-1">
                     <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                        <table id="datatable1" class="display" style="width:100%;">
                             <thead>
                                 <tr>
                                     <th>Board</th>
@@ -486,15 +456,15 @@
                                     <th>Sex</th>
                                     <th>Profession</th>
                                     <th>Registration No.</th>
-                                    <th>Returned Date</th>
-                                    <th>Penalty</th>
+                                    <th>Surrendered Date</th>
+                                    <th>Duration of Penalty</th>
                                     <th>Case Title</th>
                                     <th>Administrative Case No.</th>
                                     <th>Date of Issuance</th>
-                                    <th>Hearing Officer</th>
+                                    <th>Attorney</th>
                                     <th>Signatory</th>
                                     <th>Complainant</th>
-                                    <th>Legal Division Chief</th>
+                                    <th>Legal Division</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -515,7 +485,7 @@
                                     <td>{{ $cert->hearingOfficer }}</td>
                                     <td><b>{{ $cert->personRole->person->name}}</b><br>{{$cert->personRole->person->position}}</td>
                                     <td><b>{{ $cert->complainantlname }}</b>, <b>{{ $cert->complainantfname }}</b> <b>{{ $cert->complainantmname }}</b> <b>{{ $cert->complainantsuffix }}</b><br> {{ $cert->position }}</td>
-                                    <td>{{ $cert->legalDivisionChief }}</td>
+                                    <td><b>{{ $cert->legalDivisionChief }}</b> <br>{{ $cert->position_officer }} </td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Actions">
                                             <!-- Edit Button -->
@@ -686,7 +656,7 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="form-floating mb-2">
                                                                                     <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="returnedDate" value="{{ \Carbon\Carbon::parse($cert->returnedDate)->format('Y-m-d') }}" name="returnedDate" placeholder="Returned Date" required>
-                                                                                    <label for="returnedDate">Returned Date</label>
+                                                                                    <label for="returnedDate">Surrendered Date</label>
                                                                                     <div class="valid-feedback">
                                                                                     Looks amazing!
                                                                                     </div>
@@ -701,7 +671,7 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="form-floating mb-2">
                                                                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="penalty" value="{{ $cert->penalty }}" name="penalty" placeholder="Penalty" required>
-                                                                                    <label for="penalty">Penalty</label>
+                                                                                    <label for="penalty">Duration of Penalty</label>
                                                                                     <div class="valid-feedback">
                                                                                     Looks amazing!
                                                                                     </div>
@@ -741,24 +711,40 @@
 
                                                                             <div class="col-md-6">
                                                                                 <div class="form-floating mb-2">
-                                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateofIssuance" value="{{ \Carbon\Carbon::parse($cert->dateofIssuance)->format('Y-m-d') }}" name="dateofIssuance" placeholder="Date of Issuance" required>
-                                                                                    <label for="dateofIssuance">Date of Issuance</label>
-                                                                                    <div class="valid-feedback">
-                                                                                    Looks amazing!
-                                                                                    </div>
+                                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateOfDocument" name="dateOfDocument" placeholder="Date of Document" value="{{ $cert->dateOfDocument }}" required>
+                                                                                    <label for="dateOfDocument">Date of Document</label>
                                                                                     <div class="invalid-feedback">
                                                                                     *Required
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div><br>
+                                                                        </div>
 
                                                                         <div class="row">
-                                                                        <b>For the Board:</b>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-floating mb-2">
+                                                                                        <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="dateofIssuance" value="{{ \Carbon\Carbon::parse($cert->dateofIssuance)->format('Y-m-d') }}" name="dateofIssuance" placeholder="Date of Issuance" required>
+                                                                                        <label for="dateofIssuance">Date of Issuance</label>
+                                                                                        <div class="valid-feedback">
+                                                                                        Looks amazing!
+                                                                                        </div>
+                                                                                        <div class="invalid-feedback">
+                                                                                        *Required
+                                                                                        </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <br>
+
+
+
+                                                                        <div class="row">
+                                                                        <b>Approved By:</b>
                                                                             <div class="col-md-12">
                                                                                 <div class="form-floating mb-2">
                                                                                     <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="hearingOfficer" value="{{ $cert->hearingOfficer }}" name="hearingOfficer" placeholder="Hearing Officer" required>
-                                                                                    <label for="hearingOfficer">Hearing Officer</label>
+                                                                                    <label for="hearingOfficer">Attorney</label>
                                                                                     <div class="valid-feedback">
                                                                                     Looks amazing!
                                                                                     </div>
@@ -861,8 +847,8 @@
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-floating mb-2">
-                                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="legalDivisionChief" value="{{ $cert->legalDivisionChief }}" name="legalDivisionChief" placeholder="Legal Division Chief" required>
-                                                                                    <label for="legalDivisionChief">Legal Division Chief</label>
+                                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="legalDivisionChief" value="{{ $cert->legalDivisionChief }}" name="legalDivisionChief" placeholder="Legal Division Name" required>
+                                                                                    <label for="legalDivisionChief">Legal Division Name</label>
                                                                                     <div class="valid-feedback">
                                                                                     Looks great!
                                                                                     </div>
@@ -872,6 +858,20 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="position_officer" value="{{ $cert->position_officer }}" name="position_officer" placeholder="Legal Division Position" required>
+                                                                                    <label for="position_officer">Legal Division Position</label>
+                                                                                    <div class="valid-feedback">
+                                                                                    Looks great!
+                                                                                    </div>
+                                                                                    <div class="invalid-feedback">
+                                                                                    *Required
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
                                                                         <!-- END -->
                                                                         
                                                                     </div>

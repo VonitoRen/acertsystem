@@ -664,6 +664,16 @@ href="CertificateForDocumentSurrendered_files/colorschememapping.xml">
  </w:LatentStyles>
 </xml><![endif]-->
 <style>
+  .right-content-foot {
+            /* float: right;
+            position: absolute;
+            height: height: 20px; */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%; /* Ensure footer stretches across the paper */
+            height: 100px;
+        }
 <!--
  /* Font Definitions */
  @font-face
@@ -996,6 +1006,8 @@ ul
 <!-- Display the image as a watermark -->
 <img src="{{ $imageUrl }}" alt="PRC Logo" class="watermark" width="350px">
 
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
 style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
@@ -1004,38 +1016,35 @@ style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&n
 style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b>{{  strtoupper($surrenderedCert->board) }}</b><span
+style='font-size:13.0pt;line-height:107%;font-family:"Arial",sans-serif'><b>{{  strtoupper($surrenderedCert->board) }}</b><span
 style='mso-spacerun:yes'></span></span></u></p>
 
 <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
 style='font-size:14.0pt;line-height:140%;font-family:"Arial",sans-serif'>BOARD<o:p></o:p></span></b></p>
-
-
-<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-style='font-size:14.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p>&nbsp;</o:p></span></b></p>
 
 <p class=MsoNormal><b><span style='font-size:14.0pt;line-height:107%;
 font-family:"Arial",sans-serif'>TO WHOM IT MAY CONCERN:</span></b></p>
 
 <p class=MsoNormal style='text-align:justify;text-indent:.5in;line-height:200%'><span
 style='font-size:12.0pt;line-height:200%;font-family:"Arial",sans-serif'>This
-is to certify that the <b><u>{{ $surrenderedCert->doc_surrendered }}</u></b> of <u><b>{{ mb_strtoupper($surrenderedCert->fname) }} 
+is to certify that the <b>{{ $surrenderedCert->doc_surrendered }}</b> of <b>{{ mb_strtoupper($surrenderedCert->fname) }} 
         @if (!empty($surrenderedCert->mname))
             {{ mb_strtoupper(substr($surrenderedCert->mname, 0, 1)) }}.
         @endif
-        {{ mb_strtoupper($surrenderedCert->lname) }} {{ mb_strtoupper($surrenderedCert->suffix) }}</b></u>,
-a registered <b><u>{{$surrenderedCert->profession->profession}}</u> </b>with Registration No. <u><b>{{ $surrenderedCert->regnum }}</b></u>,
-has been returned this <u><b>{{ \Carbon\Carbon::parse($surrenderedCert->returnedDate)->format('F j, Y') }}</b></u> in view of the <u><b>{{ $surrenderedCert->penalty }}</b></u>
-per decision of this Board in the case entitled, <u><b>{{ $surrenderedCert->case_title }}</b></u> docketed
-as Administrative Case No. <u><b>{{ $surrenderedCert->case_no }}</b>.<o:p></o:p></span></p>
+        {{ mb_strtoupper($surrenderedCert->lname) }}@if(!empty($surrenderedCert->suffix)) {{ mb_strtoupper($surrenderedCert->suffix) }}@endif</b>,
+a registered <b>{{$surrenderedCert->profession->profession}} </b>with Registration No. <b>{{ $surrenderedCert->regnum }}</b>,
+has been returned this <b>{{ \Carbon\Carbon::parse($surrenderedCert->returnedDate)->format('jS \d\a\y \o\f F Y') }}</b>
+ in view of the <b>{{ $surrenderedCert->penalty }}</b>
+per decision of this Board in the case entitled, <b>{{ $surrenderedCert->case_title }}</b> docketed
+as Administrative Case No. <b>{{ $surrenderedCert->case_no }}</b>.<o:p></o:p></span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;text-indent:
 .5in;line-height:115%'><span style='font-size:12.0pt;line-height:115%;
-font-family:"Arial",sans-serif'>Baguio City, Benguet Philippines.</span></p>
+font-family:"Arial",sans-serif'>Baguio City, Benguet, Philippines.</span></p>
 
 <p class=MsoNormal style='margin-bottom:0in;text-align:justify;text-indent:
-.5in;line-height:115%'><u><span style='font-size:12.0pt;line-height:115%;
-font-family:"Arial",sans-serif'><b>{{ \Carbon\Carbon::parse($surrenderedCert->date_issues)->format('F j, Y') }}</b><o:p></o:p></span></u></p>
+.5in;line-height:115%'><span style='font-size:12.0pt;line-height:115%;
+font-family:"Arial",sans-serif'><b>{{ \Carbon\Carbon::parse($surrenderedCert->date_issues)->format('F j, Y') }}</b><o:p></o:p></span></p>
 
 <p class=MsoNormal style='text-align:justify'><u><span style='font-size:10.0pt;
 line-height:107%;font-family:"Arial",sans-serif'></span></u></p>
@@ -1044,7 +1053,7 @@ line-height:107%;font-family:"Arial",sans-serif'></span></u></p>
 line-height:107%;font-family:"Arial",sans-serif'></u></p>
 
 <p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
-line-height:107%;font-family:"Arial",sans-serif'>For the Board:</span></p>
+line-height:107%;font-family:"Arial",sans-serif'>Approved By:</span></p>
 
 <p class=MsoNormal style='text-align:justify'><!--[if gte vml 1]><v:shapetype
  id="_x0000_t202" coordsize="21600,21600" o:spt="202" path="m,l,21600r21600,l21600,xe">
@@ -1092,56 +1101,14 @@ APMAAAB3BQAAAAA=
 style='mso-ignore:vglayout;position:absolute;z-index:251659264;left:0px;
 margin-left:135px;margin-top:143px;width:332px;height:66px'>
 
-<table cellpadding=0 cellspacing=0 align=left>
- <tr>
-  <td width=135 height=1></td>
- </tr>
- <tr>
-  <td></td>
-  <td width=446 height=10 style='vertical-align:top'><![endif]><![if !mso]><span
-  style='position:absolute;mso-ignore:vglayout;z-index:251661312'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="_x0000_s2050" style='padding:3.6pt 7.2pt 3.6pt 7.2pt'
-    class=shape>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b> {{ strtoupper($surrenderedCert->hearing_officer) }}</b></span></u></p>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>Hearing
-    Officer</span></b><span style='font-size:12.0pt;line-height:107%'><o:p></o:p></span></p>
-    </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
-<table cellpadding=0 cellspacing=0>
- <tr>
-  <td width=332 height=33 style='vertical-align:top'><![endif]><![if !mso]><span
-  style='position:absolute;mso-ignore:vglayout;z-index:251659264'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="Text_x0020_Box_x0020_1" style='padding:3.6pt 7.2pt 3.6pt 7.2pt'
-    class=shape>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b></b></span></u></p>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><o:p></o:p></span></b></p>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><span
-    style='font-size:12.0pt;line-height:107%'></span></p>
-    </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b>{{ strtoupper($surrenderedCert->hearing_officer) }}</b><span
+style='mso-spacerun:yes'></span></span></u></p>
 
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'>Approved By:</span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
+style='font-size:12.0pt;line-height:140%;font-family:"Arial",sans-serif'>Attorney<o:p></o:p></span></b></p>
+
+
 
 <p class=MsoNormal><!--[if gte vml 1]><v:shape id="_x0000_s2050" type="#_x0000_t202"
  style='position:absolute;margin-left:76.2pt;margin-top:3.25pt;width:265.6pt;
@@ -1183,35 +1150,12 @@ BAAEAPMAAAB6BQAAAAA=
 " filled="f" stroked="f" strokeweight=".5pt"/><![endif]--><![if !vml]><span
 style='mso-ignore:vglayout'>
 
-<table cellpadding=0 cellspacing=0 align=left>
- <tr>
-  <td width=135 height=1></td>
- </tr>
- <tr>
-  <td></td>
-  <td width=446 height=10 style='vertical-align:top'><![endif]><![if !mso]><span
-  style='position:absolute;mso-ignore:vglayout;z-index:251661312'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="_x0000_s2050" style='padding:3.6pt 7.2pt 3.6pt 7.2pt'
-    class=shape>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b> {{ strtoupper($surrenderedCert->personRole->person->name) }}</b></span></u></p>
-    <p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
-    style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'>Regional
-    Director  </span></b><span style='font-size:12.0pt;line-height:107%'><o:p></o:p></span></p>
-    </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><u><span
+style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><b>{{ strtoupper($surrenderedCert->personRole->person->name) }}</b><span
+style='mso-spacerun:yes'></span></span></u></p>
 
-
-<p class=MsoNormal><span style='font-size:12.0pt;line-height:107%;font-family:
-"Arial",sans-serif'><o:p>&nbsp;</o:p></span></p>
+<p class=MsoNormal align=center style='margin-bottom:0in;text-align:center'><b><span
+style='font-size:12.0pt;line-height:140%;font-family:"Arial",sans-serif'>Regional Director<o:p></o:p></span></b></p>
 
 <br style='mso-ignore:vglayout' clear=ALL>
 
@@ -1220,33 +1164,67 @@ style='mso-ignore:vglayout'>
 
 
 <p class=MsoListParagraphCxSpFirst style='margin-left:1.3in;mso-add-space:auto;
-text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo1'><![if !supportLists]><span
-style='font-size:12.0pt;line-height:150%;font-family:"Arial",sans-serif;
+text-indent:-.25in;line-height:80%;mso-list:l0 level1 lfo1'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:80%;font-family:"Arial",sans-serif;
 mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>1.<span
 style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-style='font-size:12.0pt;line-height:150%;font-family:"Arial",sans-serif'><u><b>
-      {{ mb_strtoupper($surrenderedCert->complainant_fname) }} 
-        @if (!empty($surrenderedCert->complainant_mname))
-            {{ mb_strtoupper(substr($surrenderedCert->complainant_mname, 0, 1)) }}.
-        @endif
-        {{ mb_strtoupper($surrenderedCert->complainant_lname) }} {{ mb_strtoupper($surrenderedCert->complainant_suffix) }}</b></u>
-(Complainant)</span><o:p></o:p></p>
+style='font-size:12.0pt;line-height:80%;font-family:"Arial",sans-serif'><b>{{ mb_strtoupper($surrenderedCert->complainant_fname) }} @if (!empty($surrenderedCert->complainant_mname)){{ mb_strtoupper(substr($surrenderedCert->complainant_mname, 0, 1)) }}. @endif{{ mb_strtoupper($surrenderedCert->complainant_lname) }}@if(!empty($surrenderedCert->complainant_suffix)) {{ mb_strtoupper($surrenderedCert->complainant_suffix) }}@endif</b></span></p>
 
 <p class=MsoListParagraphCxSpLast style='margin-left:1.3in;mso-add-space:auto;
 text-indent:-.25in;mso-list:l0 level1 lfo1'><![if !supportLists]><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif;
+style='font-size:12.0pt;line-height:50%;font-family:"Arial",sans-serif;
+mso-fareast-font-family:Arial'><span style='mso-list:Ignore'><span
+style='font:7.0pt "Times New Roman"'></span></span></span><![endif]><span
+style='font-size:12.0pt;margin-left: 0.7in;line-height:50%;font-family:"Arial",sans-serif'>Complainant/s
+</span>
+</p>
+
+<div style="margin-right: 0.5in;">
+<p class=MsoListParagraphCxSpFirst style='margin-left:1.3in;mso-add-space:auto;
+text-indent:-.25in;line-height:50%;mso-list:l0 level1 lfo1'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:50%;font-family:"Arial",sans-serif;
 mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>2.<span
 style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-style='font-size:12.0pt;line-height:107%;font-family:"Arial",sans-serif'><u><b>{{ mb_strtoupper($surrenderedCert->chief) }}</b></u>
-(Chief, Legal Division)<o:p></o:p></span></p>
+style='font-size:12.0pt;line-height:50%;font-family:"Arial",sans-serif'><b>{{ mb_strtoupper($surrenderedCert->chief) }}</b>
+</span></p>
+</div>
 
-<p class=MsoNormal  align=right style='text-align:right'><span style='font-size:8.0pt;line-height:106%'>
-<b>
-BAG-ORD-LEGL-19 <br>
-Rev. 01 <br>
-January 14, 2019 <br>
-Page 1 of 1<br></b>
-<span style='mso-tab-count:1'></span><o:p></o:p></span></p>
+<p class=MsoListParagraphCxSpLast style='margin-left:1.3in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l0 level1 lfo1'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:50%;font-family:"Arial",sans-serif;
+mso-fareast-font-family:Arial'><span style='mso-list:Ignore'><span
+style='font:7.0pt "Times New Roman"'></span></span></span><![endif]><span
+style='font-size:12.0pt;margin-left: 0.7in;line-height:50%;font-family:"Arial",sans-serif'>{{ $surrenderedCert->position_officer }}
+</span>
+</p>
+<!-- <p class=MsoListParagraphCxSpLast style='margin-left:1.3in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l0 level1 lfo1'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:80%;font-family:"Arial",sans-serif;
+mso-fareast-font-family:Arial'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;line-height:80%;font-family:"Arial",sans-serif'><b>{{ mb_strtoupper($surrenderedCert->chief) }}</b>
+</span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:1.3in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l0 level1 lfo1'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:50%;font-family:"Arial",sans-serif;
+mso-fareast-font-family:Arial'><span style='mso-list:Ignore'><span
+style='font:7.0pt "Times New Roman"'></span></span></span><![endif]><span
+style='font-size:12.0pt;margin-left: 0.7in;line-height:50%;font-family:"Arial",sans-serif'>Position
+</span>
+</p> -->
+
+<footer class="right-content-foot">
+    <p class="MsoNormal" style="margin-bottom:0in; font-size:7pt; text-align:right;">
+        <b>
+            <br><br><br><br>BAG-ORD-LEGL-19<br>
+            Rev. 01<br>
+            January 14, 2019<br>
+            Page 1 of 1
+        </b>
+    </p>
+  </footer>
+
 </div>
 
 </body>

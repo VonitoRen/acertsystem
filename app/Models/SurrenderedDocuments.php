@@ -19,6 +19,7 @@ class SurrenderedDocuments extends Model
         'suffix',
         'sex',
         'professionID',
+        'date_issues',
         'returnedDate',
         'regnum',
         'penalty',
@@ -32,6 +33,7 @@ class SurrenderedDocuments extends Model
         'complainant_suffix',
         'complainant_sex',
         'chief',
+        'position_officer',
     ];
     public function profession()
     {

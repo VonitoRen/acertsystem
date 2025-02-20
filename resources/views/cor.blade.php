@@ -811,18 +811,30 @@ style='font-size:12.0pt;line-height:107%'>Certification No. CAR-COR-2024-{{$cert
 style='font-size:16.0pt;line-height:107%'>CERTIFICATION<o:p></o:p></span></b></p>
 
 
-<p class="MsoNormal" style="text-align:justify">
-    <span style="font-size:13.0pt; line-height:200%">
-        <span style="mso-tab-count:1"> </span>
-        &nbsp; &nbsp; &nbsp; &nbsp;This is to certify that
+<!-- <p class="MsoNormal" style="text-align:justify">
+    <span style="font-size:13.0pt; line-height:200%;  margin-left: 0.5in;">
+        This is to certify that
         <b>{{ mb_strtoupper($certificationOfRegistrations->fname) }} 
         @if (!empty($certificationOfRegistrations->mname))
             {{ mb_strtoupper(substr($certificationOfRegistrations->mname, 0, 1)) }}.
         @endif
-        {{ mb_strtoupper($certificationOfRegistrations->lname) }} {{ mb_strtoupper($certificationOfRegistrations->suffix) }}</b>is a registered and licensed
-        <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No.
-        <!-- <b>{{$certificationOfRegistrations->regnum}}</b> --><b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>
-        registered
+        {{ mb_strtoupper($certificationOfRegistrations->lname) }} @if(!empty($certificationOfRegistrations->suffix)) {{ mb_strtoupper($certificationOfRegistrations->suffix) }} @endif</b>is a registered and licensed
+        <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No. <b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>registered
+        <span class="GramE">on
+            <b>{{ \Carbon\Carbon::parse($certificationOfRegistrations->registeredDate)->format('F j, Y') }}.</b>
+        </span>
+    </span>
+</p> -->
+
+<p class="MsoNormal" style="text-align:justify">
+    <span style="font-size:13.0pt; line-height:200%;  margin-left: 0.5in;">
+        This is to certify that
+        <b>{{ mb_strtoupper($certificationOfRegistrations->fname) }} 
+            @if (!empty($certificationOfRegistrations->mname))
+                {{ mb_strtoupper(substr($certificationOfRegistrations->mname, 0)) }}
+            @endif
+            {{ mb_strtoupper($certificationOfRegistrations->lname) }} @if(!empty($certificationOfRegistrations->suffix)) {{ mb_strtoupper($certificationOfRegistrations->suffix) }} @endif</b>is a registered and licensed
+        <b>{{$certificationOfRegistrations->profession->profession}}</b> with Registration No. <b>{{ str_pad($certificationOfRegistrations->regnum, 7, '0', STR_PAD_LEFT) }} </b>registered
         <span class="GramE">on
             <b>{{ \Carbon\Carbon::parse($certificationOfRegistrations->registeredDate)->format('F j, Y') }}.</b>
         </span>
@@ -834,15 +846,14 @@ style='font-size:12.0pt;line-height:107%'></span></b></p>
 <p class=MsoNormal align=center style='text-align:center'><b><span
 style='font-size:12.0pt;line-height:107%'></span></b></p>
 <p class=MsoNormal style='text-align:justify'><span style='font-size:13.0pt;
-line-height:100%'><span style='mso-tab-count:1'> </span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;This
-Certification is issued for whatever legal purpose it may serve.<o:p></o:p></span></p>
+line-height:100%;  margin-left: 0.5in;'>This Certification is issued for whatever legal purpose it may serve.<o:p></o:p></span></p>
 
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ $certificationOfRegistrations->placeOfIssue }}</span></p>
+margin-left:.5in'><span style='font-size:13.0pt;line-height:107%;'>{{ $certificationOfRegistrations->placeOfIssue }}</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:0in;
-margin-left:.5in'><span style='font-size:13.0pt;line-height:107%'>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;{{ \Carbon\Carbon::parse($certificationOfRegistrations->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
+margin-left:.5in'><span style='font-size:13.0pt;line-height:107%;'>{{ \Carbon\Carbon::parse($certificationOfRegistrations->date_issues)->format('F j, Y') }}<o:p></o:p></span></p>
 
 <p class=MsoNormal align=center style='margin-top:0in;margin-right:0in;
 margin-bottom:0in;margin-left:2.5in;text-align:center;text-indent:.5in'><span

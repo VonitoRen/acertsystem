@@ -22,6 +22,15 @@ class AppearanceCertificationController extends Controller
         ]);
     }
 
+    public function report(){
+        
+        $appearanceCert = AppearanceCertification::all();
+
+        return view('fad.report', [
+                    'appearanceCert' => $appearanceCert,
+        ]);
+    }
+
     // public function index(){
     //     $appearanceCert = AppearanceCertification::all();
 
@@ -46,6 +55,7 @@ class AppearanceCertificationController extends Controller
             'sex' => 'required|in:MALE,FEMALE',
             'agency' => 'required|string|max:255',
             'dateOfAppearance' => 'required|date',
+            'dateOfAppearance_two' => 'nullable|date',
             'purpose' => 'required|string|max:255',
             'person_role_id' => 'required|exists:person_roles,id',
         ]);
@@ -60,6 +70,7 @@ class AppearanceCertificationController extends Controller
         $certificate->sex = $validatedData['sex'];
         $certificate->agency = $validatedData['agency'];
         $certificate->dateOfAppearance = $validatedData['dateOfAppearance'];
+        $certificate->dateOfAppearance_two = $validatedData['dateOfAppearance_two'];
         $certificate->purpose = $validatedData['purpose'];
         $certificate->person_role_id = $validatedData['person_role_id'];
 
@@ -93,11 +104,12 @@ class AppearanceCertificationController extends Controller
             'suffix' => 'nullable|string|max:255',
             'sex' => 'required|in:MALE,FEMALE',
             'agency' => 'required|string|max:255',
+            'date_issues' => 'required|date',
             'dateOfAppearance' => 'required|date',
+            'dateOfAppearance_two' => 'nullable|date',
             'purpose' => 'required|string|max:255',
             'person_role_id' => 'required|exists:person_roles,id',
         ]);
-        $validatedData['date_issues'] = now(); 
         
         $certificate->update($validatedData);
 

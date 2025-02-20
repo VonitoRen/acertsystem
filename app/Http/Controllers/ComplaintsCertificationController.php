@@ -9,6 +9,9 @@ use App\Models\Signatories;
 use App\Models\PersonRole;
 
 use App\Models\ComplaintsCertificationModel;
+use App\Models\PicCorCertificationModel;
+use App\Models\FinalityCertificationModel;
+use App\Models\SurrenderedDocuments;
 
 class ComplaintsCertificationController extends Controller
 {
@@ -25,36 +28,99 @@ class ComplaintsCertificationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'lname' => 'required|string|max:255',
-            'fname' => 'required|string|max:255',
-            'mname' => 'nullable|string|max:255',
-            'suffix' => 'nullable|string|max:255',
-            'sex' => 'required|in:MALE,FEMALE',
-            'professionID' => 'required|exists:professions,id',
-            'regnum' => 'required|string|max:255',
-            'registeredDate' => 'required|date',
-            'OR_No' => 'required|string|max:255',
-            'initials' => 'required|string|max:255',
-            'amount' => 'required|string|max:255',
-            'signatoriesAtty' => 'required|exists:person_roles,id',
-            'person_role_id' => 'required|exists:person_roles,id',
+    public function report(){
+        $complaintsCert = ComplaintsCertificationModel::all();
+        $piccorCert = PicCorCertificationModel::all();
+        $finalityCert = FinalityCertificationModel::all();
+        $surrenderedCert = SurrenderedDocuments::all();
+
+        return view('legal.report', [
+            'complaintsCert' => $complaintsCert,
+            'piccorCert' => $piccorCert,
+            'finalityCert' => $finalityCert,
+            'surrenderedCert' => $surrenderedCert,
         ]);
-
-        // Create a new Certificate instance
-        $certificate = ComplaintsCertificationModel::create($validatedData);
-
-        if ($certificate) {
-            // Data saved successfully
-            return redirect()->back()->with('success', 'Certificate added successfully.');
-        } else {
-            // Error occurred while saving data
-            return redirect()->back()->with('error', 'Failed to add certificate. Please try again.');
-        }
     }
+
+    // public function store(Request $request)
+    // {
+    //     // Validate the incoming request data
+    //     $validatedData = $request->validate([
+    //         'lname' => 'required|string|max:255',
+    //         'fname' => 'required|string|max:255',
+    //         'mname' => 'nullable|string|max:255',
+    //         'suffix' => 'nullable|string|max:255',
+    //         'sex' => 'required|in:MALE,FEMALE',
+    //         'professionID' => 'required|exists:professions,id',
+    //         'regnum' => 'required|string|max:255',
+    //         'registeredDate' => 'required|date',
+    //         'OR_No' => 'required|string|max:255',
+    //         'initials' => 'required|string|max:255',
+    //         'amount' => 'required|string|max:255',
+    //         'signatoriesAtty' => 'required|exists:person_roles,id',
+    //         'person_role_id' => 'required|exists:person_roles,id',
+    //     ]);
+
+    //     // Create a new Certificate instance
+    //     $certificate = ComplaintsCertificationModel::create($validatedData);
+
+    //     if ($certificate) {
+    //         // Data saved successfully
+    //         return redirect()->back()->with('success', 'Certificate added successfully.');
+    //     } else {
+    //         // Error occurred while saving data
+    //         return redirect()->back()->with('error', 'Failed to add certificate. Please try again.');
+    //     }
+    // }
+
+    public function store(Request $request)
+{
+    // Get the last certificate with the highest id_reset value for the current year
+    $currentYear = date('y');
+    $lastCertificate = ComplaintsCertificationModel::where('id_reset', 'like', $currentYear . '-%')
+        ->latest('id_reset')
+        ->first();
+
+    // Extract the temporary ID from the last certificate's id_reset value
+    $temporaryId = $lastCertificate ? intval(substr($lastCertificate->id_reset, 3)) + 1 : 1;
+    
+    // Pad the temporary ID with leading zeros
+    $paddedId = str_pad($temporaryId, 3, '0', STR_PAD_LEFT);
+
+    // Construct the id_reset value
+    $idResetValue = $currentYear . '-' . $paddedId;
+
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'lname' => 'required|string|max:255',
+        'fname' => 'required|string|max:255',
+        'mname' => 'nullable|string|max:255',
+        'suffix' => 'nullable|string|max:255',
+        'sex' => 'required|in:MALE,FEMALE',
+        'professionID' => 'required|exists:professions,id',
+        'regnum' => 'required|string|max:255',
+        'registeredDate' => 'required|date',
+        'OR_No' => 'required|string|max:255',
+        'initials' => 'required|string|max:255',
+        'amount' => 'required|string|max:255',
+        'signatoriesAtty' => 'required|exists:person_roles,id',
+        'person_role_id' => 'required|exists:person_roles,id',
+    ]);
+
+    // Set the id_reset value
+    $validatedData['id_reset'] = $idResetValue;
+
+    // Create a new Certificate instance
+    $certificate = ComplaintsCertificationModel::create($validatedData);
+
+    if ($certificate) {
+        // Data saved successfully
+        return redirect()->back()->with('success', 'Certificate added successfully.');
+    } else {
+        // Error occurred while saving data
+        return redirect()->back()->with('error', 'Failed to add certificate. Please try again.');
+    }
+}   
 
 
     // public function store(Request $request)
@@ -119,8 +185,8 @@ class ComplaintsCertificationController extends Controller
             'OR_No' => 'required|string|max:255',
             'initials' => 'required|string|max:255',
             'amount' => 'required|string|max:255',
+            'date_issues' => 'nullable|date',
             'signatoriesAtty' => 'required|exists:person_roles,id',
-            // 'signatoriesid' => 'required|exists:signatories,id',
             'person_role_id' => 'required|exists:person_roles,id',
         ]);
 

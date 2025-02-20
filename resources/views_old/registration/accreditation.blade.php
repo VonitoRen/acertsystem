@@ -9,16 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PRC-CERTIFICATION</title>
-    <link rel="icon" type="/image/png" sizes="32x32" href="\img\prclogo.svg">
+    <title>PRC-CERTIFICATION | ACCREDITATION</title>
+
+     <link rel="icon" type="/image/png" sizes="32x32" href="{{ asset('\img\prclogo.svg') }}">
     <!-- Custom fonts for this template-->
-    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -75,10 +76,10 @@
     body.loading {
     overflow: hidden;
     }
+
     .table-responsive {
     overflow-x: auto;
     }
-    
     .btn-primary {
         color: blue;
     }
@@ -98,6 +99,8 @@
     .btn-secondary:hover {
         color: white;
     }
+
+
 </style>
 
 <body id="page-top">
@@ -117,38 +120,38 @@
             <div id="content">
 
                 <!-- Topbar -->
-                
-               <x-app-layout>
+                <x-app-layout>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    
                         <div class='col-sm-12 mx-auto shadow' style='padding: 2%; margin:3%;'>
                             <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="mb-0"></h4>
+                                <h2 class="mb-0"><b>Accreditation</b></h2>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
-                                <i class="fas fa-plus"></i> Add Certificate of Registration
+                                <button type="button" style="margin-bottom:5px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCert">
+                                <i class="fas fa-plus"></i> Add Accreditation Certificate
                                 </button>
                             </div>
                         
                 
                     <!-- Modal -->
-                    <form class="needs-validation" action="{{ route('certregistration.store') }}" method="post" novalidate>
+                    <form class="needs-validation" action="{{ route('accreditation.store') }}" method="post" novalidate>
                         @csrf
                         <div class="modal fade" id="addCert" tabindex="-1" aria-labelledby="addCertLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <h1 class="modal-title fs-5" id="addCertLabel">Add Certificate of Registration</h1>
-                                    <button type="button" class="btn-close btn-primary" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div><br>
                                 <div class="modal-body">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validationCustom01" name="lname" placeholder="Last Name" required>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" required>
                                                 <label for="validationCustom01">Last Name</label>
                                                 <div class="valid-feedback">
                                                     Looks good!
@@ -157,19 +160,16 @@
                                                     *Required
                                                 </div>
                                             </div>
-                                            <div class="valid-feedback">
-                                            Looks good!
-                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
                                                 <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" required>
                                                 <label for="fname">First Name</label>
                                                 <div class="valid-feedback">
-                                                Looks amazing!
+                                                    Looks nice!
                                                 </div>
                                                 <div class="invalid-feedback">
-                                                *Required
+                                                    *Required
                                                 </div>
                                             </div>
                                         </div>
@@ -191,11 +191,11 @@
                                                 <label for="suffix">Suffix</label>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="col-md-4">
                                             <label for="">SEX:</label> <br>  
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required> 
+                                                <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" required>
                                                 <label class="form-check-label" for="male">MALE</label>
                                             </div>
                                             <div class="form-check form-check-inline">
@@ -204,7 +204,22 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." maxlength="7" required>
+                                                <label for="accreditation_no">Accreditation No.</label>
+                                                <div class="valid-feedback">
+                                                    Looks Fantastic!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
 
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
@@ -222,6 +237,31 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validityDate" name="validityDate" placeholder="Validity Date" required>
+                                                <label for="validityDate">Validity Date</label>
+                                                <div class="valid-feedback">
+                                                    Looks amazing!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_name" name="broker_name" placeholder="Broker Name" required>
+                                                <label for="broker_name">Broker Name</label>
+                                                <div class="valid-feedback">
+                                                    Awesome!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
 
                                         
                                     </div>
@@ -229,69 +269,42 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-floating mb-2">
-                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="regnum" name="regnum" placeholder="Registration No." maxlength="7">
-                                                <label for="regnum">Registration No.</label>
+                                                <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." maxlength="7" required>
+                                                <label for="Broker Registration No.">Broker Registration No.</label>
                                                 <div class="valid-feedback">
-                                                    Sheeesh!
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    Please enter a 7-digit registration number.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-floating mb-2">
-                                                <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="registeredDate" name="registeredDate" placeholder="Registered Date" required>
-                                                <label for="registeredDate">Registered Date</label>
-                                                <div class="valid-feedback">
-                                                    Amazing!
+                                                    Great!
                                                 </div>
                                                 <div class="invalid-feedback">
                                                     *Required
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        <!-- <div class="col-md-4">
-                                            <div class="form-floating mb-2"> 
-                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="signatoriesid" required>
-                                                    <option disabled selected value="">Select Signatory</option>
-                                                    @foreach($signatories as $signatory)
-                                                        <option value="{{ $signatory->id }}">{{ $signatory->name }} - {{ $signatory->position }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <label for="floatingSelect">Signatory</label>
-                                                <div class="valid-feedback">
-                                                    A good person!
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    *Required
-                                                </div>
-                                            </div>
-                                        </div> -->
 
-                                        <div class="col-md-4">
-                                            <div class="form-floating mb-2">
-                                            <select class="form-control" id="personRole" name="person_role_id">
-                                                <option disabled selected>Select Signatory</option>
+                                        <div class="col-md-8">
+                                            <div class="form-floating mb-2"> 
+                                            <select class="form-control" id="personRole" name="person_role_id" required>
+                                                <option value="" disabled selected>Select Signatory</option>
                                                 @foreach($personRoles as $personRole)
                                                     <option value="{{ $personRole->id }}">
                                                         {{ $personRole->person->name }} - {{ $personRole->person->position }}
                                                 @endforeach
                                             </select>
-                                                <label for="personRole">Signatory</label>
+                                                <label for="floatingSelect">Signatory</label>
+                                                <div class="valid-feedback">
+                                                    Excellent!
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    *Required
+                                                </div>
                                             </div>
                                         </div>
-
-
-
                                     </div>
                                 </div>
                                 
                                 </div>
 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <input type="submit" class="btn btn-primary" value="Submit">
                                 </div>
                                 </div>
@@ -299,74 +312,67 @@
                         </div>
                     </form>
                 
-                <div class="p-1">
-                    <div class="table-responsive">
-                        <table id="datatable1" class="display" style="width:100%; text-align: center;">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Profession</th>
-                                    <th>Registration No.</th>
-                                    <th>Registration Date</th>
-                                    <th>Place of Issue</th>
-                                    <th>Date Issued</th>
-                                    <th>Signatory</th>
-                                    <!-- <th>Position/Designation</th> -->
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($certificationOfRegistrations as $cert)
-                                <tr>
-                                    <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
-                                    <td>{{ $cert->profession->profession }}</td>
-                                    <td>{{ $cert->regnum }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($cert->registeredOn)->format('F j, Y') }}</td>
-                                    <td>{{ $cert->placeOfIssue }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
-                                    <td>
-                                        <b>{{ $cert->personRole->person->name }}</b><br>
-                                        {{ $cert->personRole->person->position }}
-                                    </td>
-                                    <td>
-                                        <div class="btn-group" role="group" aria-label="Actions">
-                                            <!-- Edit Button -->
-                                            <a href="{{ route('edit.CORcertificate', $cert->id) }}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
-                                                <i class="fas fa-edit edit-icon"></i>
-                                            </a>
-                                            <!-- <a href="/pdf" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#">
-                                                <i class="fas fa-print"></i>
-                                            </a> -->
-                                            <!-- <button class="btn btn-success">
-                                                <i class="fas fa-print"></i>
-                                            </button> -->
+                <div class="p-0">
+                <div class="table-responsive">
+                <table id="datatable1" class="display" style="width:100%; text-align: center;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>AC No.</th>
+                            <th>Sex</th>
+                            <th>Profession</th>
+                            <th>Validity Date</th>
+                            <th>Broker Name</th>
+                            <th>Broker Registration No</th>
+                            <th>Date Issued</th>
+                            <th>Place Issued</th>
+                            <th>Signatory</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($accreditationCert as $cert)
+                        <tr>
+                            <td>{{ $cert->lname }}, {{ $cert->fname }} {{ $cert->mname }} {{ $cert->suffix }}</td>
+                            <td>{{ $cert->accreditation_no }}</td>
+                            <td>{{ $cert->sex }}</td>
+                            <td>{{ $cert->profession->profession }}</td>
+                            <td>{{ \Carbon\Carbon::parse($cert->validityDate)->format('F j, Y') }}</td>
+                            <td>{{ $cert->broker_name }}</td>
+                            <td>{{ $cert->broker_reg_no }}</td>
+                            <td>{{ \Carbon\Carbon::parse($cert->date_issues)->format('F j, Y') }}</td>
+                            <td>{{ $cert->placeOfIssue }}</td>
+                            <td>
+                                <b>{{ $cert->personRole->person->name }}</b><br>
+                                {{ $cert->personRole->person->position }}
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <!-- Edit Button -->
+                                    <a href="{{ route('edit.certificateAC', $cert->id) }}" class="btn btn-primary" style="color:white;" data-bs-toggle="modal" data-bs-target="#editCertificateModal{{ $cert->id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
 
-                                            <!-- Print Button -->
-                                            <a href="{{ route('preview.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
-                                                <i class="fas fa-print"></i>
-                                            </a>
+                                    <!-- Print Button -->
+                                    <a href="{{ route('previewAC.pdf', $cert->id) }}" target="_blank" class="btn btn-success">
+                                        <i class="fas fa-print"></i>
+                                    </a>
 
+                                    <!-- Delete Form -->
+                                    <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-ac', $cert->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </div>
 
-                                            <!-- Delete Button -->
-                                            <form id="deleteForm{{ $cert->id }}" action="{{ route('delete.certificate-cor', $cert->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger delete-btn" data-id="{{ $cert->id }}" style="border-radius: 0 0.25rem 0.25rem 0;">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-
-
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        <!-- EDIT -->
-                        
-                        <!-- Edit Certificate Modal -->
+                    <!-- Edit Certificate Modal -->
                         <div class="modal fade" id="editCertificateModal{{ $cert->id }}" tabindex="-1" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content">
@@ -375,7 +381,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     
-                                    <form action="{{ route('update.CORcertificate', $cert->id) }}" method="post">
+                                    <form action="{{ route('update.certificateAC', $cert->id) }}" method="post">
                                         @csrf
                                             @method('PUT')
                                                 <div class="modal-body">
@@ -384,15 +390,15 @@
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <div class="form-floating mb-2">
-                                                                        <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}" required>
+                                                                        <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="lname" name="lname" placeholder="Last Name" value="{{ $cert->lname }}">
                                                                         <label for="lname">Last Name</label>
                                                                     </div>
                                                                     <div class="valid-feedback">Looks good!</div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}" required>
-                                                                    <label for="fname" required>First Name</label>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="fname" name="fname" placeholder="First Name" value="{{ $cert->fname }}">
+                                                                    <label for="fname">First Name</label>
                                                                 </div>
                                                             </div>
 
@@ -416,18 +422,27 @@
                                                             <div class="col-md-4">
                                                                 <label for="">SEX:</label> <br>  
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" required name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" name="sex" id="male" value="MALE" {{ $cert->sex === 'MALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="male">MALE</label>
                                                                     </div>
                                                                     <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input" type="radio" required name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
+                                                                        <input class="form-check-input" type="radio" name="sex" id="female" value="FEMALE" {{ $cert->sex === 'FEMALE' ? 'checked' : '' }}>
                                                                         <label class="form-check-label" for="female">FEMALE</label>
                                                                     </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="accreditation_no" name="accreditation_no" placeholder="Accreditation No." value="{{ $cert->accreditation_no }}" maxlength="7" required>
+                                                                    <label for="accreditation_no">Accreditation No.</label>
+                                                                </div>
                                                             </div>
 
                                                             <div class="col-md-4">
                                                                 <div class="form-floating">
-                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID" required>
+                                                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="professionID">
                                                                         <option disabled value="">Select Profession</option>
                                                                         @foreach($professions as $profession)
                                                                             <option value="{{ $profession->id }}" {{ $cert->profession->id == $profession->id ? 'selected' : '' }}>
@@ -438,23 +453,40 @@
                                                                     <label for="floatingSelect">Profession</label>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="validityDate" name="validityDate" placeholder="Validity Date" value="{{ \Carbon\Carbon::parse($cert->validityDate)->format('Y-m-d') }}" required>
+                                                                    <label for="regnum">Validity Date</label>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                         <div class="row">
+
                                                             <div class="col-md-4">
                                                                 <div class="form-floating mb-2">
-                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="regnum" name="regnum" placeholder="Registration No." value="{{ $cert->regnum }}" maxlength="7">
-                                                                    <label for="regnum">Registration No.</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="form-floating mb-2">
-                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" required id="registeredOn" name="registeredOn" placeholder="Registered Date" value="{{ \Carbon\Carbon::parse($cert->registeredOn)->format('Y-m-d') }}">
-                                                                    <label for="registeredOn">Registered Date</label>
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_name" name="broker_name" placeholder="Broker Name" value="{{ $cert->broker_name }}">
+                                                                    <label for="regnum">Broker Name</label>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="text" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="broker_reg_no" name="broker_reg_no" placeholder="Broker Registration No." value="{{ $cert->broker_reg_no }}" maxlength="7">
+                                                                    <label for="registeredOn">Broker Registration No.</label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-floating mb-2">
+                                                                    <input type="date" class="form-control" style="border-radius: 5px; border-color: lightgrey;" id="date_issues" name="date_issues" placeholder="Date Of Issuance" value="{{ $cert->date_issues }}" maxlength="7">
+                                                                    <label for="registeredOn">Date Of Issuance</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
                                                                 <div class="form-floating mb-2">
                                                                 <select class="form-control" id="personRole" name="person_role_id">
                                                                     <option disabled value="">Select Signatory</option>
@@ -465,10 +497,10 @@
                                                                     @endforeach
                                                                 </select>
 
+
                                                                     <label for="signatoriesid">Signatory</label>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
@@ -484,19 +516,23 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        </div>    
-                    </div>
+                        </div> 
+                    <!-- END OF CHANGES -->
+
+                    </div>    
                 </div>
             </div>
-        <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
+                <!-- /.container-fluid -->
 
-        <!-- Footer -->
-        @include('footer')
-        <!-- End of Footer -->
-    </div>
-    <!-- End of Content Wrapper -->
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            @include('footer')
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -505,7 +541,6 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
     </x-app-layout>
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -515,7 +550,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" >×</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
@@ -531,26 +566,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{ asset('/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="/vendor/chart.js/Chart.min.js"></script>
+    <script src="{{ asset('/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="/js/demo/chart-area-demo.js"></script>
-    <script src="/js/demo/chart-pie-demo.js"></script>
+    <script src="{{ asset('/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('/js/demo/chart-pie-demo.js') }}"></script>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="/script.js"></script>   
+    <script src="{{ asset('/script.js') }}"></script>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="sweetalert2.min.js"></script>
     <script>
@@ -569,13 +604,7 @@
 
     </script>
     
-
-</body>
-
-</html>
-
-
-<script>
+    <script>
     (function () {
   'use strict'
 
@@ -596,6 +625,7 @@
     })
 })()
 </script>
+
 
 <script>
     // Function to handle SweetAlert confirmation
@@ -630,3 +660,7 @@
         });
     });
 </script>
+
+</body>
+
+</html>

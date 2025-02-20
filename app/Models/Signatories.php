@@ -14,8 +14,24 @@ class Signatories extends Model
         'position'
     ];
 
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Roles::class, 'person_roles');
+    // }
+
+    //  // Define the relationship with PersonRole
+    // public function personRoles()
+    // {
+    //     return $this->hasMany(PersonRole::class, 'person_id'); // Assuming 'signatory_id' is the foreign key in the PersonRole table
+    // }
+
+    public function personRoles()
+    {
+        return $this->hasMany(PersonRole::class, 'person_id'); // Assuming 'signatory_id' is the foreign key in the PersonRole table
+    }
+
     public function roles()
     {
-        return $this->belongsToMany(Roles::class, 'person_roles');
+        return $this->belongsToMany(Roles::class, 'person_roles', 'person_id', 'role_id');
     }
 }

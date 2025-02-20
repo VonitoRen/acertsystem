@@ -30,7 +30,7 @@ class PiccorCertificationController extends Controller
     {
         $validatedData = $request->validate([
             'board'=> 'required|string|max:255',
-            'regDate'=> 'required|date',
+            'regDate'=> 'required|string|max:255',
             'lname'=> 'required|string|max:255',
             'fname'=> 'required|string|max:255',
             'mname'=> 'nullable|string|max:255',
@@ -42,6 +42,7 @@ class PiccorCertificationController extends Controller
             'penalty'=> 'required|string|max:255',
             'caseTitle'=> 'required|string|max:255',
             'administrativeCaseNo'=> 'required|string|max:255',
+            'dateOfDocument'=> 'required|string|max:255',
             'hearingOfficer'=> 'required|string|max:255',
             'person_role_id' => 'required|exists:person_roles,id',
             'complainantlname'=> 'required|string|max:255',
@@ -50,6 +51,7 @@ class PiccorCertificationController extends Controller
             'complainantsuffix'=> 'nullable|string|max:255',
             'complainantsex'=> 'required|in:MALE,FEMALE',
             'legalDivisionChief'=> 'required|string|max:255',
+            'position_officer'=> 'required|string|max:255',
         ]);
 
         // Create a new Certificate instance
@@ -69,6 +71,7 @@ class PiccorCertificationController extends Controller
         $certificate->penalty = $validatedData['penalty'];
         $certificate->caseTitle = $validatedData['caseTitle'];
         $certificate->administrativeCaseNo = $validatedData['administrativeCaseNo'];
+        $certificate->dateOfDocument = $validatedData['dateOfDocument'];
         $certificate->hearingOfficer = $validatedData['hearingOfficer'];
         $certificate->person_role_id = $validatedData['person_role_id'];
         $certificate->complainantlname = $validatedData['complainantlname'];
@@ -77,6 +80,7 @@ class PiccorCertificationController extends Controller
         $certificate->complainantsuffix = $validatedData['complainantsuffix'];
         $certificate->complainantsex = $validatedData['complainantsex'];
         $certificate->legalDivisionChief = $validatedData['legalDivisionChief'];
+        $certificate->position_officer = $validatedData['position_officer'];
 
         $certificate->dateofIssuance = now(); 
 
@@ -114,6 +118,8 @@ class PiccorCertificationController extends Controller
             'penalty'=> 'required|string|max:255',
             'caseTitle'=> 'required|string|max:255',
             'administrativeCaseNo'=> 'required|string|max:255',
+            'dateOfDocument'=> 'required|string|max:255',
+            'dateofIssuance' => 'required|date',
             'hearingOfficer'=> 'required|string|max:255',
             'person_role_id' => 'required|exists:person_roles,id',
             'complainantlname'=> 'required|string|max:255',
@@ -122,8 +128,8 @@ class PiccorCertificationController extends Controller
             'complainantsuffix'=> 'nullable|string|max:255',
             'complainantsex'=> 'required|in:MALE,FEMALE',
             'legalDivisionChief'=> 'required|string|max:255',
+            'position_officer'=> 'required|string|max:255',
         ]);
-        $validatedData['dateofIssuance'] = now(); 
 
         // Update the certificate with the validated data
         $certificate->update($validatedData);

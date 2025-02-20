@@ -7,7 +7,9 @@ use App\Models\AccreditationCertificationModel;
 use App\Models\Professions;
 use App\Models\Signatories;
 use App\Models\PersonRole;
-
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
 class AccreditationCertification extends Controller
 {
     public function index(){
@@ -71,8 +73,50 @@ class AccreditationCertification extends Controller
         $certificate->save();
 
         // Redirect the user after successfully saving the certificate
+        // return $this->previewPdf($certificate->id);
         return redirect()->back()->with('success', 'Certificate added successfully.');
+        // return redirect()->back()->with('success', 'Certificate added successfully.');
     }
+    public function previewPdf($id)
+    {
+    // Get the specific certification record by ID
+    $accreditationCert = AccreditationCertificationModel::findOrFail($id);
+
+    // URL of the image
+    $imageUrl = 'https://resaadvocates.com/wp-content/uploads/2019/06/prc-logo.png';
+
+    // $imageUrl = '/img/image001.png';
+    // Render the view into HTML, passing the certification record and image URL
+    $html = view('ac', compact('accreditationCert', 'imageUrl'))->render();
+
+    // Configure Dompdf
+    $options = new Options();
+    $options->set('isHtml5ParserEnabled', true); // Enable HTML5 parser
+    $options->set('isRemoteEnabled', true); // Enable remote file access
+
+    // Instantiate Dompdf with options
+    $pdf = new Dompdf($options);
+
+    // Load HTML content
+    $pdf->loadHtml($html);
+
+    // (Optional) Set paper size and orientation
+    $pdf->setPaper('A4', 'portrait');
+
+    // Render PDF (errors are stored in $pdf->errors)
+    $pdf->render();
+
+    // Get the PDF content as a string
+    $pdfContent = $pdf->output();
+
+    // Encode the PDF content
+    $base64Pdf = base64_encode($pdfContent);
+
+    // Pass the encoded PDF content to the view
+    return view('preview-pdf', compact('base64Pdf'));
+    // return $this->previewPdf($certificateId)->with('success', 'Certificate added successfully.');
+    // return view('preview-pdf', compact('base64Pdf'))->with('success', 'Certificate added successfully.');
+}
 
     public function editACCertificate($id)
     {
@@ -97,8 +141,9 @@ class AccreditationCertification extends Controller
             'sex' => 'required|in:MALE,FEMALE',
             'professionID' => 'required|exists:professions,id',
             'validityDate' => 'required|date',
-            'broker_name' => 'nullable|string|max:255',
-            'broker_reg_no' => 'nullable|string|max:255',
+            'broker_name' => 'required|string|max:255',
+            'broker_reg_no' => 'required|string|max:255',
+            'date_issues' => 'required|string|max:255',
             'person_role_id' => 'required|exists:person_roles,id',
         ]);
 
