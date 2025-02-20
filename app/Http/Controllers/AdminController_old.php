@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\QueryException;
-
+    
 use App\Models\AccreditationCertificationModel;
 use App\Models\CertificationsOfRegistration;
 
