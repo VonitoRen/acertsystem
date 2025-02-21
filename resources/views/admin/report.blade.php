@@ -20,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- DT -->
@@ -45,32 +45,8 @@
         font-weight: 400;
         font-style: normal;
     }
-    .loader-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.7);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-
-    .loader {
-    border: 5px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 5px solid #3498db;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-    }
+   
+ 
 
     body.loading {
     overflow: hidden;
@@ -84,27 +60,25 @@
         background-color: #343a40;
     }
 
-    .btn-primary-pro {
-        color: blue;
-    }
+    /* Fix for 'Show entries' dropdown overlapping the table */
+.dataTables_wrapper .dataTables_length select {
+    padding-right: 52px; /* Make sure the dropdown button is not cut off */
+}
+/* Add padding to the buttons */
+.edit-btn, .delete-btn {
+    padding: 8px 15px; /* Adjust the padding to give the buttons some space */
+}
 
-    .btn-primary-pro:hover {
-        color: white;
-    }
+/* Add margin between the buttons */
+#editbtn .btn {
+    margin-right: 25px; /* Adds space between the Edit and Delete buttons */
+}
 
-    .edit-icon {
-        color: white;
-    }
-
-    .btn-secondary-pro {
-        color: black;
-    }
-
-    .btn-secondary-pro:hover {
-        color: white;
-    }
-
-    
+/* Optional: Adjust icon sizes or spacing if needed */
+.edit-btn i, .delete-btn i {
+    padding-left: 25px; /* Space between icon and button border */
+    padding-right: 25px; /* Space between icon and button border */
+}
 
 </style>
 

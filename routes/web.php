@@ -46,29 +46,26 @@ Route::get('/ACert', function () {
 });
 
 
-// Grouping routes that require the same role check
+// // Grouping routes that require the same role check
 Route::middleware('role:admin')->group(function () {
-    
     if (auth()->check() && auth()->user()->role == 1) {
         Route::get('/dashboard', function () {
             return view('dashboard');
         });
-    
     } else {
         return back();
     }
 
  
-    
 });
 
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+ Route::get('/dashboard', function () {
+     return view('dashboard');
+ })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::get('/admin/dashboard', [AdminController::class,'dashboard'])->middleware('auth');
+
 
 // pdf dagitoy
 Route::get('preview-pdf/{id}', [CorPdfController::class, 'previewPdf'])->name('preview.pdf');
@@ -288,7 +285,7 @@ Route::get('/registration/cor',[CertificationOfRegistration::class,'index'])->na
 
 Route::get('/registration/report', [CertificationOfRegistration::class, 'report'])->name('registration.report');
 Route::get('/legal/report', [ComplaintsCertificationController::class, 'report'])->name('legal.report');
-
+//skibidi gyattt
 
 // EDIT ROUTES COR
 Route::get('/edit-CORcertificate/{id}',  [CertificationOfRegistration::class, 'editCORCertificate'])->name('edit.CORcertificate');
